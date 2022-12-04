@@ -144,8 +144,10 @@ def get_generator(config):
     generator = ""
     if config.is_windows:
       generator = "vs"
-    elif config.is_mac and not config.target_os == "android":
+    if config.is_mac and not config.target_os == "android":
       generator = "xcode"
+    if config.target_os == "android":
+      generator = "json --json-ide-script={}/build_system/gn_to_cmake.py".format(config.root_path)
   return generator
 
 
@@ -164,6 +166,7 @@ def generate_solution(config):
   cmd = "{0} gen {1} --root={2} {3}".format(
     config.gn_bin_path, config.build_dir, config.webrtc_path, ide_arg
   )
+
   run_or_die(cmd)
 
 
