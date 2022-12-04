@@ -1,3 +1,9 @@
+**Update:**
+
+2022-12-04: add Android gradle native debug webrtc 
+
+-----------------------------------------------------------
+
 这个仓库包含了 WebRTC 的源码，构建 WebRTC SDK 所需的大部分构建工具，如 LLVM，以及一套主要用 Python 编写的简单构建系统。
 
 这套构建系统支持在 Mac 平台上为 Mac、iOS 和 Android 编译 WebRTC SDK，支持在 Windows 平台上为 Windows 编译 WebRTC SDK，支持在 Linux 平台上为 Linux 和 Android 编译 WebRTC SDK。
