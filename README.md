@@ -224,7 +224,11 @@ webrtc_build build win x64 debug
 
 或者，如对于 Android，在 OpenRTCClient 目录下执行：
 ```
+//1. 生成配置
 webrtc_build gen android arm64 debug
+//2. 开启本地编译服务
+python3 webrtc/build/android/fast_local_dev_server.py
+//开始编译
 webrtc_build build:webrtc android arm64 debug
 ```
 

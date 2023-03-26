@@ -4,11 +4,14 @@ plugins {
     id 'com.android.library'
 }
 
-def abiTypes = ["arm", "arm64"]
-
-def pprtc_root_path = "${projectDir}/../../"
-def pclientCmd = Os.isFamily(Os.FAMILY_WINDOWS) ? "../../../webrtc_build.bat" : "../../../build_system/webrtc_build"
-
+/*
+//1. 生成配置
+webrtc_build gen android arm64 debug
+//2. 开启本地编译服务
+python3 webrtc/build/android/fast_local_dev_server.py
+//开始编译
+webrtc_build build:webrtc android arm64 debug
+*/
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
 //    buildToolsVersion rootProject.ext.androidBuildToolsVersion
@@ -29,6 +32,7 @@ android {
                 ]
             }
         }
+
 
         ndk {
             abiFilters "arm64-v8a"
@@ -51,9 +55,10 @@ android {
         cmake {
             version "3.10.2"
             path 'CMakeLists.txt'
-//            path 'build/android/arm64/debug/CMakeLists.txt'
         }
     }
+
+
 }
 
 dependencies {

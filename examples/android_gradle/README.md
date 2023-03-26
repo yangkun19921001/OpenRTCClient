@@ -24,3 +24,25 @@ If you only want use a small part of WebRTC code, this script could help you fin
 ## Caveat
 
 + Delete `webrtc_build_dir` and `.cxx`, run `./gradlew genWebrtcSrc`, and "Refresh Linked C++ Projects" (note that "Sync Project with Gradle Files" won't work) before your build and debug, otherwise the generated sources may not be compiled, undefined reference error will happen, e.g. `webrtc::rtclog::Event` related references;
+
+
+##编译失败问题记录
+### FileNotFoundError
+```shell
+
+
+File "/Users/devyk/Data/webrtc/OpenRTCClient/webrtc/build/android/gyp/util/server_utils.py", line 31, in MaybeRunCommand
+sock.connect(SOCKET_ADDRESS)
+FileNotFoundError: [Errno 2] No such file or directory
+
+```
+
+解决办法
+
+```shell
+cd OpenRTCClient
+执行
+python3 webrtc/build/android/fast_local_dev_server.py
+再次执行编译函数
+
+```

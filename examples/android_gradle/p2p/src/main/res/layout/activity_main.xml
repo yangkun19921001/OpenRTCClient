@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:text="https://rtcmedia.top"
+        android:id="@+id/server_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="请输入信令服务器地址" />
+
+    <EditText
+        android:text="123456"
+        android:id="@+id/room"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="请输入房间号" />
+
+    <Button
+        android:onClick="join"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@android:color/holo_blue_dark"
+        android:text="进入"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></Button>
+</LinearLayout>

@@ -759,6 +759,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
       // PeerConnectionEvents.onLocalDescription event.
       peerConnectionClient.createOffer();
     } else {
+      //这里是房间里有一人流程
       if (params.offerSdp != null) {
         peerConnectionClient.setRemoteDescription(params.offerSdp);
         logAndToast("Creating ANSWER...");
@@ -796,6 +797,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
           return;
         }
         logAndToast("Received remote " + desc.type + ", delay=" + delta + "ms");
+        //这里是房间没有人的情况
         peerConnectionClient.setRemoteDescription(desc);
         if (!signalingParameters.initiator) {
           logAndToast("Creating ANSWER...");
