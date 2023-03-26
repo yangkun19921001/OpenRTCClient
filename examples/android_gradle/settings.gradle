@@ -1,2 +1,3 @@
 include ':AppRTCMobile'
 include ':rtc'
+include ':p2p'

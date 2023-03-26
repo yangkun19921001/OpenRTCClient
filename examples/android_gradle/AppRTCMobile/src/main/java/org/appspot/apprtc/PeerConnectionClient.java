@@ -594,8 +594,17 @@ public class PeerConnectionClient {
 
     queuedRemoteCandidates = new ArrayList<>();
 
+    signalingParameters.iceServers.clear();
+    signalingParameters.iceServers.add(PeerConnection.IceServer
+            .builder("turn:81.70.18.250:3478")
+            .setPassword("devyk")
+            .setUsername("devyk")
+            .createIceServer());
+
     PeerConnection.RTCConfiguration rtcConfig =
         new PeerConnection.RTCConfiguration(signalingParameters.iceServers);
+
+
     // TCP candidates are only useful when connecting to a server that supports
     // ICE-TCP.
     rtcConfig.tcpCandidatePolicy = PeerConnection.TcpCandidatePolicy.DISABLED;
@@ -1274,7 +1283,7 @@ public class PeerConnectionClient {
 
     @Override
     public void onDataChannel(final DataChannel dc) {
-      Log.d(TAG, "New Data channel " + dc.label());
+      Log.d(TAG, "NewDatachannel " + dc.label());
 
       if (!dataChannelEnabled)
         return;
@@ -1282,25 +1291,25 @@ public class PeerConnectionClient {
       dc.registerObserver(new DataChannel.Observer() {
         @Override
         public void onBufferedAmountChange(long previousAmount) {
-          Log.d(TAG, "Data channel buffered amount changed: " + dc.label() + ": " + dc.state());
+          Log.d(TAG, "Datachannel buffered amount changed: " + dc.label() + ": " + dc.state());
         }
 
         @Override
         public void onStateChange() {
-          Log.d(TAG, "Data channel state changed: " + dc.label() + ": " + dc.state());
+          Log.d(TAG, "Datachannel state changed: " + dc.label() + ": " + dc.state());
         }
 
         @Override
         public void onMessage(final DataChannel.Buffer buffer) {
           if (buffer.binary) {
-            Log.d(TAG, "Received binary msg over " + dc);
+            Log.d(TAG, "Datachannel Received binary msg over " + dc);
             return;
           }
           ByteBuffer data = buffer.data;
           final byte[] bytes = new byte[data.capacity()];
           data.get(bytes);
           String strData = new String(bytes, Charset.forName("UTF-8"));
-          Log.d(TAG, "Got msg: " + strData + " over " + dc);
+          Log.d(TAG, "Datachannel Got msg: " + strData + " over " + dc);
         }
       });
     }
