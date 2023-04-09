@@ -53,6 +53,8 @@ import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.webrtc.SessionDescription.Type.ANSWER;
+
 /**
  * 基于 PeerConnectionClient 简单封装
  * <pre>
@@ -207,6 +209,7 @@ class P2PConnection {
                         public void OnConnected() {
                             Log.i(Constants.P2PTAG, "OnConnected");
                             Log.i(Constants.P2PTAG, "join:" + parameters.roomId);
+                            debug("join-" + parameters.roomId);
                             mISignalClient.join(parameters.roomId);
                             if (signalEventListener != null) {
                                 signalEventListener.OnConnected();
@@ -227,6 +230,7 @@ class P2PConnection {
                             }
                             Log.i(Constants.P2PTAG, "joined:" + roomName + "-" + userId + "-" + isInitiator);
                             Log.i(Constants.P2PTAG, "createPeerConnection");
+                            debug("user id:" + userId + " 加入房间.");
                             createPeerConnection();
 
 //                            Log.i(TAG, "Creating OFFER...");
@@ -247,6 +251,7 @@ class P2PConnection {
                         @Override
                         public void OnRemoteUserJoined(String roomName, String userId) {
                             Log.i(Constants.P2PTAG, "createOffer " + roomName + "-" + userId);
+                            debug("remote id:" + userId + " 加入房间.");
                             createOffer();
                             if (signalEventListener != null) {
                                 signalEventListener.OnRemoteUserJoined(roomName, userId);
@@ -286,6 +291,8 @@ class P2PConnection {
             Log.i(Constants.P2PTAG, "onMessage: " + message.getString("type"));
             String type = message.getString("type");
             if (type.equals("offer") || type.equals("answer")) {
+                if (type.equals("answer"))
+                    debug("OnMessage:answer");
                 onRemoteDescription(new SessionDescription(
                         SessionDescription.Type.fromCanonicalForm(type), message.getString("sdp")))
                 ;
@@ -305,6 +312,7 @@ class P2PConnection {
             IceCandidate iceCandidate = new IceCandidate(
                     json.getString("id"), json.getInt("label"), json.getString("candidate"));
             Log.i(Constants.P2PTAG, "onRemoteCandidateReceived:" + json.getString("candidate"));
+            debug("OnMessage:IceCandidate");
             addRemoteIceCandidate(iceCandidate);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -328,6 +336,7 @@ class P2PConnection {
                 createMediaConstraintsInternal();
                 createPeerConnectionInternal();
                 Log.i(Constants.P2PTAG, "createPeerConnection Succeed");
+                debug("createPeerConnection");
             } catch (Exception e) {
                 Log.e(TAG, "Failed to create peer connection: " + e.getMessage());
                 throw e;
@@ -340,6 +349,7 @@ class P2PConnection {
             if (mPeerConnection != null) {
                 Log.d(Constants.P2PTAG, "PC Create OFFER");
                 isInitiator = true;
+                debug("createOffer:");
                 mPeerConnection.createOffer(sdpObserver, mSdpMediaConstraints);
             }
         });
@@ -360,8 +370,10 @@ class P2PConnection {
             if (mPeerConnection != null) {
                 if (queuedRemoteCandidates != null) {
                     queuedRemoteCandidates.add(candidate);
+                    debug("IceCandidate:queue add");
                     Log.i(Constants.P2PTAG, "addRemoteIceCandidate-enqueue");
                 } else {
+                    debug("IceCandidate:addIceCandidate");
                     mPeerConnection.addIceCandidate(candidate, new AddIceObserver() {
                         @Override
                         public void onAddSuccess() {
@@ -405,6 +417,7 @@ class P2PConnection {
         executor.execute(() -> {
             if (mPeerConnection != null) {
                 Log.d(Constants.P2PTAG, "Set local SDP from " + desc.type);
+                debug("createOffer:setLocalDescription");
                 mPeerConnection.setLocalDescription(sdpObserver, newDesc);
             }
         });
@@ -426,6 +439,8 @@ class P2PConnection {
             }
             Log.d(TAG, "Set remote SDP.");
             SessionDescription sdpRemote = new SessionDescription(desc.type, sdp);
+            if (desc.type == ANSWER)
+                debug("setRemoteDescription");
             mPeerConnection.setRemoteDescription(sdpObserver, sdpRemote);
         });
     }
@@ -784,6 +799,7 @@ class P2PConnection {
     private class PCObserver implements PeerConnection.Observer {
         @Override
         public void onIceCandidate(final IceCandidate iceCandidate) {
+            debug("onIceCandidate:");
             executor.execute(() -> {
                         Log.i(Constants.P2PTAG, "onIceCandidate: " + iceCandidate);
                         try {
@@ -793,6 +809,7 @@ class P2PConnection {
                             message.put("label", iceCandidate.sdpMLineIndex);
                             message.put("id", iceCandidate.sdpMid);
                             message.put("candidate", iceCandidate.sdp);
+                            debug("onIceCandidate:send");
                             mISignalClient.sendSignalMessage(mRoomConnectParameters.roomId, message);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -810,11 +827,13 @@ class P2PConnection {
         @Override
         public void onSignalingChange(PeerConnection.SignalingState newState) {
             Log.d(TAG, "SignalingState: " + newState);
+            debug("onIceCandidate:onSignalingChange-"+newState);
         }
 
         @Override
         public void onIceConnectionChange(final PeerConnection.IceConnectionState newState) {
             executor.execute(() -> {
+                debug("onIceCandidate:onIceConnectionChange-"+newState);
                 Log.d(Constants.P2PTAG, "IceConnectionState: " + newState);
                 if (newState == PeerConnection.IceConnectionState.CONNECTED) {
 //                    events.OnIceConnected();
@@ -830,6 +849,7 @@ class P2PConnection {
         public void onConnectionChange(final PeerConnection.PeerConnectionState newState) {
             executor.execute(() -> {
                 Log.d(Constants.P2PTAG, "PeerConnectionState: " + newState);
+                debug("onIceCandidate:onConnectionChange-"+newState);
                 if (newState == PeerConnection.PeerConnectionState.CONNECTED) {
 //                    events.OnPeerConnectionConnected();
                 } else if (newState == PeerConnection.PeerConnectionState.DISCONNECTED) {
@@ -1034,11 +1054,13 @@ class P2PConnection {
     private class SDPObserver implements SdpObserver {
         @Override
         public void onCreateSuccess(final SessionDescription desc) {
+            debug("createOffer:onCreateSuccess");
             setLocalDescription(desc);
         }
 
         @Override
         public void onSetSuccess() {
+            debug("onSetSuccess");
             executor.execute(() -> {
                 if (mPeerConnection == null) {
                     return;
@@ -1050,11 +1072,13 @@ class P2PConnection {
                     if (mPeerConnection.getRemoteDescription() == null) {
                         // We've just set our local SDP so time to send it.
                         Log.d(Constants.P2PTAG, "Local SDP set succesfully");
+                        debug("createOffer:send local sdp to remote");
                         OnLocalDescription(localDescription);
                     } else {
                         // We've just set remote description, so drain remote
                         // and send local ICE candidates.
                         Log.d(Constants.P2PTAG, "Remote SDP set succesfully");
+                        debug("mPeerConnection.getRemoteDescription() != null drainCandidates add");
                         drainCandidates();
                     }
                 } else {
@@ -1065,6 +1089,7 @@ class P2PConnection {
                         // remote and send local ICE candidates.
                         Log.d(Constants.P2PTAG, "Local SDP set succesfully");
                         OnLocalDescription(localDescription);
+                        debug("mPeerConnection.getLocalDescription() != null drainCandidates add");
                         drainCandidates();
                     } else {
                         // We've just set remote SDP - do nothing for now -
@@ -1090,7 +1115,7 @@ class P2PConnection {
         JSONObject message = new JSONObject();
         try {
             String type = "offer";
-            if (sdp.type == SessionDescription.Type.ANSWER)
+            if (sdp.type == ANSWER)
                 type = "answer";
             message.put("type", type);
             message.put("sdp", sdp.description);
@@ -1131,5 +1156,14 @@ class P2PConnection {
             mPeerConnectionFactory = null;
         }
 
+    }
+
+
+    private void debug(String tag, String p) {
+        Log.d(tag, "debug: " + p);
+    }
+
+    private void debug(String p) {
+        debug("p2p-debug", "debug: " + p);
     }
 }
