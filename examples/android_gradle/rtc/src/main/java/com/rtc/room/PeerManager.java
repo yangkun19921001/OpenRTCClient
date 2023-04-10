@@ -101,7 +101,7 @@ class PeerManager {
 
     private void createLocalVideoTrack() {
         // 创建 VideoSource
-        VideoSource videoSource = peerConnectionFactory.createVideoSource(false);
+        VideoSource videoSource = peerConnectionFactory.createVideoSource(localVideoCapturer.isScreencast());
         SurfaceTextureHelper surfaceTextureHelper = SurfaceTextureHelper.create("CaptureThread", rootEglBase.getEglBaseContext());
         localVideoCapturer.initialize(surfaceTextureHelper, applicationContext, videoSource.getCapturerObserver());
 

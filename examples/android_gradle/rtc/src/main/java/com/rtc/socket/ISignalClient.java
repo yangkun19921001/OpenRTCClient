@@ -15,8 +15,8 @@ import org.json.JSONObject;
 interface ISignalClient {
 
     enum SignalEvent {
-        JOINED("join"),
-        LEAVED("leave"),
+        JOINED("joined"),
+        LEAVED("leaved"),
         MESSAGE("message");
 
         private String eventName;
