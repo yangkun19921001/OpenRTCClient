@@ -93,7 +93,7 @@ public class RoomManager implements ISignalEventListener, IPeerEventListener {
     @Override
     public void onConnectError(String e) {
         if (roomEventListener != null) {
-            roomEventListener.OnConnectError(e);
+            roomEventListener.OnFailed(e);
         }
     }
 

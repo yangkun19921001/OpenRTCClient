@@ -59,6 +59,9 @@ public class RTCRoomActivity extends AppCompatActivity implements IRoomEventList
         mScreenWidth = displayMetrics.widthPixels;
         mScreenHeight = displayMetrics.heightPixels;
 
+//        mScreenWidth = displayMetrics.widthPixels;
+//        mScreenHeight = displayMetrics.heightPixels;
+
         String signalingServerUrl = getIntent().getStringExtra(MainActivity.CONFIG_ROOM_URL);
         String roomName = getIntent().getStringExtra(MainActivity.CONFIG_ROOM_ID);
         if (!TextUtils.isEmpty(signalingServerUrl) && !TextUtils.isEmpty(roomName)) {
@@ -112,8 +115,8 @@ public class RTCRoomActivity extends AppCompatActivity implements IRoomEventList
                         enableVideoCall, enableAudioCall
                         , false
                         , false
-                        , mScreenWidth
-                        , mScreenHeight
+                        , 1280
+                        , 720
                         , 30
                         , 0
                         , "H264 Baseline"
@@ -206,11 +209,6 @@ public class RTCRoomActivity extends AppCompatActivity implements IRoomEventList
             track.addSink(videoRenderer);
             videoRenderers.put(remoteId, videoRenderer);
         });
-    }
-
-    @Override
-    public void OnConnectError(String error) {
-
     }
 
     @Override

@@ -34,6 +34,4 @@ public interface IRoomEventListener {
     void removeRemoteStream(String remoteId);
 
     void addRemoteStream(VideoTrack track, String remoteId);
-
-    void OnConnectError(String error);
 }
