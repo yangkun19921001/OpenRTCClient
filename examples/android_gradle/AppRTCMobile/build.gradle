@@ -22,8 +22,18 @@ android {
     }
     buildTypes {
         release {
+            // 保留符号
+            minifyEnabled false
+            debuggable true
+            jniDebuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            debuggable true     // 必须设置为 true
+            jniDebuggable true  // 必须设置为 true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         }
     }
     compileOptions {
@@ -33,6 +43,12 @@ android {
     packagingOptions {
         exclude 'META-INF/MANIFEST.MF'
     }
+    packagingOptions {
+        // 如果不设置 doNotStrip，编译出来的安装包还是会丢失调试信息；
+        // 因为我们只编译了 arm64-v8a 架构的包，所以只需要配置这一行即可
+        doNotStrip "*/arm64-v8a/*.so"
+    }
+
 }
 
 dependencies {
