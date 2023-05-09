@@ -45,7 +45,7 @@ android {
 
 dependencies {
     implementation "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
-    implementation project(':rtc')
+    implementation project(':libwebrtc')
     implementation 'io.socket:socket.io-client:1.0.0'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     //implementation 'org.webrtc:google-webrtc:1.0.23995'

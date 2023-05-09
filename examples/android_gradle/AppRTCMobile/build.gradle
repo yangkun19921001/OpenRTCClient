@@ -53,10 +53,10 @@ android {
 
 dependencies {
     implementation "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
+    implementation project(':libwebrtc')
 
 
 //    implementation project(':webrtc')
-    implementation project(':rtc')
     implementation files('libs/autobanh.jar')
     //implementation 'org.webrtc:google-webrtc:1.0.23995'
 }

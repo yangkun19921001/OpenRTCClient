@@ -1,4 +1,6 @@
 include ':AppRTCMobile'
-include ':rtc'
+include ':libwebrtc'
 include ':p2p'
 include ':p2ps'
+include ':mediasoup-client'
+include ':mediasoup-demo'

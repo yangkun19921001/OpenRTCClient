@@ -84,6 +84,33 @@ python3 webrtc/build/android/fast_local_dev_server.py
 
 
 
+## 如何使用 android h264 编码
+
+1. 将 webrtc/src/main/java/org/webrtc/HardwareVideoEncoderFactory.java 的 getSupportedCodecs 中修改:
+
+   ```
+       for (VideoCodecMimeType type : new VideoCodecMimeType[] {
+       //注释掉
+   //            VideoCodecMimeType.VP8,VideoCodecMimeType.VP9, VideoCodecMimeType.H264, VideoCodecMimeType.AV1
+      //修改为
+               VideoCodecMimeType.H264,VideoCodecMimeType.VP8,VideoCodecMimeType.VP9,  VideoCodecMimeType.AV1
+       }) {
+       ...
+       }
+   ```
+
+   
+
+2. 将 createOffer 和 createAnwser 的 sdp 做如下修改:
+   ```
+   String newsdp = sessionDescription.description;
+   
+   if (peerConnectionParameters.videoCallEnabled) {
+   	//修改 sdp,preferCodec 参考AppRtcMobile 项目
+      newsdp = preferCodec(newsdp, "H264", false);
+   }
+   peerConnection.setLocalDescription(new SdpObserverImpl("setLocalDescription", remoteId, peerEventListener), new SessionDescription(sessionDescription.type, newsdp));
+   ```
 
    
 

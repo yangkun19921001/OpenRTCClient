@@ -68,10 +68,12 @@ VideoEncoderFactoryWrapper::VideoEncoderFactoryWrapper(
     JNIEnv* jni,
     const JavaRef<jobject>& encoder_factory)
     : encoder_factory_(jni, encoder_factory) {
+  //1. 调用 VideoEncoder.java 中的 getSupportedCodecs
   const ScopedJavaLocalRef<jobjectArray> j_supported_codecs =
       Java_VideoEncoderFactory_getSupportedCodecs(jni, encoder_factory);
   supported_formats_ = JavaToNativeVector<SdpVideoFormat>(
       jni, j_supported_codecs, &VideoCodecInfoToSdpVideoFormat);
+  //3. 获取所支持的编码器信息
   const ScopedJavaLocalRef<jobjectArray> j_implementations =
       Java_VideoEncoderFactory_getImplementations(jni, encoder_factory);
   implementations_ = JavaToNativeVector<SdpVideoFormat>(
