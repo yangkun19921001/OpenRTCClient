@@ -10,13 +10,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 
 set(webrtc_build_path
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../build/android/arm64/debug
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../../build/android/arm64/debug
 #        /Users/devyk/Data/webrtc/OpenRTCClient/build/android/arm64/debug
         )
 
 set(webrtc_root_path
 #        /Users/devyk/Data/webrtc/OpenRTCClient
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../
         )
 
 set(webrtc_source_path

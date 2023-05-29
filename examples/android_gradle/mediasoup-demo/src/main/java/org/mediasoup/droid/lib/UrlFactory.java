@@ -6,7 +6,7 @@ public class UrlFactory {
 
   private static final String HOSTNAME = "rtcmedia.top";
   //  private static final String HOSTNAME = "192.168.1.103";
-  private static final int PORT = 1001;
+  private static final int PORT = 1002;
 
   public static String getInvitationLink(String roomId, boolean forceH264, boolean forceVP9) {
     String url = String.format(Locale.US, "https://%s/?roomId=%s", HOSTNAME, roomId);
