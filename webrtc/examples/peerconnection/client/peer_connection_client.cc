@@ -102,6 +102,7 @@ void PeerConnectionClient::Connect(const std::string& server,
     resolver_->Start(server_address_);
   } else {
     DoConnect();
+
   }
 }
 
@@ -115,6 +116,7 @@ void PeerConnectionClient::OnResolveResult(
   } else {
     server_address_ = resolver_->address();
     DoConnect();
+
   }
 }
 
@@ -169,10 +171,11 @@ bool PeerConnectionClient::SignOut() {
   if (state_ == NOT_CONNECTED || state_ == SIGNING_OUT)
     return true;
 
-  if (hanging_get_->GetState() != rtc::Socket::CS_CLOSED)
+  //fix exit crash
+  if (hanging_get_ && hanging_get_->GetState() != rtc::Socket::CS_CLOSED)
     hanging_get_->Close();
 
-  if (control_socket_->GetState() == rtc::Socket::CS_CLOSED) {
+  if (control_socket_ && control_socket_->GetState() == rtc::Socket::CS_CLOSED) {
     state_ = SIGNING_OUT;
 
     if (my_id_ != -1) {

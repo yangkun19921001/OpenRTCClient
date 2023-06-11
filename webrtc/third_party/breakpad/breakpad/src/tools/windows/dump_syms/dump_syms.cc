@@ -37,6 +37,8 @@
 
 #include "common/windows/pdb_source_line_writer.h"
 #include "common/windows/pe_source_line_writer.h"
+//in
+#include <memory>
 
 using std::wstring;
 using google_breakpad::PDBSourceLineWriter;

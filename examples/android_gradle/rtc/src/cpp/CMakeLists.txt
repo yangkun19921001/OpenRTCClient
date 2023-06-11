@@ -53893,7 +53893,6 @@ set_target_properties(smoke_test
 set(test_cases_sources
          ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
         ${webrtc_root_path}/examples/smoke_test/src/camera_capture_test.cpp
-        /Users/devyk/Data/webrtc/OpenRTCClient/examples/smoke_test/src/camera_capture_test.cpp
         ${webrtc_root_path}/examples/smoke_test/src/crash_catch_test.cpp
         ${webrtc_root_path}/examples/smoke_test/src/peer_connection_test.cpp
         ${webrtc_root_path}/examples/smoke_test/src/video_codec_test.cpp

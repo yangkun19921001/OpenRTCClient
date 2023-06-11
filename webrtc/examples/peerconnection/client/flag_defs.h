@@ -26,7 +26,7 @@ ABSL_FLAG(bool,
           false,
           "Connect to the server without user "
           "intervention.");
-ABSL_FLAG(std::string, server, "localhost", "The server to connect to.");
+ABSL_FLAG(std::string, server, "127.0.0.1", "The server to connect to.");
 ABSL_FLAG(int,
           port,
           kDefaultServerPort,

@@ -36,7 +36,7 @@ ABSL_FLAG(
     "--force_fieldtrials=WebRTC-FooFeature/Enabled/ "
     "will assign the group Enabled to field trial WebRTC-FooFeature. Multiple "
     "trials are separated by \"/\"");
-ABSL_FLAG(int, port, 8888, "default: 8888");
+ABSL_FLAG(int, port, 9999, "default: 9999");
 
 static const size_t kMaxConnections = (FD_SETSIZE - 2);
 

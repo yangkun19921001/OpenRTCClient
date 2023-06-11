@@ -33,7 +33,7 @@ if (!build_with_chromium) {
     if (rtc_build_examples) {
       deps += [ "examples" ]
     }
-    deps += [ "//../examples:examples" ]
+  # deps += [ "//../examples:examples" ]
     deps += [ "//third_party/breakpad:crash_catch_system", ]
     if (rtc_build_tools) {
       deps += [ "rtc_tools" ]

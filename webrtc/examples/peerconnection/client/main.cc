@@ -69,13 +69,25 @@ WindowsCommandLineArguments::WindowsCommandLineArguments() {
   LocalFree(wide_argv);
 }
 
+class CustomSocketServer : public rtc::PhysicalSocketServer {
+ public:
+  bool Wait(int cms, bool process_io) override {
+    if (!process_io)
+      return true;
+
+    return rtc::PhysicalSocketServer::Wait(1,
+                                           process_io);
+  }
+};
+
 }  // namespace
 int PASCAL wWinMain(HINSTANCE instance,
                     HINSTANCE prev_instance,
                     wchar_t* cmd_line,
                     int cmd_show) {
   rtc::WinsockInitializer winsock_init;
-  rtc::PhysicalSocketServer ss;
+ // rtc::PhysicalSocketServer ss;
+  CustomSocketServer ss;
   rtc::AutoSocketServerThread main_thread(&ss);
 
   WindowsCommandLineArguments win_args;
@@ -97,7 +109,8 @@ int PASCAL wWinMain(HINSTANCE instance,
     return -1;
   }
 
-  const std::string server = absl::GetFlag(FLAGS_server);
+   std::string server = absl::GetFlag(FLAGS_server);
+
   MainWnd wnd(server.c_str(), absl::GetFlag(FLAGS_port),
               absl::GetFlag(FLAGS_autoconnect), absl::GetFlag(FLAGS_autocall));
   if (!wnd.Create()) {
@@ -109,8 +122,8 @@ int PASCAL wWinMain(HINSTANCE instance,
   PeerConnectionClient client;
   rtc::scoped_refptr<Conductor> conductor(
       new rtc::RefCountedObject<Conductor>(&client, &wnd));
-
   // Main loop.
+  main_thread.Start();
   MSG msg;
   BOOL gm;
   while ((gm = ::GetMessage(&msg, NULL, 0, 0)) != 0 && gm != -1) {
