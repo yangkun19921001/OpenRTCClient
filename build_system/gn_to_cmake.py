@@ -252,10 +252,10 @@ def WriteProject(project):
   out.write(')\n\n')
 
   # show project path in android studio
-  out.write('target_include_directories(all_projects PRIVATE\n')
-  out.write('  {}\n'.format(posixpath.join(script_path, "../gaming_sdk")))
-  out.write('  {}\n'.format(posixpath.join(script_path, "../android_sdk")))
-  out.write(')\n\n')
+  # out.write('target_include_directories(all_projects PRIVATE\n')
+  # out.write('  {}\n'.format(posixpath.join(script_path, "../gaming_sdk")))
+  # out.write('  {}\n'.format(posixpath.join(script_path, "../android_sdk")))
+  # out.write(')\n\n')
 
 def main():
   if len(sys.argv) != 2:

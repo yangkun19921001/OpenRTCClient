@@ -10,7 +10,7 @@ android {
         versionCode rootProject.ext.releaseVersionCode
         versionName rootProject.ext.releaseVersionName
         applicationId "com.sample.p2p"
-        multiDexEnabled true
+        multiDexEnabled false
     }
     buildTypes {
         release {
@@ -37,7 +37,7 @@ android {
 
 dependencies {
     implementation "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
-    implementation project(':rtc')
+    implementation project(':libwebrtc')
     implementation files('libs/autobanh.jar')
     implementation 'io.socket:socket.io-client:1.0.0'
     //implementation 'org.webrtc:google-webrtc:1.0.23995'

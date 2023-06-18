@@ -1756,7 +1756,7 @@ void VideoStreamEncoder::EncodeVideoFrame(const VideoFrame& video_frame,
                out_frame.timestamp());
 
   frame_encode_metadata_writer_.OnEncodeStarted(out_frame);
-
+  //
   const int32_t encode_status = encoder_->Encode(out_frame, &next_frame_types_);
   was_encode_called_since_last_initialization_ = true;
 

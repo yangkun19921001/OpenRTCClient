@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(webrtc_build_path
         ${CMAKE_CURRENT_SOURCE_DIR}/../../build/android/arm64/debug
+#        /Users/devyk/Data/webrtc/OpenRTCClient/build/android/arm64/debug
         )
 
 set(webrtc_root_path
@@ -23,12 +24,13 @@ set(webrtc_source_path
         )
 
 
-#set(webrtc_gen_path
-#   ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
-#)
+set(EMPTY_PATH
+        ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+)
 
+message(CMAKE_CURRENT_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR})
 add_library(webrtc STATIC
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
 )
 
 target_compile_definitions(webrtc PRIVATE
@@ -71,7 +73,7 @@ add_custom_command(TARGET webrtc PRE_BUILD
 
 
 set(webrtc_crash_caught_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(webrtc_crash_caught STATIC
@@ -120,7 +122,7 @@ add_custom_command(TARGET webrtc_crash_caught PRE_BUILD
 
 
 set(webrtc_lib_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(webrtc_lib STATIC
@@ -172,7 +174,7 @@ add_custom_command(TARGET webrtc_lib PRE_BUILD
 
 
 set(resource_adaptation_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/adaptation/resource.cc
         ${webrtc_source_path}api/adaptation/resource.h
         )
@@ -220,7 +222,7 @@ add_custom_command(TARGET resource_adaptation_api PRE_BUILD
 
 
 set(aec3_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio/echo_canceller3_config.cc
         ${webrtc_source_path}api/audio/echo_canceller3_config.h
         )
@@ -268,7 +270,7 @@ add_custom_command(TARGET aec3_config PRE_BUILD
 
 
 set(aec3_config_json_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio/echo_canceller3_config_json.cc
         ${webrtc_source_path}api/audio/echo_canceller3_config_json.h
         )
@@ -317,7 +319,7 @@ add_custom_command(TARGET aec3_config_json PRE_BUILD
 
 
 set(aec3_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio/echo_canceller3_factory.cc
         ${webrtc_source_path}api/audio/echo_canceller3_factory.h
         )
@@ -366,7 +368,7 @@ add_custom_command(TARGET aec3_factory PRE_BUILD
 
 
 set(audio_frame_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio/audio_frame.cc
         ${webrtc_source_path}api/audio/audio_frame.h
         ${webrtc_source_path}api/audio/channel_layout.cc
@@ -416,7 +418,7 @@ add_custom_command(TARGET audio_frame_api PRE_BUILD
 
 
 set(audio_frame_processor_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio/audio_frame_processor.h
         )
 
@@ -463,7 +465,7 @@ add_custom_command(TARGET audio_frame_processor PRE_BUILD
 
 
 set(audio_mixer_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio/audio_mixer.h
         )
 
@@ -510,7 +512,7 @@ add_custom_command(TARGET audio_mixer_api PRE_BUILD
 
 
 set(echo_control_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio/echo_control.h
         )
 
@@ -557,7 +559,7 @@ add_custom_command(TARGET echo_control PRE_BUILD
 
 
 set(echo_detector_creator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio/echo_detector_creator.cc
         ${webrtc_source_path}api/audio/echo_detector_creator.h
         )
@@ -605,7 +607,7 @@ add_custom_command(TARGET echo_detector_creator PRE_BUILD
 
 
 set(audio_decoder_L16_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/L16/audio_decoder_L16.cc
         ${webrtc_source_path}api/audio_codecs/L16/audio_decoder_L16.h
         )
@@ -653,7 +655,7 @@ add_custom_command(TARGET audio_decoder_L16 PRE_BUILD
 
 
 set(audio_encoder_L16_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/L16/audio_encoder_L16.cc
         ${webrtc_source_path}api/audio_codecs/L16/audio_encoder_L16.h
         )
@@ -701,7 +703,7 @@ add_custom_command(TARGET audio_encoder_L16 PRE_BUILD
 
 
 set(audio_decoder_g711_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/g711/audio_decoder_g711.cc
         ${webrtc_source_path}api/audio_codecs/g711/audio_decoder_g711.h
         )
@@ -749,7 +751,7 @@ add_custom_command(TARGET audio_decoder_g711 PRE_BUILD
 
 
 set(audio_encoder_g711_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/g711/audio_encoder_g711.cc
         ${webrtc_source_path}api/audio_codecs/g711/audio_encoder_g711.h
         )
@@ -797,7 +799,7 @@ add_custom_command(TARGET audio_encoder_g711 PRE_BUILD
 
 
 set(audio_decoder_g722_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/g722/audio_decoder_g722.cc
         ${webrtc_source_path}api/audio_codecs/g722/audio_decoder_g722.h
         )
@@ -845,7 +847,7 @@ add_custom_command(TARGET audio_decoder_g722 PRE_BUILD
 
 
 set(audio_encoder_g722_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/g722/audio_encoder_g722.cc
         ${webrtc_source_path}api/audio_codecs/g722/audio_encoder_g722.h
         )
@@ -893,7 +895,7 @@ add_custom_command(TARGET audio_encoder_g722 PRE_BUILD
 
 
 set(audio_encoder_g722_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/g722/audio_encoder_g722_config.h
         )
 
@@ -940,7 +942,7 @@ add_custom_command(TARGET audio_encoder_g722_config PRE_BUILD
 
 
 set(audio_decoder_ilbc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/ilbc/audio_decoder_ilbc.cc
         ${webrtc_source_path}api/audio_codecs/ilbc/audio_decoder_ilbc.h
         )
@@ -988,7 +990,7 @@ add_custom_command(TARGET audio_decoder_ilbc PRE_BUILD
 
 
 set(audio_encoder_ilbc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/ilbc/audio_encoder_ilbc.cc
         ${webrtc_source_path}api/audio_codecs/ilbc/audio_encoder_ilbc.h
         )
@@ -1036,7 +1038,7 @@ add_custom_command(TARGET audio_encoder_ilbc PRE_BUILD
 
 
 set(audio_encoder_ilbc_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/ilbc/audio_encoder_ilbc_config.h
         )
 
@@ -1083,7 +1085,7 @@ add_custom_command(TARGET audio_encoder_ilbc_config PRE_BUILD
 
 
 set(audio_decoder_isac_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(audio_decoder_isac STATIC
@@ -1131,7 +1133,7 @@ add_custom_command(TARGET audio_decoder_isac PRE_BUILD
 
 
 set(audio_decoder_isac_fix_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/isac/audio_decoder_isac_fix.cc
         ${webrtc_source_path}api/audio_codecs/isac/audio_decoder_isac_fix.h
         )
@@ -1179,7 +1181,7 @@ add_custom_command(TARGET audio_decoder_isac_fix PRE_BUILD
 
 
 set(audio_decoder_isac_float_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/isac/audio_decoder_isac_float.cc
         ${webrtc_source_path}api/audio_codecs/isac/audio_decoder_isac_float.h
         )
@@ -1227,7 +1229,7 @@ add_custom_command(TARGET audio_decoder_isac_float PRE_BUILD
 
 
 set(audio_encoder_isac_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(audio_encoder_isac STATIC
@@ -1275,7 +1277,7 @@ add_custom_command(TARGET audio_encoder_isac PRE_BUILD
 
 
 set(audio_encoder_isac_fix_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/isac/audio_encoder_isac_fix.cc
         ${webrtc_source_path}api/audio_codecs/isac/audio_encoder_isac_fix.h
         )
@@ -1323,7 +1325,7 @@ add_custom_command(TARGET audio_encoder_isac_fix PRE_BUILD
 
 
 set(audio_encoder_isac_float_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/isac/audio_encoder_isac_float.cc
         ${webrtc_source_path}api/audio_codecs/isac/audio_encoder_isac_float.h
         )
@@ -1371,7 +1373,7 @@ add_custom_command(TARGET audio_encoder_isac_float PRE_BUILD
 
 
 set(audio_decoder_multiopus_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/opus/audio_decoder_multi_channel_opus.cc
         ${webrtc_source_path}api/audio_codecs/opus/audio_decoder_multi_channel_opus.h
         )
@@ -1421,7 +1423,7 @@ add_custom_command(TARGET audio_decoder_multiopus PRE_BUILD
 
 
 set(audio_decoder_opus_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/opus/audio_decoder_opus.cc
         ${webrtc_source_path}api/audio_codecs/opus/audio_decoder_opus.h
         )
@@ -1471,7 +1473,7 @@ add_custom_command(TARGET audio_decoder_opus PRE_BUILD
 
 
 set(audio_decoder_opus_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/opus/audio_decoder_multi_channel_opus_config.h
         )
 
@@ -1518,7 +1520,7 @@ add_custom_command(TARGET audio_decoder_opus_config PRE_BUILD
 
 
 set(audio_encoder_multiopus_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/opus/audio_encoder_multi_channel_opus.cc
         )
 
@@ -1567,7 +1569,7 @@ add_custom_command(TARGET audio_encoder_multiopus PRE_BUILD
 
 
 set(audio_encoder_opus_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/opus/audio_encoder_opus.cc
         )
 
@@ -1616,7 +1618,7 @@ add_custom_command(TARGET audio_encoder_opus PRE_BUILD
 
 
 set(audio_encoder_opus_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/opus/audio_encoder_multi_channel_opus_config.cc
         ${webrtc_source_path}api/audio_codecs/opus/audio_encoder_multi_channel_opus_config.h
         ${webrtc_source_path}api/audio_codecs/opus/audio_encoder_opus_config.cc
@@ -1667,7 +1669,7 @@ add_custom_command(TARGET audio_encoder_opus_config PRE_BUILD
 
 
 set(audio_codecs_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/audio_codec_pair_id.cc
         ${webrtc_source_path}api/audio_codecs/audio_codec_pair_id.h
         ${webrtc_source_path}api/audio_codecs/audio_decoder.cc
@@ -1725,7 +1727,7 @@ add_custom_command(TARGET audio_codecs_api PRE_BUILD
 
 
 set(builtin_audio_decoder_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/builtin_audio_decoder_factory.cc
         ${webrtc_source_path}api/audio_codecs/builtin_audio_decoder_factory.h
         )
@@ -1777,7 +1779,7 @@ add_custom_command(TARGET builtin_audio_decoder_factory PRE_BUILD
 
 
 set(builtin_audio_encoder_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/builtin_audio_encoder_factory.cc
         ${webrtc_source_path}api/audio_codecs/builtin_audio_encoder_factory.h
         )
@@ -1829,7 +1831,7 @@ add_custom_command(TARGET builtin_audio_encoder_factory PRE_BUILD
 
 
 set(opus_audio_decoder_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/opus_audio_decoder_factory.cc
         ${webrtc_source_path}api/audio_codecs/opus_audio_decoder_factory.h
         )
@@ -1877,7 +1879,7 @@ add_custom_command(TARGET opus_audio_decoder_factory PRE_BUILD
 
 
 set(opus_audio_encoder_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_codecs/opus_audio_encoder_factory.cc
         ${webrtc_source_path}api/audio_codecs/opus_audio_encoder_factory.h
         )
@@ -1925,7 +1927,7 @@ add_custom_command(TARGET opus_audio_encoder_factory PRE_BUILD
 
 
 set(frame_decryptor_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/crypto/frame_decryptor_interface.h
         )
 
@@ -1972,7 +1974,7 @@ add_custom_command(TARGET frame_decryptor_interface PRE_BUILD
 
 
 set(frame_encryptor_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/crypto/frame_encryptor_interface.h
         )
 
@@ -2019,7 +2021,7 @@ add_custom_command(TARGET frame_encryptor_interface PRE_BUILD
 
 
 set(options_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/crypto/crypto_options.cc
         ${webrtc_source_path}api/crypto/crypto_options.h
         )
@@ -2067,7 +2069,7 @@ add_custom_command(TARGET options PRE_BUILD
 
 
 set(custom_neteq_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/neteq/custom_neteq_factory.cc
         ${webrtc_source_path}api/neteq/custom_neteq_factory.h
         )
@@ -2115,7 +2117,7 @@ add_custom_command(TARGET custom_neteq_factory PRE_BUILD
 
 
 set(default_neteq_controller_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/neteq/default_neteq_controller_factory.cc
         ${webrtc_source_path}api/neteq/default_neteq_controller_factory.h
         )
@@ -2163,7 +2165,7 @@ add_custom_command(TARGET default_neteq_controller_factory PRE_BUILD
 
 
 set(neteq_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/neteq/neteq.cc
         ${webrtc_source_path}api/neteq/neteq.h
         ${webrtc_source_path}api/neteq/neteq_factory.h
@@ -2212,7 +2214,7 @@ add_custom_command(TARGET neteq_api PRE_BUILD
 
 
 set(neteq_controller_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/neteq/neteq_controller.h
         ${webrtc_source_path}api/neteq/neteq_controller_factory.h
         )
@@ -2260,7 +2262,7 @@ add_custom_command(TARGET neteq_controller_api PRE_BUILD
 
 
 set(tick_timer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/neteq/tick_timer.cc
         ${webrtc_source_path}api/neteq/tick_timer.h
         )
@@ -2308,7 +2310,7 @@ add_custom_command(TARGET tick_timer PRE_BUILD
 
 
 set(tick_timer_unittest_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/neteq/tick_timer_unittest.cc
         )
 
@@ -2366,7 +2368,7 @@ add_custom_command(TARGET tick_timer_unittest PRE_BUILD
 
 
 set(numerics_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/numerics/samples_stats_counter.cc
         ${webrtc_source_path}api/numerics/samples_stats_counter.h
         )
@@ -2414,7 +2416,7 @@ add_custom_command(TARGET numerics PRE_BUILD
 
 
 set(rtc_event_log_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/rtc_event_log/rtc_event.cc
         ${webrtc_source_path}api/rtc_event_log/rtc_event.h
         ${webrtc_source_path}api/rtc_event_log/rtc_event_log.cc
@@ -2465,7 +2467,7 @@ add_custom_command(TARGET rtc_event_log PRE_BUILD
 
 
 set(rtc_event_log_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/rtc_event_log/rtc_event_log_factory.cc
         ${webrtc_source_path}api/rtc_event_log/rtc_event_log_factory.h
         )
@@ -2515,7 +2517,7 @@ add_custom_command(TARGET rtc_event_log_factory PRE_BUILD
 
 
 set(default_task_queue_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/task_queue/default_task_queue_factory.h
         ${webrtc_source_path}api/task_queue/default_task_queue_factory_libevent.cc
         )
@@ -2563,7 +2565,7 @@ add_custom_command(TARGET default_task_queue_factory PRE_BUILD
 
 
 set(task_queue_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/task_queue/task_queue_base.cc
         )
 
@@ -2610,7 +2612,7 @@ add_custom_command(TARGET task_queue PRE_BUILD
 
 
 set(task_queue_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/task_queue/task_queue_test.cc
         ${webrtc_source_path}api/task_queue/task_queue_test.h
         )
@@ -2668,7 +2670,7 @@ add_custom_command(TARGET task_queue_test PRE_BUILD
 
 
 set(create_cross_traffic_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/network_emulation/create_cross_traffic.cc
         ${webrtc_source_path}api/test/network_emulation/create_cross_traffic.h
         )
@@ -2718,7 +2720,7 @@ add_custom_command(TARGET create_cross_traffic PRE_BUILD
 
 
 set(network_emulation_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/network_emulation/cross_traffic.h
         ${webrtc_source_path}api/test/network_emulation/network_emulation_interfaces.cc
         ${webrtc_source_path}api/test/network_emulation/network_emulation_interfaces.h
@@ -2767,7 +2769,7 @@ add_custom_command(TARGET network_emulation PRE_BUILD
 
 
 set(function_video_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(function_video_factory STATIC
@@ -2815,7 +2817,7 @@ add_custom_command(TARGET function_video_factory PRE_BUILD
 
 
 set(dependency_descriptor_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/rtp/dependency_descriptor.cc
         ${webrtc_source_path}api/transport/rtp/dependency_descriptor.h
         )
@@ -2863,7 +2865,7 @@ add_custom_command(TARGET dependency_descriptor PRE_BUILD
 
 
 set(rtp_source_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/rtp/rtp_source.h
         )
 
@@ -2910,7 +2912,7 @@ add_custom_command(TARGET rtp_source PRE_BUILD
 
 
 set(bitrate_settings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/bitrate_settings.cc
         ${webrtc_source_path}api/transport/bitrate_settings.h
         )
@@ -2958,7 +2960,7 @@ add_custom_command(TARGET bitrate_settings PRE_BUILD
 
 
 set(datagram_transport_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/data_channel_transport_interface.h
         )
 
@@ -3005,7 +3007,7 @@ add_custom_command(TARGET datagram_transport_interface PRE_BUILD
 
 
 set(enums_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/enums.h
         )
 
@@ -3052,7 +3054,7 @@ add_custom_command(TARGET enums PRE_BUILD
 
 
 set(field_trial_based_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/field_trial_based_config.cc
         ${webrtc_source_path}api/transport/field_trial_based_config.h
         )
@@ -3100,7 +3102,7 @@ add_custom_command(TARGET field_trial_based_config PRE_BUILD
 
 
 set(goog_cc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/goog_cc_factory.cc
         ${webrtc_source_path}api/transport/goog_cc_factory.h
         )
@@ -3149,7 +3151,7 @@ add_custom_command(TARGET goog_cc PRE_BUILD
 
 
 set(network_control_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/network_control.h
         ${webrtc_source_path}api/transport/network_types.cc
         ${webrtc_source_path}api/transport/network_types.h
@@ -3198,7 +3200,7 @@ add_custom_command(TARGET network_control PRE_BUILD
 
 
 set(sctp_transport_factory_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/sctp_transport_factory_interface.h
         )
 
@@ -3245,7 +3247,7 @@ add_custom_command(TARGET sctp_transport_factory_interface PRE_BUILD
 
 
 set(stun_types_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/stun.cc
         ${webrtc_source_path}api/transport/stun.h
         )
@@ -3293,7 +3295,7 @@ add_custom_command(TARGET stun_types PRE_BUILD
 
 
 set(webrtc_key_value_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/transport/webrtc_key_value_config.h
         )
 
@@ -3340,7 +3342,7 @@ add_custom_command(TARGET webrtc_key_value_config PRE_BUILD
 
 
 set(data_rate_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/units/data_rate.cc
         ${webrtc_source_path}api/units/data_rate.h
         )
@@ -3388,7 +3390,7 @@ add_custom_command(TARGET data_rate PRE_BUILD
 
 
 set(data_size_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/units/data_size.cc
         ${webrtc_source_path}api/units/data_size.h
         )
@@ -3436,7 +3438,7 @@ add_custom_command(TARGET data_size PRE_BUILD
 
 
 set(frequency_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/units/frequency.cc
         ${webrtc_source_path}api/units/frequency.h
         )
@@ -3484,7 +3486,7 @@ add_custom_command(TARGET frequency PRE_BUILD
 
 
 set(time_delta_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/units/time_delta.cc
         ${webrtc_source_path}api/units/time_delta.h
         )
@@ -3532,7 +3534,7 @@ add_custom_command(TARGET time_delta PRE_BUILD
 
 
 set(timestamp_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/units/timestamp.cc
         ${webrtc_source_path}api/units/timestamp.h
         )
@@ -3580,7 +3582,7 @@ add_custom_command(TARGET timestamp PRE_BUILD
 
 
 set(builtin_video_bitrate_allocator_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/builtin_video_bitrate_allocator_factory.cc
         ${webrtc_source_path}api/video/builtin_video_bitrate_allocator_factory.h
         )
@@ -3629,7 +3631,7 @@ add_custom_command(TARGET builtin_video_bitrate_allocator_factory PRE_BUILD
 
 
 set(encoded_frame_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/encoded_frame.cc
         ${webrtc_source_path}api/video/encoded_frame.h
         )
@@ -3678,7 +3680,7 @@ add_custom_command(TARGET encoded_frame PRE_BUILD
 
 
 set(encoded_image_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/encoded_image.cc
         ${webrtc_source_path}api/video/encoded_image.h
         )
@@ -3727,7 +3729,7 @@ add_custom_command(TARGET encoded_image PRE_BUILD
 
 
 set(recordable_encoded_frame_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/recordable_encoded_frame.h
         )
 
@@ -3775,7 +3777,7 @@ add_custom_command(TARGET recordable_encoded_frame PRE_BUILD
 
 
 set(render_resolution_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(render_resolution STATIC
@@ -3821,7 +3823,7 @@ add_custom_command(TARGET render_resolution PRE_BUILD
 
 
 set(rtp_video_frame_assembler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/rtp_video_frame_assembler.cc
         ${webrtc_source_path}api/video/rtp_video_frame_assembler.h
         )
@@ -3870,7 +3872,7 @@ add_custom_command(TARGET rtp_video_frame_assembler PRE_BUILD
 
 
 set(rtp_video_frame_assembler_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/rtp_video_frame_assembler_unittests.cc
         )
 
@@ -3928,7 +3930,7 @@ add_custom_command(TARGET rtp_video_frame_assembler_unittests PRE_BUILD
 
 
 set(video_adaptation_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_adaptation_counters.cc
         ${webrtc_source_path}api/video/video_adaptation_counters.h
         ${webrtc_source_path}api/video/video_adaptation_reason.h
@@ -3977,7 +3979,7 @@ add_custom_command(TARGET video_adaptation PRE_BUILD
 
 
 set(video_bitrate_allocation_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_bitrate_allocation.cc
         ${webrtc_source_path}api/video/video_bitrate_allocation.h
         )
@@ -4025,7 +4027,7 @@ add_custom_command(TARGET video_bitrate_allocation PRE_BUILD
 
 
 set(video_bitrate_allocator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_bitrate_allocator.cc
         ${webrtc_source_path}api/video/video_bitrate_allocator.h
         )
@@ -4073,7 +4075,7 @@ add_custom_command(TARGET video_bitrate_allocator PRE_BUILD
 
 
 set(video_bitrate_allocator_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_bitrate_allocator_factory.h
         )
 
@@ -4121,7 +4123,7 @@ add_custom_command(TARGET video_bitrate_allocator_factory PRE_BUILD
 
 
 set(video_codec_constants_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_codec_constants.h
         )
 
@@ -4168,7 +4170,7 @@ add_custom_command(TARGET video_codec_constants PRE_BUILD
 
 
 set(video_frame_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/i420_buffer.cc
         ${webrtc_source_path}api/video/i420_buffer.h
         ${webrtc_source_path}api/video/nv12_buffer.cc
@@ -4227,7 +4229,7 @@ add_custom_command(TARGET video_frame PRE_BUILD
 
 
 set(video_frame_i010_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/i010_buffer.cc
         ${webrtc_source_path}api/video/i010_buffer.h
         )
@@ -4276,7 +4278,7 @@ add_custom_command(TARGET video_frame_i010 PRE_BUILD
 
 
 set(video_frame_metadata_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_frame_metadata.cc
         ${webrtc_source_path}api/video/video_frame_metadata.h
         )
@@ -4325,7 +4327,7 @@ add_custom_command(TARGET video_frame_metadata PRE_BUILD
 
 
 set(video_frame_type_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_frame_type.h
         )
 
@@ -4372,7 +4374,7 @@ add_custom_command(TARGET video_frame_type PRE_BUILD
 
 
 set(video_layers_allocation_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_layers_allocation.h
         )
 
@@ -4419,7 +4421,7 @@ add_custom_command(TARGET video_layers_allocation PRE_BUILD
 
 
 set(video_rtp_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/color_space.cc
         ${webrtc_source_path}api/video/color_space.h
         ${webrtc_source_path}api/video/hdr_metadata.cc
@@ -4474,7 +4476,7 @@ add_custom_command(TARGET video_rtp_headers PRE_BUILD
 
 
 set(video_stream_decoder_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_stream_decoder.h
         )
 
@@ -4522,7 +4524,7 @@ add_custom_command(TARGET video_stream_decoder PRE_BUILD
 
 
 set(video_stream_decoder_create_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_stream_decoder_create.cc
         ${webrtc_source_path}api/video/video_stream_decoder_create.h
         )
@@ -4571,7 +4573,7 @@ add_custom_command(TARGET video_stream_decoder_create PRE_BUILD
 
 
 set(video_stream_encoder_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video/video_stream_encoder_interface.h
         ${webrtc_source_path}api/video/video_stream_encoder_observer.h
         ${webrtc_source_path}api/video/video_stream_encoder_settings.h
@@ -4621,7 +4623,7 @@ add_custom_command(TARGET video_stream_encoder PRE_BUILD
 
 
 set(bitstream_parser_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video_codecs/bitstream_parser.h
         )
 
@@ -4668,7 +4670,7 @@ add_custom_command(TARGET bitstream_parser_api PRE_BUILD
 
 
 set(builtin_video_decoder_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video_codecs/builtin_video_decoder_factory.cc
         ${webrtc_source_path}api/video_codecs/builtin_video_decoder_factory.h
         )
@@ -4717,7 +4719,7 @@ add_custom_command(TARGET builtin_video_decoder_factory PRE_BUILD
 
 
 set(builtin_video_encoder_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video_codecs/builtin_video_encoder_factory.cc
         ${webrtc_source_path}api/video_codecs/builtin_video_encoder_factory.h
         )
@@ -4766,7 +4768,7 @@ add_custom_command(TARGET builtin_video_encoder_factory PRE_BUILD
 
 
 set(rtc_software_fallback_wrappers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video_codecs/video_decoder_software_fallback_wrapper.cc
         ${webrtc_source_path}api/video_codecs/video_decoder_software_fallback_wrapper.h
         ${webrtc_source_path}api/video_codecs/video_encoder_software_fallback_wrapper.cc
@@ -4817,7 +4819,7 @@ add_custom_command(TARGET rtc_software_fallback_wrappers PRE_BUILD
 
 
 set(video_codecs_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video_codecs/h264_profile_level_id.cc
         ${webrtc_source_path}api/video_codecs/h264_profile_level_id.h
         ${webrtc_source_path}api/video_codecs/sdp_video_format.cc
@@ -4887,7 +4889,7 @@ add_custom_command(TARGET video_codecs_api PRE_BUILD
 
 
 set(vp8_temporal_layers_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video_codecs/vp8_temporal_layers_factory.cc
         ${webrtc_source_path}api/video_codecs/vp8_temporal_layers_factory.h
         )
@@ -4936,7 +4938,7 @@ add_custom_command(TARGET vp8_temporal_layers_factory PRE_BUILD
 
 
 set(voip_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/voip/voip_base.h
         ${webrtc_source_path}api/voip/voip_codec.h
         ${webrtc_source_path}api/voip/voip_dtmf.h
@@ -4989,7 +4991,7 @@ add_custom_command(TARGET voip_api PRE_BUILD
 
 
 set(voip_engine_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/voip/voip_engine_factory.cc
         ${webrtc_source_path}api/voip/voip_engine_factory.h
         )
@@ -5038,7 +5040,7 @@ add_custom_command(TARGET voip_engine_factory PRE_BUILD
 
 
 set(array_view_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/array_view.h
         )
 
@@ -5085,7 +5087,7 @@ add_custom_command(TARGET array_view PRE_BUILD
 
 
 set(async_dns_resolver_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/async_dns_resolver.h
         )
 
@@ -5132,7 +5134,7 @@ add_custom_command(TARGET async_dns_resolver PRE_BUILD
 
 
 set(audio_options_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/audio_options.cc
         ${webrtc_source_path}api/audio_options.h
         )
@@ -5180,7 +5182,7 @@ add_custom_command(TARGET audio_options_api PRE_BUILD
 
 
 set(audio_quality_analyzer_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/audio_quality_analyzer_interface.h
         )
 
@@ -5228,7 +5230,7 @@ add_custom_command(TARGET audio_quality_analyzer_api PRE_BUILD
 
 
 set(bitrate_allocation_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/call/bitrate_allocation.h
         )
 
@@ -5275,7 +5277,7 @@ add_custom_command(TARGET bitrate_allocation PRE_BUILD
 
 
 set(call_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/call/audio_sink.h
         )
 
@@ -5322,7 +5324,7 @@ add_custom_command(TARGET call_api PRE_BUILD
 
 
 set(callfactory_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/call/call_factory_interface.h
         )
 
@@ -5370,7 +5372,7 @@ add_custom_command(TARGET callfactory_api PRE_BUILD
 
 
 set(create_frame_generator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/create_frame_generator.cc
         ${webrtc_source_path}api/test/create_frame_generator.h
         )
@@ -5420,7 +5422,7 @@ add_custom_command(TARGET create_frame_generator PRE_BUILD
 
 
 set(create_peer_connection_quality_test_frame_generator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/create_peer_connection_quality_test_frame_generator.cc
         ${webrtc_source_path}api/test/create_peer_connection_quality_test_frame_generator.h
         )
@@ -5470,7 +5472,7 @@ add_custom_command(TARGET create_peer_connection_quality_test_frame_generator PR
 
 
 set(create_peerconnection_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/create_peerconnection_factory.cc
         ${webrtc_source_path}api/create_peerconnection_factory.h
         )
@@ -5520,7 +5522,7 @@ add_custom_command(TARGET create_peerconnection_factory PRE_BUILD
 
 
 set(fec_controller_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/fec_controller.h
         ${webrtc_source_path}api/fec_controller_override.h
         )
@@ -5568,7 +5570,7 @@ add_custom_command(TARGET fec_controller_api PRE_BUILD
 
 
 set(frame_generator_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/frame_generator_interface.cc
         ${webrtc_source_path}api/test/frame_generator_interface.h
         )
@@ -5618,7 +5620,7 @@ add_custom_command(TARGET frame_generator_api PRE_BUILD
 
 
 set(frame_transformer_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/frame_transformer_interface.h
         )
 
@@ -5666,7 +5668,7 @@ add_custom_command(TARGET frame_transformer_interface PRE_BUILD
 
 
 set(function_view_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/function_view.h
         )
 
@@ -5713,7 +5715,7 @@ add_custom_command(TARGET function_view PRE_BUILD
 
 
 set(ice_transport_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/ice_transport_factory.cc
         ${webrtc_source_path}api/ice_transport_factory.h
         )
@@ -5762,7 +5764,7 @@ add_custom_command(TARGET ice_transport_factory PRE_BUILD
 
 
 set(libjingle_logging_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/rtc_event_log_output.h
         )
 
@@ -5809,7 +5811,7 @@ add_custom_command(TARGET libjingle_logging_api PRE_BUILD
 
 
 set(libjingle_peerconnection_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/candidate.cc
         ${webrtc_source_path}api/candidate.h
         ${webrtc_source_path}api/crypto_params.h
@@ -5887,7 +5889,7 @@ add_custom_command(TARGET libjingle_peerconnection_api PRE_BUILD
 
 
 set(media_stream_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/media_stream_interface.cc
         ${webrtc_source_path}api/media_stream_interface.h
         ${webrtc_source_path}api/media_stream_track.h
@@ -5938,7 +5940,7 @@ add_custom_command(TARGET media_stream_interface PRE_BUILD
 
 
 set(neteq_simulator_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/neteq_simulator.cc
         ${webrtc_source_path}api/test/neteq_simulator.h
         )
@@ -5986,7 +5988,7 @@ add_custom_command(TARGET neteq_simulator_api PRE_BUILD
 
 
 set(network_emulation_manager_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/network_emulation_manager.cc
         ${webrtc_source_path}api/test/network_emulation_manager.h
         )
@@ -6034,7 +6036,7 @@ add_custom_command(TARGET network_emulation_manager_api PRE_BUILD
 
 
 set(network_state_predictor_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/network_state_predictor.h
         )
 
@@ -6081,7 +6083,7 @@ add_custom_command(TARGET network_state_predictor_api PRE_BUILD
 
 
 set(packet_socket_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/async_resolver_factory.h
         ${webrtc_source_path}api/packet_socket_factory.h
         )
@@ -6129,7 +6131,7 @@ add_custom_command(TARGET packet_socket_factory PRE_BUILD
 
 
 set(peer_connection_quality_test_fixture_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/peerconnection_quality_test_fixture.h
         )
 
@@ -6178,7 +6180,7 @@ add_custom_command(TARGET peer_connection_quality_test_fixture_api PRE_BUILD
 
 
 set(peer_network_dependencies_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/peer_network_dependencies.h
         )
 
@@ -6225,7 +6227,7 @@ add_custom_command(TARGET peer_network_dependencies PRE_BUILD
 
 
 set(priority_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/priority.h
         )
 
@@ -6272,7 +6274,7 @@ add_custom_command(TARGET priority PRE_BUILD
 
 
 set(refcountedbase_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/ref_counted_base.h
         )
 
@@ -6319,7 +6321,7 @@ add_custom_command(TARGET refcountedbase PRE_BUILD
 
 
 set(rtc_error_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/rtc_error.cc
         ${webrtc_source_path}api/rtc_error.h
         )
@@ -6367,7 +6369,7 @@ add_custom_command(TARGET rtc_error PRE_BUILD
 
 
 set(rtc_event_log_output_file_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/rtc_event_log_output_file.cc
         ${webrtc_source_path}api/rtc_event_log_output_file.h
         )
@@ -6415,7 +6417,7 @@ add_custom_command(TARGET rtc_event_log_output_file PRE_BUILD
 
 
 set(rtc_stats_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/stats/rtc_stats.h
         ${webrtc_source_path}api/stats/rtc_stats_collector_callback.h
         ${webrtc_source_path}api/stats/rtc_stats_report.h
@@ -6465,7 +6467,7 @@ add_custom_command(TARGET rtc_stats_api PRE_BUILD
 
 
 set(rtp_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/rtp_headers.cc
         ${webrtc_source_path}api/rtp_headers.h
         )
@@ -6513,7 +6515,7 @@ add_custom_command(TARGET rtp_headers PRE_BUILD
 
 
 set(rtp_packet_info_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/rtp_packet_info.cc
         ${webrtc_source_path}api/rtp_packet_info.h
         ${webrtc_source_path}api/rtp_packet_infos.h
@@ -6562,7 +6564,7 @@ add_custom_command(TARGET rtp_packet_info PRE_BUILD
 
 
 set(rtp_parameters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/media_types.cc
         ${webrtc_source_path}api/media_types.h
         ${webrtc_source_path}api/rtp_parameters.cc
@@ -6612,7 +6614,7 @@ add_custom_command(TARGET rtp_parameters PRE_BUILD
 
 
 set(rtp_transceiver_direction_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/rtp_transceiver_direction.h
         )
 
@@ -6659,7 +6661,7 @@ add_custom_command(TARGET rtp_transceiver_direction PRE_BUILD
 
 
 set(scoped_refptr_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/scoped_refptr.h
         )
 
@@ -6706,7 +6708,7 @@ add_custom_command(TARGET scoped_refptr PRE_BUILD
 
 
 set(sequence_checker_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/sequence_checker.h
         )
 
@@ -6753,7 +6755,7 @@ add_custom_command(TARGET sequence_checker PRE_BUILD
 
 
 set(simulated_network_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/simulated_network.h
         )
 
@@ -6800,7 +6802,7 @@ add_custom_command(TARGET simulated_network_api PRE_BUILD
 
 
 set(stats_observer_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/stats_observer_interface.h
         )
 
@@ -6848,7 +6850,7 @@ add_custom_command(TARGET stats_observer_interface PRE_BUILD
 
 
 set(test_dependency_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/test_dependency_factory.cc
         ${webrtc_source_path}api/test/test_dependency_factory.h
         )
@@ -6906,7 +6908,7 @@ add_custom_command(TARGET test_dependency_factory PRE_BUILD
 
 
 set(time_controller_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/time_controller.cc
         ${webrtc_source_path}api/test/time_controller.h
         )
@@ -6954,7 +6956,7 @@ add_custom_command(TARGET time_controller PRE_BUILD
 
 
 set(track_id_stream_info_map_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/track_id_stream_info_map.h
         )
 
@@ -7001,7 +7003,7 @@ add_custom_command(TARGET track_id_stream_info_map PRE_BUILD
 
 
 set(transport_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/call/transport.cc
         ${webrtc_source_path}api/call/transport.h
         )
@@ -7049,7 +7051,7 @@ add_custom_command(TARGET transport_api PRE_BUILD
 
 
 set(video_quality_analyzer_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/video_quality_analyzer_interface.h
         )
 
@@ -7098,7 +7100,7 @@ add_custom_command(TARGET video_quality_analyzer_api PRE_BUILD
 
 
 set(video_quality_test_fixture_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/test/video_quality_test_fixture.h
         )
 
@@ -7155,7 +7157,7 @@ add_custom_command(TARGET video_quality_test_fixture_api PRE_BUILD
 
 
 set(video_track_source_constraints_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/video_track_source_constraints.h
         )
 
@@ -7202,7 +7204,7 @@ add_custom_command(TARGET video_track_source_constraints PRE_BUILD
 
 
 set(wrapping_async_dns_resolver_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}api/wrapping_async_dns_resolver.cc
         ${webrtc_source_path}api/wrapping_async_dns_resolver.h
         )
@@ -7250,7 +7252,7 @@ add_custom_command(TARGET wrapping_async_dns_resolver PRE_BUILD
 
 
 set(audio_frame_operations_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}audio/utility/audio_frame_operations.cc
         ${webrtc_source_path}audio/utility/audio_frame_operations.h
         ${webrtc_source_path}audio/utility/channel_mixer.cc
@@ -7302,7 +7304,7 @@ add_custom_command(TARGET audio_frame_operations PRE_BUILD
 
 
 set(audio_channel_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}audio/voip/audio_channel.cc
         ${webrtc_source_path}audio/voip/audio_channel.h
         )
@@ -7351,7 +7353,7 @@ add_custom_command(TARGET audio_channel PRE_BUILD
 
 
 set(audio_egress_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}audio/voip/audio_egress.cc
         ${webrtc_source_path}audio/voip/audio_egress.h
         )
@@ -7400,7 +7402,7 @@ add_custom_command(TARGET audio_egress PRE_BUILD
 
 
 set(audio_ingress_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}audio/voip/audio_ingress.cc
         ${webrtc_source_path}audio/voip/audio_ingress.h
         )
@@ -7449,7 +7451,7 @@ add_custom_command(TARGET audio_ingress PRE_BUILD
 
 
 set(voip_core_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}audio/voip/voip_core.cc
         ${webrtc_source_path}audio/voip/voip_core.h
         )
@@ -7498,7 +7500,7 @@ add_custom_command(TARGET voip_core PRE_BUILD
 
 
 set(audio_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}audio/audio_level.cc
         ${webrtc_source_path}audio/audio_level.h
         ${webrtc_source_path}audio/audio_receive_stream.cc
@@ -7569,7 +7571,7 @@ add_custom_command(TARGET audio PRE_BUILD
 #[[
 
 set(jni_sample_lib_sources 
-   ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+  ${EMPTY_PATH}
   ${webrtc_source_path}base/android/jni_generator/sample_entry_point.cc
   ${webrtc_build_path}/gen/base/android/jni_generator/sample_jni_registration.h
 )
@@ -7604,7 +7606,7 @@ add_custom_command(TARGET jni_sample_lib_static PRE_BUILD
 #[[
 
 add_library(jni_sample_lib SHARED
-   ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+  ${EMPTY_PATH}
 )
 
 add_custom_command(TARGET jni_sample_lib POST_BUILD
@@ -7616,7 +7618,7 @@ add_custom_command(TARGET jni_sample_lib POST_BUILD
 #[[
 
 set(jni_sample_native_side_sources 
-   ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+  ${EMPTY_PATH}
   ${webrtc_source_path}base/android/jni_generator/sample_for_tests.cc
   ${webrtc_source_path}base/android/jni_generator/sample_for_tests.h
 )
@@ -7651,7 +7653,7 @@ add_custom_command(TARGET jni_sample_native_side PRE_BUILD
 
 
 set(base_numerics_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/numerics/checked_math_impl.h
         ${webrtc_source_path}base/numerics/clamped_math_impl.h
         ${webrtc_source_path}base/numerics/safe_conversions_arm_impl.h
@@ -7688,7 +7690,7 @@ add_custom_command(TARGET base_numerics PRE_BUILD
 
 
 set(immediate_crash_test_helper_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/test/immediate_crash_test_helper.cc
         )
 
@@ -7718,7 +7720,7 @@ add_custom_command(TARGET immediate_crash_test_helper_static PRE_BUILD
         )
 
 add_library(immediate_crash_test_helper SHARED
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 #[[add_custom_command(TARGET immediate_crash_test_helper POST_BUILD
@@ -7728,7 +7730,7 @@ add_library(immediate_crash_test_helper SHARED
 
 
 set(native_library_test_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/test/native_library_test_utils.cc
         ${webrtc_source_path}base/test/native_library_test_utils.h
         )
@@ -7760,7 +7762,7 @@ add_custom_command(TARGET native_library_test_utils PRE_BUILD
 
 
 set(run_all_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/test/run_all_unittests.cc
         )
 
@@ -7812,7 +7814,7 @@ add_custom_command(TARGET run_all_unittests PRE_BUILD
 
 
 set(test_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/test/test_switches.cc
         ${webrtc_source_path}base/test/test_switches.h
         ${webrtc_source_path}base/test/test_timeouts.cc
@@ -7848,7 +7850,7 @@ add_custom_command(TARGET test_config PRE_BUILD
 
 
 set(test_shared_library_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/test/test_shared_library.cc
         )
 
@@ -7878,7 +7880,7 @@ add_custom_command(TARGET test_shared_library_static PRE_BUILD
         )
 
 add_library(test_shared_library SHARED
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 #add_custom_command(TARGET test_shared_library POST_BUILD
@@ -7888,7 +7890,7 @@ add_library(test_shared_library SHARED
 
 
 set(test_support_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/task/sequence_manager/test/fake_task.cc
         ${webrtc_source_path}base/task/sequence_manager/test/fake_task.h
         ${webrtc_source_path}base/task/sequence_manager/test/mock_time_domain.cc
@@ -8073,7 +8075,7 @@ add_custom_command(TARGET test_support PRE_BUILD
 
 
 set(test_support_perf_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/test/run_all_perftests.cc
         )
 
@@ -8126,7 +8128,7 @@ add_custom_command(TARGET test_support_perf PRE_BUILD
 
 
 set(double_conversion_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/third_party/double_conversion/double-conversion/bignum-dtoa.cc
         ${webrtc_source_path}base/third_party/double_conversion/double-conversion/bignum-dtoa.h
         ${webrtc_source_path}base/third_party/double_conversion/double-conversion/bignum.cc
@@ -8176,7 +8178,7 @@ add_custom_command(TARGET double_conversion PRE_BUILD
 
 
 set(dynamic_annotations_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/third_party/valgrind/valgrind.h
         ${webrtc_source_path}base/third_party/dynamic_annotations/dynamic_annotations.c
         ${webrtc_source_path}base/third_party/dynamic_annotations/dynamic_annotations.h
@@ -8207,7 +8209,7 @@ add_custom_command(TARGET dynamic_annotations PRE_BUILD
 
 
 set(libevent_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/third_party/libevent/buffer.c
         ${webrtc_source_path}base/third_party/libevent/evbuffer.c
         ${webrtc_source_path}base/third_party/libevent/evdns.c
@@ -8266,7 +8268,7 @@ add_custom_command(TARGET libevent PRE_BUILD
 
 
 set(arm_bti_testfunctions_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/allocator/partition_allocator/arm_bti_test_functions.S
         ${webrtc_source_path}base/allocator/partition_allocator/arm_bti_test_functions.h
         )
@@ -8298,7 +8300,7 @@ add_custom_command(TARGET arm_bti_testfunctions PRE_BUILD
 
 
 set(base_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/allocator/allocator_check.cc
         ${webrtc_source_path}base/allocator/allocator_check.h
         ${webrtc_source_path}base/allocator/allocator_extension.cc
@@ -9373,7 +9375,7 @@ add_custom_command(TARGET base PRE_BUILD
 
 
 set(base_javatests_lib_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/test/library_loader/early_native_test_helper.cc
         )
 
@@ -9406,7 +9408,7 @@ add_custom_command(TARGET base_javatests_lib PRE_BUILD
 
 
 set(base_stack_sampling_profiler_test_util_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/profiler/stack_sampling_profiler_test_util.cc
         ${webrtc_source_path}base/profiler/stack_sampling_profiler_test_util.h
         )
@@ -9460,7 +9462,7 @@ add_custom_command(TARGET base_stack_sampling_profiler_test_util PRE_BUILD
 
 
 set(base_static_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/base_switches.cc
         ${webrtc_source_path}base/base_switches.h
         )
@@ -9492,7 +9494,7 @@ add_custom_command(TARGET base_static PRE_BUILD
 
 
 set(base_unittests_tasktraits_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/task/test_task_traits_extension.cc
         ${webrtc_source_path}base/task/test_task_traits_extension.h
         )
@@ -9526,7 +9528,7 @@ add_custom_command(TARGET base_unittests_tasktraits PRE_BUILD
 
 
 set(i18n_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/i18n/base_i18n_export.h
         ${webrtc_source_path}base/i18n/base_i18n_switches.cc
         ${webrtc_source_path}base/i18n/base_i18n_switches.h
@@ -9609,7 +9611,7 @@ add_custom_command(TARGET i18n PRE_BUILD
 
 
 set(native_unwinder_android_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}base/profiler/native_unwinder_android.cc
         ${webrtc_source_path}base/profiler/native_unwinder_android.h
         )
@@ -9644,7 +9646,7 @@ add_custom_command(TARGET native_unwinder_android PRE_BUILD
 
 
 set(options_sources_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}build/sanitizers/sanitizer_options.cc
         )
 
@@ -9675,7 +9677,7 @@ add_custom_command(TARGET options_sources PRE_BUILD
 
 
 set(buildflag_header_h_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}build/buildflag.h
         )
 
@@ -9706,7 +9708,7 @@ add_custom_command(TARGET buildflag_header_h PRE_BUILD
 
 
 set(libunwind_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}buildtools/third_party/libunwind/trunk/src/Unwind-EHABI.cpp
         ${webrtc_source_path}buildtools/third_party/libunwind/trunk/src/libunwind.cpp
         ${webrtc_source_path}buildtools/third_party/libunwind/trunk/src/Unwind-sjlj.c
@@ -9743,7 +9745,7 @@ add_custom_command(TARGET libunwind PRE_BUILD
 
 
 set(resource_adaptation_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/adaptation/adaptation_constraint.cc
         ${webrtc_source_path}call/adaptation/adaptation_constraint.h
         ${webrtc_source_path}call/adaptation/broadcast_resource_listener.cc
@@ -9810,7 +9812,7 @@ add_custom_command(TARGET resource_adaptation PRE_BUILD
 
 
 set(audio_sender_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/audio_sender.h
         )
 
@@ -9857,7 +9859,7 @@ add_custom_command(TARGET audio_sender_interface PRE_BUILD
 
 
 set(bitrate_allocator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/bitrate_allocator.cc
         ${webrtc_source_path}call/bitrate_allocator.h
         )
@@ -9905,7 +9907,7 @@ add_custom_command(TARGET bitrate_allocator PRE_BUILD
 
 
 set(bitrate_configurator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/rtp_bitrate_configurator.cc
         ${webrtc_source_path}call/rtp_bitrate_configurator.h
         )
@@ -9954,7 +9956,7 @@ add_custom_command(TARGET bitrate_configurator PRE_BUILD
 
 
 set(call_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/call.cc
         ${webrtc_source_path}call/call_factory.cc
         ${webrtc_source_path}call/call_factory.h
@@ -10010,7 +10012,7 @@ add_custom_command(TARGET call PRE_BUILD
 
 
 set(call_interfaces_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/audio_receive_stream.cc
         ${webrtc_source_path}call/audio_receive_stream.h
         ${webrtc_source_path}call/audio_send_stream.h
@@ -10071,7 +10073,7 @@ add_custom_command(TARGET call_interfaces PRE_BUILD
 
 
 set(fake_network_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/fake_network_pipe.cc
         ${webrtc_source_path}call/fake_network_pipe.h
         )
@@ -10120,7 +10122,7 @@ add_custom_command(TARGET fake_network PRE_BUILD
 
 
 set(receive_stream_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/receive_stream.h
         )
 
@@ -10168,7 +10170,7 @@ add_custom_command(TARGET receive_stream_interface PRE_BUILD
 
 
 set(rtp_interfaces_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/rtp_config.cc
         ${webrtc_source_path}call/rtp_config.h
         ${webrtc_source_path}call/rtp_packet_sink_interface.h
@@ -10222,7 +10224,7 @@ add_custom_command(TARGET rtp_interfaces PRE_BUILD
 
 
 set(rtp_receiver_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/rtp_demuxer.cc
         ${webrtc_source_path}call/rtp_demuxer.h
         ${webrtc_source_path}call/rtp_stream_receiver_controller.cc
@@ -10275,7 +10277,7 @@ add_custom_command(TARGET rtp_receiver PRE_BUILD
 
 
 set(rtp_sender_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/rtp_payload_params.cc
         ${webrtc_source_path}call/rtp_payload_params.h
         ${webrtc_source_path}call/rtp_transport_controller_send.cc
@@ -10330,7 +10332,7 @@ add_custom_command(TARGET rtp_sender PRE_BUILD
 
 
 set(simulated_network_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/simulated_network.cc
         ${webrtc_source_path}call/simulated_network.h
         )
@@ -10378,7 +10380,7 @@ add_custom_command(TARGET simulated_network PRE_BUILD
 
 
 set(simulated_packet_receiver_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/simulated_packet_receiver.h
         )
 
@@ -10426,7 +10428,7 @@ add_custom_command(TARGET simulated_packet_receiver PRE_BUILD
 
 
 set(version_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/version.cc
         ${webrtc_source_path}call/version.h
         )
@@ -10474,7 +10476,7 @@ add_custom_command(TARGET version PRE_BUILD
 
 
 set(video_stream_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}call/video_receive_stream.cc
         ${webrtc_source_path}call/video_receive_stream.h
         ${webrtc_source_path}call/video_send_stream.cc
@@ -10525,7 +10527,7 @@ add_custom_command(TARGET video_stream_api PRE_BUILD
 
 
 set(fft_size_128_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/third_party/ooura/fft_size_128/ooura_fft.cc
         ${webrtc_source_path}common_audio/third_party/ooura/fft_size_128/ooura_fft.h
         ${webrtc_source_path}common_audio/third_party/ooura/fft_size_128/ooura_fft_tables_common.h
@@ -10576,7 +10578,7 @@ add_custom_command(TARGET fft_size_128 PRE_BUILD
 
 
 set(fft_size_256_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/third_party/ooura/fft_size_256/fft4g.cc
         ${webrtc_source_path}common_audio/third_party/ooura/fft_size_256/fft4g.h
         )
@@ -10624,7 +10626,7 @@ add_custom_command(TARGET fft_size_256 PRE_BUILD
 
 
 set(spl_sqrt_floor_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/third_party/spl_sqrt_floor/spl_sqrt_floor.h
         ${webrtc_source_path}common_audio/third_party/spl_sqrt_floor/spl_sqrt_floor.c
         )
@@ -10672,7 +10674,7 @@ add_custom_command(TARGET spl_sqrt_floor PRE_BUILD
 
 
 set(common_audio_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/audio_converter.cc
         ${webrtc_source_path}common_audio/audio_converter.h
         ${webrtc_source_path}common_audio/audio_util.cc
@@ -10745,7 +10747,7 @@ add_custom_command(TARGET common_audio PRE_BUILD
 
 
 set(common_audio_c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/ring_buffer.c
         ${webrtc_source_path}common_audio/ring_buffer.h
         ${webrtc_source_path}common_audio/signal_processing/auto_corr_to_refl_coef.c
@@ -10841,7 +10843,7 @@ add_custom_command(TARGET common_audio_c PRE_BUILD
 
 
 set(common_audio_c_arm_asm_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(common_audio_c_arm_asm STATIC
@@ -10887,7 +10889,7 @@ add_custom_command(TARGET common_audio_c_arm_asm PRE_BUILD
 
 
 set(common_audio_cc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/signal_processing/dot_product_with_scale.cc
         ${webrtc_source_path}common_audio/signal_processing/dot_product_with_scale.h
         )
@@ -10935,7 +10937,7 @@ add_custom_command(TARGET common_audio_cc PRE_BUILD
 
 
 set(common_audio_neon_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/fir_filter_neon.cc
         ${webrtc_source_path}common_audio/fir_filter_neon.h
         ${webrtc_source_path}common_audio/resampler/sinc_resampler_neon.cc
@@ -10984,7 +10986,7 @@ add_custom_command(TARGET common_audio_neon PRE_BUILD
 
 
 set(common_audio_neon_c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/signal_processing/cross_correlation_neon.c
         ${webrtc_source_path}common_audio/signal_processing/downsample_fast_neon.c
         ${webrtc_source_path}common_audio/signal_processing/min_max_operations_neon.c
@@ -11033,7 +11035,7 @@ add_custom_command(TARGET common_audio_neon_c PRE_BUILD
 
 
 set(fir_filter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/fir_filter.h
         )
 
@@ -11080,7 +11082,7 @@ add_custom_command(TARGET fir_filter PRE_BUILD
 
 
 set(fir_filter_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/fir_filter_c.cc
         ${webrtc_source_path}common_audio/fir_filter_c.h
         ${webrtc_source_path}common_audio/fir_filter_factory.cc
@@ -11130,7 +11132,7 @@ add_custom_command(TARGET fir_filter_factory PRE_BUILD
 
 
 set(mock_common_audio_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/mocks/mock_smoothing_filter.h
         ${webrtc_source_path}common_audio/vad/mock/mock_vad.h
         )
@@ -11188,7 +11190,7 @@ add_custom_command(TARGET mock_common_audio PRE_BUILD
 
 
 set(sinc_resampler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_audio/resampler/sinc_resampler.h
         )
 
@@ -11235,7 +11237,7 @@ add_custom_command(TARGET sinc_resampler PRE_BUILD
 
 
 set(generic_frame_descriptor_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_video/generic_frame_descriptor/generic_frame_info.cc
         ${webrtc_source_path}common_video/generic_frame_descriptor/generic_frame_info.h
         )
@@ -11283,7 +11285,7 @@ add_custom_command(TARGET generic_frame_descriptor PRE_BUILD
 
 
 set(common_video_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_video/bitrate_adjuster.cc
         ${webrtc_source_path}common_video/frame_rate_estimator.cc
         ${webrtc_source_path}common_video/frame_rate_estimator.h
@@ -11357,7 +11359,7 @@ add_custom_command(TARGET common_video PRE_BUILD
 
 
 set(frame_counts_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}common_video/frame_counts.h
         )
 
@@ -11404,7 +11406,7 @@ add_custom_command(TARGET frame_counts PRE_BUILD
 
 
 set(examples_androidvoip_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}examples/androidvoip/jni/android_voip_client.cc
         ${webrtc_source_path}examples/androidvoip/jni/android_voip_client.h
         ${webrtc_source_path}examples/androidvoip/jni/onload.cc
@@ -11453,7 +11455,7 @@ add_custom_command(TARGET examples_androidvoip_jni_static PRE_BUILD
         )
 
 #add_library(examples_androidvoip_jni SHARED
-#   ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+#  ${EMPTY_PATH}
 #)
 
 #add_custom_command(TARGET examples_androidvoip_jni POST_BUILD
@@ -11463,7 +11465,7 @@ add_custom_command(TARGET examples_androidvoip_jni_static PRE_BUILD
 
 
 set(read_auth_file_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}examples/turnserver/read_auth_file.cc
         ${webrtc_source_path}examples/turnserver/read_auth_file.h
         )
@@ -11512,7 +11514,7 @@ add_custom_command(TARGET read_auth_file PRE_BUILD
 
 
 set(webrtc_unity_plugin_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}examples/unityplugin/simple_peer_connection.cc
         ${webrtc_source_path}examples/unityplugin/simple_peer_connection.h
         ${webrtc_source_path}examples/unityplugin/unity_plugin_apis.cc
@@ -11568,7 +11570,7 @@ add_custom_command(TARGET webrtc_unity_plugin_static PRE_BUILD
         )
 
 add_library(webrtc_unity_plugin SHARED
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 ##[[add_custom_command(TARGET webrtc_unity_plugin POST_BUILD
@@ -11578,7 +11580,7 @@ add_library(webrtc_unity_plugin SHARED
 
 
 set(fake_rtc_event_log_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/fake_rtc_event_log.cc
         ${webrtc_source_path}logging/rtc_event_log/fake_rtc_event_log.h
         ${webrtc_source_path}logging/rtc_event_log/fake_rtc_event_log_factory.cc
@@ -11629,7 +11631,7 @@ add_custom_command(TARGET fake_rtc_event_log PRE_BUILD
 
 
 set(ice_log_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_dtls_transport_state.cc
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_dtls_transport_state.h
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_dtls_writable_state.cc
@@ -11686,7 +11688,7 @@ add_custom_command(TARGET ice_log PRE_BUILD
 
 
 set(rtc_event_audio_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_audio_network_adaptation.cc
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_audio_network_adaptation.h
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_audio_playout.cc
@@ -11740,7 +11742,7 @@ add_custom_command(TARGET rtc_event_audio PRE_BUILD
 
 
 set(rtc_event_bwe_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_bwe_update_delay_based.cc
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_bwe_update_delay_based.h
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_bwe_update_loss_based.cc
@@ -11799,7 +11801,7 @@ add_custom_command(TARGET rtc_event_bwe PRE_BUILD
 
 
 set(rtc_event_field_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/events/fixed_length_encoding_parameters_v3.cc
         ${webrtc_source_path}logging/rtc_event_log/events/fixed_length_encoding_parameters_v3.h
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_field_encoding.cc
@@ -11853,7 +11855,7 @@ add_custom_command(TARGET rtc_event_field PRE_BUILD
 
 
 set(rtc_event_frame_events_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_frame_decoded.cc
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_frame_decoded.h
         )
@@ -11902,7 +11904,7 @@ add_custom_command(TARGET rtc_event_frame_events PRE_BUILD
 
 
 set(rtc_event_generic_packet_events_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_generic_ack_received.cc
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_generic_ack_received.h
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_generic_packet_received.cc
@@ -11954,7 +11956,7 @@ add_custom_command(TARGET rtc_event_generic_packet_events PRE_BUILD
 
 
 set(rtc_event_log2_proto_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_build_path}/gen/logging/rtc_event_log/rtc_event_log2.pb.h
         ${webrtc_build_path}/gen/logging/rtc_event_log/rtc_event_log2.pb.cc
         )
@@ -11991,7 +11993,7 @@ add_custom_command(TARGET rtc_event_log2_proto PRE_BUILD
 
 
 set(rtc_event_log_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/encoder/rtc_event_log_encoder.h
         )
 
@@ -12038,7 +12040,7 @@ add_custom_command(TARGET rtc_event_log_api PRE_BUILD
 
 
 set(rtc_event_log_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/rtc_event_log_impl.cc
         ${webrtc_source_path}logging/rtc_event_log/rtc_event_log_impl.h
         )
@@ -12087,7 +12089,7 @@ add_custom_command(TARGET rtc_event_log_impl PRE_BUILD
 
 
 set(rtc_event_log_impl_encoder_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/encoder/blob_encoding.cc
         ${webrtc_source_path}logging/rtc_event_log/encoder/blob_encoding.h
         ${webrtc_source_path}logging/rtc_event_log/encoder/delta_encoding.cc
@@ -12147,7 +12149,7 @@ add_custom_command(TARGET rtc_event_log_impl_encoder PRE_BUILD
 
 
 set(rtc_event_log_impl_output_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/output/rtc_event_log_output_file.h
         )
 
@@ -12194,7 +12196,7 @@ add_custom_command(TARGET rtc_event_log_impl_output PRE_BUILD
 
 
 set(rtc_event_log_parser_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/logged_events.cc
         ${webrtc_source_path}logging/rtc_event_log/logged_events.h
         ${webrtc_source_path}logging/rtc_event_log/rtc_event_log_parser.cc
@@ -12252,7 +12254,7 @@ add_custom_command(TARGET rtc_event_log_parser PRE_BUILD
 
 
 set(rtc_event_log_proto_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_build_path}/gen/logging/rtc_event_log/rtc_event_log.pb.h
         ${webrtc_build_path}/gen/logging/rtc_event_log/rtc_event_log.pb.cc
         )
@@ -12289,7 +12291,7 @@ add_custom_command(TARGET rtc_event_log_proto PRE_BUILD
 
 
 set(rtc_event_number_encodings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/encoder/bit_writer.cc
         ${webrtc_source_path}logging/rtc_event_log/encoder/bit_writer.h
         ${webrtc_source_path}logging/rtc_event_log/encoder/rtc_event_log_encoder_common.cc
@@ -12341,7 +12343,7 @@ add_custom_command(TARGET rtc_event_number_encodings PRE_BUILD
 
 
 set(rtc_event_pacing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_alr_state.cc
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_alr_state.h
         )
@@ -12389,7 +12391,7 @@ add_custom_command(TARGET rtc_event_pacing PRE_BUILD
 
 
 set(rtc_event_rtp_rtcp_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_rtcp_packet_incoming.cc
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_rtcp_packet_incoming.h
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_rtcp_packet_outgoing.cc
@@ -12444,7 +12446,7 @@ add_custom_command(TARGET rtc_event_rtp_rtcp PRE_BUILD
 
 
 set(rtc_event_video_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_video_receive_stream_config.cc
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_video_receive_stream_config.h
         ${webrtc_source_path}logging/rtc_event_log/events/rtc_event_video_send_stream_config.cc
@@ -12494,7 +12496,7 @@ add_custom_command(TARGET rtc_event_video PRE_BUILD
 
 
 set(rtc_stream_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}logging/rtc_event_log/rtc_stream_config.cc
         ${webrtc_source_path}logging/rtc_event_log/rtc_stream_config.h
         )
@@ -12542,7 +12544,7 @@ add_custom_command(TARGET rtc_stream_config PRE_BUILD
 
 
 set(rtc_audio_video_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/engine/adm_helpers.cc
         ${webrtc_source_path}media/engine/adm_helpers.h
         ${webrtc_source_path}media/engine/null_webrtc_video_engine.h
@@ -12610,7 +12612,7 @@ add_custom_command(TARGET rtc_audio_video PRE_BUILD
 
 
 set(rtc_data_dcsctp_transport_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/sctp/dcsctp_transport.cc
         ${webrtc_source_path}media/sctp/dcsctp_transport.h
         )
@@ -12659,7 +12661,7 @@ add_custom_command(TARGET rtc_data_dcsctp_transport PRE_BUILD
 
 
 set(rtc_data_sctp_transport_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/sctp/sctp_transport_factory.cc
         ${webrtc_source_path}media/sctp/sctp_transport_factory.h
         )
@@ -12710,7 +12712,7 @@ add_custom_command(TARGET rtc_data_sctp_transport_factory PRE_BUILD
 
 
 set(rtc_data_sctp_transport_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/sctp/sctp_transport_internal.h
         )
 
@@ -12758,7 +12760,7 @@ add_custom_command(TARGET rtc_data_sctp_transport_internal PRE_BUILD
 
 
 set(rtc_data_usrsctp_transport_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/sctp/usrsctp_transport.cc
         ${webrtc_source_path}media/sctp/usrsctp_transport.h
         )
@@ -12809,7 +12811,7 @@ add_custom_command(TARGET rtc_data_usrsctp_transport PRE_BUILD
 
 
 set(rtc_encoder_simulcast_proxy_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/engine/encoder_simulcast_proxy.cc
         ${webrtc_source_path}media/engine/encoder_simulcast_proxy.h
         )
@@ -12858,7 +12860,7 @@ add_custom_command(TARGET rtc_encoder_simulcast_proxy PRE_BUILD
 
 
 set(rtc_internal_video_codecs_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/engine/fake_video_codec_factory.cc
         ${webrtc_source_path}media/engine/fake_video_codec_factory.h
         ${webrtc_source_path}media/engine/internal_decoder_factory.cc
@@ -12914,7 +12916,7 @@ add_custom_command(TARGET rtc_internal_video_codecs PRE_BUILD
 
 
 set(rtc_media_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(rtc_media STATIC
@@ -12962,7 +12964,7 @@ add_custom_command(TARGET rtc_media PRE_BUILD
 
 
 set(rtc_media_base_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/base/adapted_video_track_source.cc
         ${webrtc_source_path}media/base/adapted_video_track_source.h
         ${webrtc_source_path}media/base/audio_source.h
@@ -13037,7 +13039,7 @@ add_custom_command(TARGET rtc_media_base PRE_BUILD
 
 
 set(rtc_media_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/base/media_config.h
         )
 
@@ -13084,7 +13086,7 @@ add_custom_command(TARGET rtc_media_config PRE_BUILD
 
 
 set(rtc_media_engine_defaults_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/engine/webrtc_media_engine_defaults.cc
         ${webrtc_source_path}media/engine/webrtc_media_engine_defaults.h
         )
@@ -13134,7 +13136,7 @@ add_custom_command(TARGET rtc_media_engine_defaults PRE_BUILD
 
 
 set(rtc_sdp_video_format_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/base/sdp_video_format_utils.cc
         ${webrtc_source_path}media/base/sdp_video_format_utils.h
         )
@@ -13183,7 +13185,7 @@ add_custom_command(TARGET rtc_sdp_video_format_utils PRE_BUILD
 
 
 set(rtc_simulcast_encoder_adapter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}media/engine/simulcast_encoder_adapter.cc
         ${webrtc_source_path}media/engine/simulcast_encoder_adapter.h
         )
@@ -13232,7 +13234,7 @@ add_custom_command(TARGET rtc_simulcast_encoder_adapter PRE_BUILD
 
 
 set(async_audio_processing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/async_audio_processing/async_audio_processing.cc
         ${webrtc_source_path}modules/async_audio_processing/async_audio_processing.h
         )
@@ -13280,7 +13282,7 @@ add_custom_command(TARGET async_audio_processing PRE_BUILD
 
 
 set(ana_config_proto_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_build_path}/gen/modules/audio_coding/audio_network_adaptor/config.pb.h
         ${webrtc_build_path}/gen/modules/audio_coding/audio_network_adaptor/config.pb.cc
         )
@@ -13317,7 +13319,7 @@ add_custom_command(TARGET ana_config_proto PRE_BUILD
 
 
 set(ana_debug_dump_proto_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_build_path}/gen/modules/audio_coding/audio_network_adaptor/debug_dump.pb.h
         ${webrtc_build_path}/gen/modules/audio_coding/audio_network_adaptor/debug_dump.pb.cc
         )
@@ -13354,7 +13356,7 @@ add_custom_command(TARGET ana_debug_dump_proto PRE_BUILD
 
 
 set(audio_coding_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/acm2/acm_receiver.cc
         ${webrtc_source_path}modules/audio_coding/acm2/acm_receiver.h
         ${webrtc_source_path}modules/audio_coding/acm2/acm_remixing.cc
@@ -13410,7 +13412,7 @@ add_custom_command(TARGET audio_coding PRE_BUILD
 
 
 set(audio_coding_module_typedefs_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/include/audio_coding_module_typedefs.h
         )
 
@@ -13457,7 +13459,7 @@ add_custom_command(TARGET audio_coding_module_typedefs PRE_BUILD
 
 
 set(audio_coding_modules_tests_shared_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/neteq/test/neteq_decoding_test.cc
         ${webrtc_source_path}modules/audio_coding/neteq/test/neteq_decoding_test.h
         ${webrtc_source_path}modules/audio_coding/neteq/test/result_sink.cc
@@ -13536,7 +13538,7 @@ add_custom_command(TARGET audio_coding_modules_tests_shared PRE_BUILD
 
 
 set(audio_coding_opus_common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/opus/audio_coder_opus_common.cc
         ${webrtc_source_path}modules/audio_coding/codecs/opus/audio_coder_opus_common.h
         )
@@ -13584,7 +13586,7 @@ add_custom_command(TARGET audio_coding_opus_common PRE_BUILD
 
 
 set(audio_decoder_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/audio_decoder.h
         )
 
@@ -13631,7 +13633,7 @@ add_custom_command(TARGET audio_decoder_interface PRE_BUILD
 
 
 set(audio_encoder_cng_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/cng/audio_encoder_cng.cc
         ${webrtc_source_path}modules/audio_coding/codecs/cng/audio_encoder_cng.h
         )
@@ -13679,7 +13681,7 @@ add_custom_command(TARGET audio_encoder_cng PRE_BUILD
 
 
 set(audio_encoder_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/audio_encoder.h
         )
 
@@ -13726,7 +13728,7 @@ add_custom_command(TARGET audio_encoder_interface PRE_BUILD
 
 
 set(audio_network_adaptor_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/audio_network_adaptor/audio_network_adaptor_impl.cc
         ${webrtc_source_path}modules/audio_coding/audio_network_adaptor/audio_network_adaptor_impl.h
         ${webrtc_source_path}modules/audio_coding/audio_network_adaptor/bitrate_controller.cc
@@ -13801,7 +13803,7 @@ add_custom_command(TARGET audio_network_adaptor PRE_BUILD
 
 
 set(audio_network_adaptor_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/audio_network_adaptor/audio_network_adaptor_config.cc
         ${webrtc_source_path}modules/audio_coding/audio_network_adaptor/include/audio_network_adaptor_config.h
         )
@@ -13849,7 +13851,7 @@ add_custom_command(TARGET audio_network_adaptor_config PRE_BUILD
 
 
 set(default_neteq_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/neteq/default_neteq_factory.cc
         ${webrtc_source_path}modules/audio_coding/neteq/default_neteq_factory.h
         )
@@ -13897,7 +13899,7 @@ add_custom_command(TARGET default_neteq_factory PRE_BUILD
 
 
 set(g711_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/g711/audio_decoder_pcm.cc
         ${webrtc_source_path}modules/audio_coding/codecs/g711/audio_decoder_pcm.h
         ${webrtc_source_path}modules/audio_coding/codecs/g711/audio_encoder_pcm.cc
@@ -13947,7 +13949,7 @@ add_custom_command(TARGET g711 PRE_BUILD
 
 
 set(g711_c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/g711/g711_interface.c
         ${webrtc_source_path}modules/audio_coding/codecs/g711/g711_interface.h
         )
@@ -13995,7 +13997,7 @@ add_custom_command(TARGET g711_c PRE_BUILD
 
 
 set(g722_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/g722/audio_decoder_g722.cc
         ${webrtc_source_path}modules/audio_coding/codecs/g722/audio_decoder_g722.h
         ${webrtc_source_path}modules/audio_coding/codecs/g722/audio_encoder_g722.cc
@@ -14045,7 +14047,7 @@ add_custom_command(TARGET g722 PRE_BUILD
 
 
 set(g722_c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/g722/g722_interface.c
         ${webrtc_source_path}modules/audio_coding/codecs/g722/g722_interface.h
         )
@@ -14093,7 +14095,7 @@ add_custom_command(TARGET g722_c PRE_BUILD
 
 
 set(ilbc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/ilbc/audio_decoder_ilbc.cc
         ${webrtc_source_path}modules/audio_coding/codecs/ilbc/audio_decoder_ilbc.h
         ${webrtc_source_path}modules/audio_coding/codecs/ilbc/audio_encoder_ilbc.cc
@@ -14143,7 +14145,7 @@ add_custom_command(TARGET ilbc PRE_BUILD
 
 
 set(ilbc_c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/ilbc/abs_quant.c
         ${webrtc_source_path}modules/audio_coding/codecs/ilbc/abs_quant.h
         ${webrtc_source_path}modules/audio_coding/codecs/ilbc/abs_quant_loop.c
@@ -14328,7 +14330,7 @@ add_custom_command(TARGET ilbc_c PRE_BUILD
 
 
 set(isac_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/isac/main/include/audio_decoder_isac.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/main/include/audio_encoder_isac.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/main/source/audio_decoder_isac.cc
@@ -14378,7 +14380,7 @@ add_custom_command(TARGET isac PRE_BUILD
 
 
 set(isac_bwinfo_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/isac/bandwidth_info.h
         )
 
@@ -14425,7 +14427,7 @@ add_custom_command(TARGET isac_bwinfo PRE_BUILD
 
 
 set(isac_c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/isac/main/include/isac.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/main/source/arith_routines.c
         ${webrtc_source_path}modules/audio_coding/codecs/isac/main/source/arith_routines.h
@@ -14510,7 +14512,7 @@ add_custom_command(TARGET isac_c PRE_BUILD
 
 
 set(isac_common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/isac/audio_decoder_isac_t.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/audio_decoder_isac_t_impl.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/audio_encoder_isac_t.h
@@ -14560,7 +14562,7 @@ add_custom_command(TARGET isac_common PRE_BUILD
 
 
 set(isac_fix_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/source/audio_decoder_isacfix.cc
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/source/audio_encoder_isacfix.cc
         )
@@ -14608,7 +14610,7 @@ add_custom_command(TARGET isac_fix PRE_BUILD
 
 
 set(isac_fix_c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/include/audio_decoder_isacfix.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/include/audio_encoder_isacfix.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/include/isacfix.h
@@ -14693,7 +14695,7 @@ add_custom_command(TARGET isac_fix_c PRE_BUILD
 
 
 set(isac_fix_c_arm_asm_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(isac_fix_c_arm_asm STATIC
@@ -14739,7 +14741,7 @@ add_custom_command(TARGET isac_fix_c_arm_asm PRE_BUILD
 
 
 set(isac_fix_common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/source/codec.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/source/entropy_coding.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/source/fft.c
@@ -14793,7 +14795,7 @@ add_custom_command(TARGET isac_fix_common PRE_BUILD
 
 
 set(isac_neon_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/source/entropy_coding_neon.c
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/source/filterbanks_neon.c
         ${webrtc_source_path}modules/audio_coding/codecs/isac/fix/source/filters_neon.c
@@ -14844,7 +14846,7 @@ add_custom_command(TARGET isac_neon PRE_BUILD
 
 
 set(isac_vad_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/isac/main/source/filter_functions.c
         ${webrtc_source_path}modules/audio_coding/codecs/isac/main/source/filter_functions.h
         ${webrtc_source_path}modules/audio_coding/codecs/isac/main/source/isac_vad.c
@@ -14901,7 +14903,7 @@ add_custom_command(TARGET isac_vad PRE_BUILD
 
 
 set(legacy_encoded_audio_frame_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/legacy_encoded_audio_frame.cc
         ${webrtc_source_path}modules/audio_coding/codecs/legacy_encoded_audio_frame.h
         )
@@ -14949,7 +14951,7 @@ add_custom_command(TARGET legacy_encoded_audio_frame PRE_BUILD
 
 
 set(neteq_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/neteq/accelerate.cc
         ${webrtc_source_path}modules/audio_coding/neteq/accelerate.h
         ${webrtc_source_path}modules/audio_coding/neteq/audio_multi_vector.cc
@@ -15061,7 +15063,7 @@ add_custom_command(TARGET neteq PRE_BUILD
 
 
 set(neteq_input_audio_tools_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/neteq/tools/input_audio_file.cc
         ${webrtc_source_path}modules/audio_coding/neteq/tools/input_audio_file.h
         ${webrtc_source_path}modules/audio_coding/neteq/tools/resample_input_audio_file.cc
@@ -15111,7 +15113,7 @@ add_custom_command(TARGET neteq_input_audio_tools PRE_BUILD
 
 
 set(neteq_test_tools_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/neteq/tools/audio_checksum.h
         ${webrtc_source_path}modules/audio_coding/neteq/tools/audio_loop.cc
         ${webrtc_source_path}modules/audio_coding/neteq/tools/audio_loop.h
@@ -15181,7 +15183,7 @@ add_custom_command(TARGET neteq_test_tools PRE_BUILD
 
 
 set(neteq_tools_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/neteq/tools/fake_decode_from_file.cc
         ${webrtc_source_path}modules/audio_coding/neteq/tools/fake_decode_from_file.h
         ${webrtc_source_path}modules/audio_coding/neteq/tools/neteq_delay_analyzer.cc
@@ -15238,7 +15240,7 @@ add_custom_command(TARGET neteq_tools PRE_BUILD
 
 
 set(neteq_tools_minimal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/neteq/tools/audio_sink.cc
         ${webrtc_source_path}modules/audio_coding/neteq/tools/audio_sink.h
         ${webrtc_source_path}modules/audio_coding/neteq/tools/encode_neteq_input.cc
@@ -15300,7 +15302,7 @@ add_custom_command(TARGET neteq_tools_minimal PRE_BUILD
 
 
 set(neteq_unittest_proto_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_build_path}/gen/modules/audio_coding/neteq/neteq_unittest.pb.h
         ${webrtc_build_path}/gen/modules/audio_coding/neteq/neteq_unittest.pb.cc
         )
@@ -15339,7 +15341,7 @@ add_custom_command(TARGET neteq_unittest_proto PRE_BUILD
 
 
 set(pcm16b_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/pcm16b/audio_decoder_pcm16b.cc
         ${webrtc_source_path}modules/audio_coding/codecs/pcm16b/audio_decoder_pcm16b.h
         ${webrtc_source_path}modules/audio_coding/codecs/pcm16b/audio_encoder_pcm16b.cc
@@ -15391,7 +15393,7 @@ add_custom_command(TARGET pcm16b PRE_BUILD
 
 
 set(pcm16b_c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/pcm16b/pcm16b.c
         ${webrtc_source_path}modules/audio_coding/codecs/pcm16b/pcm16b.h
         )
@@ -15439,7 +15441,7 @@ add_custom_command(TARGET pcm16b_c PRE_BUILD
 
 
 set(red_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/red/audio_encoder_copy_red.cc
         ${webrtc_source_path}modules/audio_coding/codecs/red/audio_encoder_copy_red.h
         )
@@ -15487,7 +15489,7 @@ add_custom_command(TARGET red PRE_BUILD
 
 
 set(rtc_event_log_source_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/neteq/tools/rtc_event_log_source.cc
         ${webrtc_source_path}modules/audio_coding/neteq/tools/rtc_event_log_source.h
         )
@@ -15542,7 +15544,7 @@ add_custom_command(TARGET rtc_event_log_source PRE_BUILD
 
 
 set(webrtc_cng_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/cng/webrtc_cng.cc
         ${webrtc_source_path}modules/audio_coding/codecs/cng/webrtc_cng.h
         )
@@ -15590,7 +15592,7 @@ add_custom_command(TARGET webrtc_cng PRE_BUILD
 
 
 set(webrtc_multiopus_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/opus/audio_decoder_multi_channel_opus_impl.cc
         ${webrtc_source_path}modules/audio_coding/codecs/opus/audio_decoder_multi_channel_opus_impl.h
         ${webrtc_source_path}modules/audio_coding/codecs/opus/audio_encoder_multi_channel_opus_impl.cc
@@ -15645,7 +15647,7 @@ add_custom_command(TARGET webrtc_multiopus PRE_BUILD
 
 
 set(webrtc_opus_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/opus/audio_decoder_opus.cc
         ${webrtc_source_path}modules/audio_coding/codecs/opus/audio_decoder_opus.h
         ${webrtc_source_path}modules/audio_coding/codecs/opus/audio_encoder_opus.cc
@@ -15704,7 +15706,7 @@ add_custom_command(TARGET webrtc_opus PRE_BUILD
 
 
 set(webrtc_opus_wrapper_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_coding/codecs/opus/opus_inst.h
         ${webrtc_source_path}modules/audio_coding/codecs/opus/opus_interface.cc
         ${webrtc_source_path}modules/audio_coding/codecs/opus/opus_interface.h
@@ -15758,7 +15760,7 @@ add_custom_command(TARGET webrtc_opus_wrapper PRE_BUILD
 
 
 set(audio_device_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(audio_device STATIC
@@ -15804,7 +15806,7 @@ add_custom_command(TARGET audio_device PRE_BUILD
 
 
 set(audio_device_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_device/include/audio_device.h
         ${webrtc_source_path}modules/audio_device/include/audio_device_defines.h
         )
@@ -15852,7 +15854,7 @@ add_custom_command(TARGET audio_device_api PRE_BUILD
 
 
 set(audio_device_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_device/audio_device_buffer.cc
         ${webrtc_source_path}modules/audio_device/audio_device_buffer.h
         ${webrtc_source_path}modules/audio_device/audio_device_config.h
@@ -15903,7 +15905,7 @@ add_custom_command(TARGET audio_device_buffer PRE_BUILD
 
 
 set(audio_device_default_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_device/include/audio_device_default.h
         )
 
@@ -15950,7 +15952,7 @@ add_custom_command(TARGET audio_device_default PRE_BUILD
 
 
 set(audio_device_generic_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_device/audio_device_generic.cc
         ${webrtc_source_path}modules/audio_device/audio_device_generic.h
         )
@@ -15998,7 +16000,7 @@ add_custom_command(TARGET audio_device_generic PRE_BUILD
 
 
 set(audio_device_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_device/dummy/audio_device_dummy.cc
         ${webrtc_source_path}modules/audio_device/dummy/audio_device_dummy.h
         ${webrtc_source_path}modules/audio_device/dummy/file_audio_device.cc
@@ -16073,7 +16075,7 @@ add_custom_command(TARGET audio_device_impl PRE_BUILD
 
 
 set(audio_device_module_from_input_and_output_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(audio_device_module_from_input_and_output STATIC
@@ -16119,7 +16121,7 @@ add_custom_command(TARGET audio_device_module_from_input_and_output PRE_BUILD
 
 
 set(audio_device_name_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_device/audio_device_name.cc
         ${webrtc_source_path}modules/audio_device/audio_device_name.h
         )
@@ -16167,7 +16169,7 @@ add_custom_command(TARGET audio_device_name PRE_BUILD
 
 
 set(mock_audio_device_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_device/include/mock_audio_device.h
         ${webrtc_source_path}modules/audio_device/include/mock_audio_transport.h
         ${webrtc_source_path}modules/audio_device/mock_audio_device_buffer.h
@@ -16226,7 +16228,7 @@ add_custom_command(TARGET mock_audio_device PRE_BUILD
 
 
 set(windows_core_audio_utility_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(windows_core_audio_utility STATIC
@@ -16272,7 +16274,7 @@ add_custom_command(TARGET windows_core_audio_utility PRE_BUILD
 
 
 set(audio_frame_manipulator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_mixer/audio_frame_manipulator.cc
         ${webrtc_source_path}modules/audio_mixer/audio_frame_manipulator.h
         )
@@ -16320,7 +16322,7 @@ add_custom_command(TARGET audio_frame_manipulator PRE_BUILD
 
 
 set(audio_mixer_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_mixer/audio_mixer_impl.cc
         ${webrtc_source_path}modules/audio_mixer/audio_mixer_impl.h
         ${webrtc_source_path}modules/audio_mixer/default_output_rate_calculator.cc
@@ -16374,7 +16376,7 @@ add_custom_command(TARGET audio_mixer_impl PRE_BUILD
 
 
 set(adaptive_fir_filter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec3/adaptive_fir_filter.h
         )
 
@@ -16421,7 +16423,7 @@ add_custom_command(TARGET adaptive_fir_filter PRE_BUILD
 
 
 set(adaptive_fir_filter_erl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec3/adaptive_fir_filter_erl.h
         )
 
@@ -16468,7 +16470,7 @@ add_custom_command(TARGET adaptive_fir_filter_erl PRE_BUILD
 
 
 set(aec3_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec3/adaptive_fir_filter.cc
         ${webrtc_source_path}modules/audio_processing/aec3/adaptive_fir_filter_erl.cc
         ${webrtc_source_path}modules/audio_processing/aec3/aec3_common.cc
@@ -16618,7 +16620,7 @@ add_custom_command(TARGET aec3 PRE_BUILD
 
 
 set(aec3_common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec3/aec3_common.h
         )
 
@@ -16665,7 +16667,7 @@ add_custom_command(TARGET aec3_common PRE_BUILD
 
 
 set(aec3_fft_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec3/aec3_fft.h
         )
 
@@ -16712,7 +16714,7 @@ add_custom_command(TARGET aec3_fft PRE_BUILD
 
 
 set(fft_data_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec3/fft_data.h
         )
 
@@ -16759,7 +16761,7 @@ add_custom_command(TARGET fft_data PRE_BUILD
 
 
 set(matched_filter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec3/matched_filter.h
         )
 
@@ -16806,7 +16808,7 @@ add_custom_command(TARGET matched_filter PRE_BUILD
 
 
 set(render_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec3/block_buffer.h
         ${webrtc_source_path}modules/audio_processing/aec3/fft_buffer.h
         ${webrtc_source_path}modules/audio_processing/aec3/render_buffer.h
@@ -16856,7 +16858,7 @@ add_custom_command(TARGET render_buffer PRE_BUILD
 
 
 set(vector_math_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec3/vector_math.h
         )
 
@@ -16903,7 +16905,7 @@ add_custom_command(TARGET vector_math PRE_BUILD
 
 
 set(aec_dump_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec_dump/aec_dump_factory.h
         )
 
@@ -16950,7 +16952,7 @@ add_custom_command(TARGET aec_dump PRE_BUILD
 
 
 set(aec_dump_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec_dump/aec_dump_impl.cc
         ${webrtc_source_path}modules/audio_processing/aec_dump/aec_dump_impl.h
         ${webrtc_source_path}modules/audio_processing/aec_dump/capture_stream_info.cc
@@ -17007,7 +17009,7 @@ add_custom_command(TARGET aec_dump_impl PRE_BUILD
 
 
 set(null_aec_dump_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aec_dump/null_aec_dump_factory.cc
         )
 
@@ -17054,7 +17056,7 @@ add_custom_command(TARGET null_aec_dump_factory PRE_BUILD
 
 
 set(aecm_core_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/aecm/aecm_core.cc
         ${webrtc_source_path}modules/audio_processing/aecm/aecm_core.h
         ${webrtc_source_path}modules/audio_processing/aecm/aecm_defines.h
@@ -17107,7 +17109,7 @@ add_custom_command(TARGET aecm_core PRE_BUILD
 
 
 set(rnn_vad_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/features_extraction.cc
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/features_extraction.h
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/rnn.cc
@@ -17157,7 +17159,7 @@ add_custom_command(TARGET rnn_vad PRE_BUILD
 
 
 set(rnn_vad_auto_correlation_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/auto_correlation.cc
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/auto_correlation.h
         )
@@ -17205,7 +17207,7 @@ add_custom_command(TARGET rnn_vad_auto_correlation PRE_BUILD
 
 
 set(rnn_vad_common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/common.h
         )
 
@@ -17252,7 +17254,7 @@ add_custom_command(TARGET rnn_vad_common PRE_BUILD
 
 
 set(rnn_vad_layers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/rnn_fc.h
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/rnn_gru.cc
@@ -17302,7 +17304,7 @@ add_custom_command(TARGET rnn_vad_layers PRE_BUILD
 
 
 set(rnn_vad_lp_residual_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/lp_residual.cc
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/lp_residual.h
         )
@@ -17350,7 +17352,7 @@ add_custom_command(TARGET rnn_vad_lp_residual PRE_BUILD
 
 
 set(rnn_vad_pitch_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/pitch_search.cc
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/pitch_search.h
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/pitch_search_internal.cc
@@ -17400,7 +17402,7 @@ add_custom_command(TARGET rnn_vad_pitch PRE_BUILD
 
 
 set(rnn_vad_ring_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/ring_buffer.h
         )
 
@@ -17447,7 +17449,7 @@ add_custom_command(TARGET rnn_vad_ring_buffer PRE_BUILD
 
 
 set(rnn_vad_sequence_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/sequence_buffer.h
         )
 
@@ -17494,7 +17496,7 @@ add_custom_command(TARGET rnn_vad_sequence_buffer PRE_BUILD
 
 
 set(rnn_vad_spectral_features_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/spectral_features.cc
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/spectral_features.h
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/spectral_features_internal.cc
@@ -17544,7 +17546,7 @@ add_custom_command(TARGET rnn_vad_spectral_features PRE_BUILD
 
 
 set(rnn_vad_symmetric_matrix_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/symmetric_matrix_buffer.h
         )
 
@@ -17591,7 +17593,7 @@ add_custom_command(TARGET rnn_vad_symmetric_matrix_buffer PRE_BUILD
 
 
 set(vector_math1_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/rnn_vad/vector_math.h
         )
 
@@ -17638,7 +17640,7 @@ add_custom_command(TARGET vector_math1 PRE_BUILD
 
 
 set(adaptive_digital_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/adaptive_digital_gain_applier.cc
         ${webrtc_source_path}modules/audio_processing/agc2/adaptive_digital_gain_applier.h
         ${webrtc_source_path}modules/audio_processing/agc2/adaptive_digital_gain_controller.cc
@@ -17695,7 +17697,7 @@ add_custom_command(TARGET adaptive_digital PRE_BUILD
 
 
 set(adaptive_digital_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/adaptive_digital_gain_applier_unittest.cc
         ${webrtc_source_path}modules/audio_processing/agc2/adaptive_mode_level_estimator_unittest.cc
         ${webrtc_source_path}modules/audio_processing/agc2/gain_applier_unittest.cc
@@ -17757,7 +17759,7 @@ add_custom_command(TARGET adaptive_digital_unittests PRE_BUILD
 
 
 set(biquad_filter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/biquad_filter.cc
         ${webrtc_source_path}modules/audio_processing/agc2/biquad_filter.h
         )
@@ -17805,7 +17807,7 @@ add_custom_command(TARGET biquad_filter PRE_BUILD
 
 
 set(biquad_filter_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/biquad_filter_unittest.cc
         )
 
@@ -17861,7 +17863,7 @@ add_custom_command(TARGET biquad_filter_unittests PRE_BUILD
 
 
 set(common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/agc2_common.h
         )
 
@@ -17908,7 +17910,7 @@ add_custom_command(TARGET common PRE_BUILD
 
 
 set(cpu_features_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/cpu_features.cc
         ${webrtc_source_path}modules/audio_processing/agc2/cpu_features.h
         )
@@ -17956,7 +17958,7 @@ add_custom_command(TARGET cpu_features PRE_BUILD
 
 
 set(fixed_digital_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/fixed_digital_level_estimator.cc
         ${webrtc_source_path}modules/audio_processing/agc2/fixed_digital_level_estimator.h
         ${webrtc_source_path}modules/audio_processing/agc2/interpolated_gain_curve.cc
@@ -18009,7 +18011,7 @@ add_custom_command(TARGET fixed_digital PRE_BUILD
 
 
 set(fixed_digital_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/agc2_testing_common_unittest.cc
         ${webrtc_source_path}modules/audio_processing/agc2/compute_interpolated_gain_curve.cc
         ${webrtc_source_path}modules/audio_processing/agc2/compute_interpolated_gain_curve.h
@@ -18074,7 +18076,7 @@ add_custom_command(TARGET fixed_digital_unittests PRE_BUILD
 
 
 set(gain_applier_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/gain_applier.cc
         ${webrtc_source_path}modules/audio_processing/agc2/gain_applier.h
         )
@@ -18122,7 +18124,7 @@ add_custom_command(TARGET gain_applier PRE_BUILD
 
 
 set(noise_estimator_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/noise_level_estimator_unittest.cc
         )
 
@@ -18179,7 +18181,7 @@ add_custom_command(TARGET noise_estimator_unittests PRE_BUILD
 
 
 set(noise_level_estimator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/noise_level_estimator.cc
         ${webrtc_source_path}modules/audio_processing/agc2/noise_level_estimator.h
         )
@@ -18228,7 +18230,7 @@ add_custom_command(TARGET noise_level_estimator PRE_BUILD
 
 
 set(test_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/agc2_testing_common.cc
         ${webrtc_source_path}modules/audio_processing/agc2/agc2_testing_common.h
         ${webrtc_source_path}modules/audio_processing/agc2/vector_float_frame.cc
@@ -18279,7 +18281,7 @@ add_custom_command(TARGET test_utils PRE_BUILD
 
 
 set(vad_wrapper_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/vad_wrapper.cc
         ${webrtc_source_path}modules/audio_processing/agc2/vad_wrapper.h
         )
@@ -18327,7 +18329,7 @@ add_custom_command(TARGET vad_wrapper PRE_BUILD
 
 
 set(vad_wrapper_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc2/vad_wrapper_unittest.cc
         )
 
@@ -18384,7 +18386,7 @@ add_custom_command(TARGET vad_wrapper_unittests PRE_BUILD
 
 
 set(agc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc/agc_manager_direct.cc
         ${webrtc_source_path}modules/audio_processing/agc/agc_manager_direct.h
         )
@@ -18433,7 +18435,7 @@ add_custom_command(TARGET agc PRE_BUILD
 
 
 set(analog_gain_stats_reporter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc/analog_gain_stats_reporter.cc
         ${webrtc_source_path}modules/audio_processing/agc/analog_gain_stats_reporter.h
         )
@@ -18481,7 +18483,7 @@ add_custom_command(TARGET analog_gain_stats_reporter PRE_BUILD
 
 
 set(clipping_predictor_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc/clipping_predictor.cc
         ${webrtc_source_path}modules/audio_processing/agc/clipping_predictor.h
         )
@@ -18529,7 +18531,7 @@ add_custom_command(TARGET clipping_predictor PRE_BUILD
 
 
 set(clipping_predictor_evaluator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc/clipping_predictor_evaluator.cc
         ${webrtc_source_path}modules/audio_processing/agc/clipping_predictor_evaluator.h
         )
@@ -18577,7 +18579,7 @@ add_custom_command(TARGET clipping_predictor_evaluator PRE_BUILD
 
 
 set(clipping_predictor_level_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc/clipping_predictor_level_buffer.cc
         ${webrtc_source_path}modules/audio_processing/agc/clipping_predictor_level_buffer.h
         )
@@ -18625,7 +18627,7 @@ add_custom_command(TARGET clipping_predictor_level_buffer PRE_BUILD
 
 
 set(gain_control_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc/gain_control.h
         )
 
@@ -18672,7 +18674,7 @@ add_custom_command(TARGET gain_control_interface PRE_BUILD
 
 
 set(gain_map_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc/gain_map_internal.h
         )
 
@@ -18719,7 +18721,7 @@ add_custom_command(TARGET gain_map PRE_BUILD
 
 
 set(legacy_agc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc/legacy/analog_agc.cc
         ${webrtc_source_path}modules/audio_processing/agc/legacy/analog_agc.h
         ${webrtc_source_path}modules/audio_processing/agc/legacy/digital_agc.cc
@@ -18770,7 +18772,7 @@ add_custom_command(TARGET legacy_agc PRE_BUILD
 
 
 set(level_estimation_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/agc/agc.cc
         ${webrtc_source_path}modules/audio_processing/agc/agc.h
         ${webrtc_source_path}modules/audio_processing/agc/loudness_histogram.cc
@@ -18822,7 +18824,7 @@ add_custom_command(TARGET level_estimation PRE_BUILD
 
 
 set(capture_levels_adjuster_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/capture_levels_adjuster/audio_samples_scaler.cc
         ${webrtc_source_path}modules/audio_processing/capture_levels_adjuster/audio_samples_scaler.h
         ${webrtc_source_path}modules/audio_processing/capture_levels_adjuster/capture_levels_adjuster.cc
@@ -18872,7 +18874,7 @@ add_custom_command(TARGET capture_levels_adjuster PRE_BUILD
 
 
 set(capture_levels_adjuster_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/capture_levels_adjuster/audio_samples_scaler_unittest.cc
         ${webrtc_source_path}modules/audio_processing/capture_levels_adjuster/capture_levels_adjuster_unittest.cc
         )
@@ -18930,7 +18932,7 @@ add_custom_command(TARGET capture_levels_adjuster_unittests PRE_BUILD
 
 
 set(ns_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/ns/fast_math.cc
         ${webrtc_source_path}modules/audio_processing/ns/fast_math.h
         ${webrtc_source_path}modules/audio_processing/ns/histograms.cc
@@ -19005,7 +19007,7 @@ add_custom_command(TARGET ns PRE_BUILD
 
 
 set(transient_suppressor_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/transient/transient_suppressor.h
         )
 
@@ -19052,7 +19054,7 @@ add_custom_command(TARGET transient_suppressor_api PRE_BUILD
 
 
 set(transient_suppressor_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/transient/common.h
         ${webrtc_source_path}modules/audio_processing/transient/daubechies_8_wavelet_coeffs.h
         ${webrtc_source_path}modules/audio_processing/transient/dyadic_decimator.h
@@ -19112,7 +19114,7 @@ add_custom_command(TARGET transient_suppressor_impl PRE_BUILD
 
 
 set(cascaded_biquad_filter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/utility/cascaded_biquad_filter.cc
         ${webrtc_source_path}modules/audio_processing/utility/cascaded_biquad_filter.h
         )
@@ -19160,7 +19162,7 @@ add_custom_command(TARGET cascaded_biquad_filter PRE_BUILD
 
 
 set(legacy_delay_estimator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/utility/delay_estimator.cc
         ${webrtc_source_path}modules/audio_processing/utility/delay_estimator.h
         ${webrtc_source_path}modules/audio_processing/utility/delay_estimator_internal.h
@@ -19211,7 +19213,7 @@ add_custom_command(TARGET legacy_delay_estimator PRE_BUILD
 
 
 set(pffft_wrapper_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/utility/pffft_wrapper.cc
         ${webrtc_source_path}modules/audio_processing/utility/pffft_wrapper.h
         )
@@ -19259,7 +19261,7 @@ add_custom_command(TARGET pffft_wrapper PRE_BUILD
 
 
 set(vad_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/vad/common.h
         ${webrtc_source_path}modules/audio_processing/vad/gmm.cc
         ${webrtc_source_path}modules/audio_processing/vad/gmm.h
@@ -19325,7 +19327,7 @@ add_custom_command(TARGET vad PRE_BUILD
 
 
 set(aec_dump_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/include/aec_dump.cc
         ${webrtc_source_path}modules/audio_processing/include/aec_dump.h
         )
@@ -19373,7 +19375,7 @@ add_custom_command(TARGET aec_dump_interface PRE_BUILD
 
 
 set(api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/include/audio_processing.cc
         ${webrtc_source_path}modules/audio_processing/include/audio_processing.h
         )
@@ -19421,7 +19423,7 @@ add_custom_command(TARGET api PRE_BUILD
 
 
 set(apm_logging_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/logging/apm_data_dumper.cc
         ${webrtc_source_path}modules/audio_processing/logging/apm_data_dumper.h
         )
@@ -19470,7 +19472,7 @@ add_custom_command(TARGET apm_logging PRE_BUILD
 
 
 set(audio_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/audio_buffer.cc
         ${webrtc_source_path}modules/audio_processing/audio_buffer.h
         ${webrtc_source_path}modules/audio_processing/splitting_filter.cc
@@ -19523,7 +19525,7 @@ add_custom_command(TARGET audio_buffer PRE_BUILD
 
 
 set(audio_frame_proxies_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/include/audio_frame_proxies.cc
         ${webrtc_source_path}modules/audio_processing/include/audio_frame_proxies.h
         )
@@ -19571,7 +19573,7 @@ add_custom_command(TARGET audio_frame_proxies PRE_BUILD
 
 
 set(audio_frame_view_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/include/audio_frame_view.h
         )
 
@@ -19618,7 +19620,7 @@ add_custom_command(TARGET audio_frame_view PRE_BUILD
 
 
 set(audio_processing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/audio_processing_builder_impl.cc
         ${webrtc_source_path}modules/audio_processing/audio_processing_impl.cc
         ${webrtc_source_path}modules/audio_processing/audio_processing_impl.h
@@ -19686,7 +19688,7 @@ add_custom_command(TARGET audio_processing PRE_BUILD
 
 
 set(audio_processing_statistics_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/include/audio_processing_statistics.cc
         ${webrtc_source_path}modules/audio_processing/include/audio_processing_statistics.h
         )
@@ -19734,7 +19736,7 @@ add_custom_command(TARGET audio_processing_statistics PRE_BUILD
 
 
 set(audioproc_debug_proto_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_build_path}/gen/modules/audio_processing/debug.pb.h
         ${webrtc_build_path}/gen/modules/audio_processing/debug.pb.cc
         )
@@ -19771,7 +19773,7 @@ add_custom_command(TARGET audioproc_debug_proto PRE_BUILD
 
 
 set(audioproc_test_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/test/audio_buffer_tools.cc
         ${webrtc_source_path}modules/audio_processing/test/audio_buffer_tools.h
         ${webrtc_source_path}modules/audio_processing/test/audio_processing_builder_for_testing.cc
@@ -19841,7 +19843,7 @@ add_custom_command(TARGET audioproc_test_utils PRE_BUILD
 
 
 set(gain_controller2_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/gain_controller2.cc
         ${webrtc_source_path}modules/audio_processing/gain_controller2.h
         )
@@ -19890,7 +19892,7 @@ add_custom_command(TARGET gain_controller2 PRE_BUILD
 
 
 set(high_pass_filter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/high_pass_filter.cc
         ${webrtc_source_path}modules/audio_processing/high_pass_filter.h
         )
@@ -19938,7 +19940,7 @@ add_custom_command(TARGET high_pass_filter PRE_BUILD
 
 
 set(optionally_built_submodule_creators_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/optionally_built_submodule_creators.cc
         ${webrtc_source_path}modules/audio_processing/optionally_built_submodule_creators.h
         )
@@ -19986,7 +19988,7 @@ add_custom_command(TARGET optionally_built_submodule_creators PRE_BUILD
 
 
 set(rms_level_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/rms_level.cc
         ${webrtc_source_path}modules/audio_processing/rms_level.h
         )
@@ -20034,7 +20036,7 @@ add_custom_command(TARGET rms_level PRE_BUILD
 
 
 set(voice_detection_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/audio_processing/voice_detection.cc
         ${webrtc_source_path}modules/audio_processing/voice_detection.h
         )
@@ -20082,7 +20084,7 @@ add_custom_command(TARGET voice_detection PRE_BUILD
 
 
 set(alr_detector_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/alr_detector.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/alr_detector.h
         )
@@ -20130,7 +20132,7 @@ add_custom_command(TARGET alr_detector PRE_BUILD
 
 
 set(delay_based_bwe_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/delay_based_bwe.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/delay_based_bwe.h
         ${webrtc_source_path}modules/congestion_controller/goog_cc/inter_arrival_delta.cc
@@ -20182,7 +20184,7 @@ add_custom_command(TARGET delay_based_bwe PRE_BUILD
 
 
 set(estimators_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/acknowledged_bitrate_estimator.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/acknowledged_bitrate_estimator.h
         ${webrtc_source_path}modules/congestion_controller/goog_cc/acknowledged_bitrate_estimator_interface.cc
@@ -20243,7 +20245,7 @@ add_custom_command(TARGET estimators PRE_BUILD
 
 
 set(goog_cc2_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/goog_cc_network_control.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/goog_cc_network_control.h
         )
@@ -20293,7 +20295,7 @@ add_custom_command(TARGET goog_cc2 PRE_BUILD
 
 
 set(link_capacity_estimator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/link_capacity_estimator.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/link_capacity_estimator.h
         )
@@ -20341,7 +20343,7 @@ add_custom_command(TARGET link_capacity_estimator PRE_BUILD
 
 
 set(loss_based_bwe_v1_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/loss_based_bandwidth_estimation.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/loss_based_bandwidth_estimation.h
         )
@@ -20390,7 +20392,7 @@ add_custom_command(TARGET loss_based_bwe_v1 PRE_BUILD
 
 
 set(loss_based_bwe_v2_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/loss_based_bwe_v2.h
         )
@@ -20438,7 +20440,7 @@ add_custom_command(TARGET loss_based_bwe_v2 PRE_BUILD
 
 
 set(probe_controller_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/probe_controller.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/probe_controller.h
         )
@@ -20486,7 +20488,7 @@ add_custom_command(TARGET probe_controller PRE_BUILD
 
 
 set(pushback_controller_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/congestion_window_pushback_controller.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/congestion_window_pushback_controller.h
         )
@@ -20535,7 +20537,7 @@ add_custom_command(TARGET pushback_controller PRE_BUILD
 
 
 set(send_side_bwe_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc
         ${webrtc_source_path}modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.h
         )
@@ -20585,7 +20587,7 @@ add_custom_command(TARGET send_side_bwe PRE_BUILD
 
 
 set(control_handler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/rtp/control_handler.cc
         ${webrtc_source_path}modules/congestion_controller/rtp/control_handler.h
         )
@@ -20634,7 +20636,7 @@ add_custom_command(TARGET control_handler PRE_BUILD
 
 
 set(transport_feedback_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/rtp/transport_feedback_adapter.cc
         ${webrtc_source_path}modules/congestion_controller/rtp/transport_feedback_adapter.h
         ${webrtc_source_path}modules/congestion_controller/rtp/transport_feedback_demuxer.cc
@@ -20685,7 +20687,7 @@ add_custom_command(TARGET transport_feedback PRE_BUILD
 
 
 set(congestion_controller_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/congestion_controller/include/receive_side_congestion_controller.h
         ${webrtc_source_path}modules/congestion_controller/receive_side_congestion_controller.cc
         ${webrtc_source_path}modules/congestion_controller/remb_throttler.cc
@@ -20737,7 +20739,7 @@ add_custom_command(TARGET congestion_controller PRE_BUILD
 
 
 set(interval_budget_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/pacing/interval_budget.cc
         ${webrtc_source_path}modules/pacing/interval_budget.h
         )
@@ -20785,7 +20787,7 @@ add_custom_command(TARGET interval_budget PRE_BUILD
 
 
 set(pacing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/pacing/bitrate_prober.cc
         ${webrtc_source_path}modules/pacing/bitrate_prober.h
         ${webrtc_source_path}modules/pacing/paced_sender.cc
@@ -20845,7 +20847,7 @@ add_custom_command(TARGET pacing PRE_BUILD
 
 
 set(bwe_rtp_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/remote_bitrate_estimator/tools/bwe_rtp.cc
         ${webrtc_source_path}modules/remote_bitrate_estimator/tools/bwe_rtp.h
         )
@@ -20895,7 +20897,7 @@ add_custom_command(TARGET bwe_rtp PRE_BUILD
 
 
 set(remote_bitrate_estimator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/remote_bitrate_estimator/aimd_rate_control.cc
         ${webrtc_source_path}modules/remote_bitrate_estimator/aimd_rate_control.h
         ${webrtc_source_path}modules/remote_bitrate_estimator/bwe_defines.cc
@@ -20963,7 +20965,7 @@ add_custom_command(TARGET remote_bitrate_estimator PRE_BUILD
 
 
 set(fec_test_helper_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/rtp_rtcp/source/fec_test_helper.cc
         ${webrtc_source_path}modules/rtp_rtcp/source/fec_test_helper.h
         )
@@ -21013,7 +21015,7 @@ add_custom_command(TARGET fec_test_helper PRE_BUILD
 
 
 set(mock_rtp_rtcp_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(mock_rtp_rtcp STATIC
@@ -21070,7 +21072,7 @@ add_custom_command(TARGET mock_rtp_rtcp PRE_BUILD
 
 
 set(rtcp_transceiver_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/rtp_rtcp/source/rtcp_transceiver.cc
         ${webrtc_source_path}modules/rtp_rtcp/source/rtcp_transceiver_config.cc
         ${webrtc_source_path}modules/rtp_rtcp/source/rtcp_transceiver_impl.cc
@@ -21120,7 +21122,7 @@ add_custom_command(TARGET rtcp_transceiver PRE_BUILD
 
 
 set(rtp_packetizer_av1_test_helper_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/rtp_rtcp/source/rtp_packetizer_av1_test_helper.cc
         ${webrtc_source_path}modules/rtp_rtcp/source/rtp_packetizer_av1_test_helper.h
         )
@@ -21169,7 +21171,7 @@ add_custom_command(TARGET rtp_packetizer_av1_test_helper PRE_BUILD
 
 
 set(rtp_rtcp_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/rtp_rtcp/include/flexfec_receiver.h
         ${webrtc_source_path}modules/rtp_rtcp/include/flexfec_sender.h
         ${webrtc_source_path}modules/rtp_rtcp/include/receive_statistics.h
@@ -21320,7 +21322,7 @@ add_custom_command(TARGET rtp_rtcp PRE_BUILD
 
 
 set(rtp_rtcp_format_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/rtp_rtcp/include/report_block_data.cc
         ${webrtc_source_path}modules/rtp_rtcp/include/rtp_rtcp_defines.cc
         ${webrtc_source_path}modules/rtp_rtcp/source/rtcp_packet.cc
@@ -21410,7 +21412,7 @@ add_custom_command(TARGET rtp_rtcp_format PRE_BUILD
 
 
 set(rtp_rtcp_legacy_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/rtp_rtcp/include/rtp_rtcp.h
         ${webrtc_source_path}modules/rtp_rtcp/source/deprecated/deprecated_rtp_sender_egress.cc
         ${webrtc_source_path}modules/rtp_rtcp/source/deprecated/deprecated_rtp_sender_egress.h
@@ -21462,7 +21464,7 @@ add_custom_command(TARGET rtp_rtcp_legacy PRE_BUILD
 
 
 set(rtp_video_header_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/rtp_rtcp/source/rtp_video_header.cc
         ${webrtc_source_path}modules/rtp_rtcp/source/rtp_video_header.h
         )
@@ -21511,7 +21513,7 @@ add_custom_command(TARGET rtp_video_header PRE_BUILD
 
 
 set(fft_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/third_party/fft/fft.c
         ${webrtc_source_path}modules/third_party/fft/fft.h
         )
@@ -21559,7 +21561,7 @@ add_custom_command(TARGET fft PRE_BUILD
 
 
 set(g711_3p_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/third_party/g711/g711.c
         ${webrtc_source_path}modules/third_party/g711/g711.h
         )
@@ -21607,7 +21609,7 @@ add_custom_command(TARGET g711_3p PRE_BUILD
 
 
 set(g722_3p_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/third_party/g722/g722_decode.c
         ${webrtc_source_path}modules/third_party/g722/g722_enc_dec.h
         ${webrtc_source_path}modules/third_party/g722/g722_encode.c
@@ -21656,7 +21658,7 @@ add_custom_command(TARGET g722_3p PRE_BUILD
 
 
 set(mock_process_thread_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/utility/include/mock/mock_process_thread.h
         )
 
@@ -21713,7 +21715,7 @@ add_custom_command(TARGET mock_process_thread PRE_BUILD
 
 
 set(utility_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/utility/include/process_thread.h
         ${webrtc_source_path}modules/utility/source/process_thread_impl.cc
         ${webrtc_source_path}modules/utility/source/process_thread_impl.h
@@ -21766,7 +21768,7 @@ add_custom_command(TARGET utility PRE_BUILD
 
 
 set(video_capture_internal_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(video_capture_internal_impl STATIC
@@ -21813,7 +21815,7 @@ add_custom_command(TARGET video_capture_internal_impl PRE_BUILD
 
 
 set(video_capture_module_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_capture/device_info_impl.cc
         ${webrtc_source_path}modules/video_capture/device_info_impl.h
         ${webrtc_source_path}modules/video_capture/video_capture.h
@@ -21869,7 +21871,7 @@ add_custom_command(TARGET video_capture_module PRE_BUILD
 
 
 set(av1_svc_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/av1/av1_svc_config.cc
         ${webrtc_source_path}modules/video_coding/codecs/av1/av1_svc_config.h
         )
@@ -21918,7 +21920,7 @@ add_custom_command(TARGET av1_svc_config PRE_BUILD
 
 
 set(dav1d_decoder_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/av1/dav1d_decoder.cc
         )
 
@@ -21969,7 +21971,7 @@ add_custom_command(TARGET dav1d_decoder PRE_BUILD
 
 
 set(libaom_av1_decoder_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/av1/libaom_av1_decoder_absent.cc
         )
 
@@ -22017,7 +22019,7 @@ add_custom_command(TARGET libaom_av1_decoder PRE_BUILD
 
 
 set(libaom_av1_encoder_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/av1/libaom_av1_encoder_absent.cc
         )
 
@@ -22065,7 +22067,7 @@ add_custom_command(TARGET libaom_av1_encoder PRE_BUILD
 
 
 set(nack_module_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/deprecated/nack_module.cc
         ${webrtc_source_path}modules/video_coding/deprecated/nack_module.h
         )
@@ -22113,7 +22115,7 @@ add_custom_command(TARGET nack_module PRE_BUILD
 
 
 set(scalability_structures_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/svc/create_scalability_structure.cc
         ${webrtc_source_path}modules/video_coding/svc/create_scalability_structure.h
         ${webrtc_source_path}modules/video_coding/svc/scalability_structure_full_svc.cc
@@ -22169,7 +22171,7 @@ add_custom_command(TARGET scalability_structures PRE_BUILD
 
 
 set(scalable_video_controller_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/svc/scalable_video_controller.h
         ${webrtc_source_path}modules/video_coding/svc/scalable_video_controller_no_layering.cc
         ${webrtc_source_path}modules/video_coding/svc/scalable_video_controller_no_layering.h
@@ -22218,7 +22220,7 @@ add_custom_command(TARGET scalable_video_controller PRE_BUILD
 
 
 set(svc_rate_allocator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/svc/svc_rate_allocator.cc
         ${webrtc_source_path}modules/video_coding/svc/svc_rate_allocator.h
         )
@@ -22267,7 +22269,7 @@ add_custom_command(TARGET svc_rate_allocator PRE_BUILD
 
 
 set(chain_diff_calculator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/chain_diff_calculator.cc
         ${webrtc_source_path}modules/video_coding/chain_diff_calculator.h
         )
@@ -22315,7 +22317,7 @@ add_custom_command(TARGET chain_diff_calculator PRE_BUILD
 
 
 set(codec_globals_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/h264/include/h264_globals.h
         ${webrtc_source_path}modules/video_coding/codecs/interface/common_constants.h
         ${webrtc_source_path}modules/video_coding/codecs/vp8/include/vp8_globals.h
@@ -22365,7 +22367,7 @@ add_custom_command(TARGET codec_globals_headers PRE_BUILD
 
 
 set(encoded_frame3_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/encoded_frame.cc
         ${webrtc_source_path}modules/video_coding/encoded_frame.h
         )
@@ -22414,7 +22416,7 @@ add_custom_command(TARGET encoded_frame3 PRE_BUILD
 
 
 set(frame_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/frame_buffer3.cc
         ${webrtc_source_path}modules/video_coding/frame_buffer3.h
         )
@@ -22463,7 +22465,7 @@ add_custom_command(TARGET frame_buffer PRE_BUILD
 
 
 set(frame_dependencies_calculator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/frame_dependencies_calculator.cc
         ${webrtc_source_path}modules/video_coding/frame_dependencies_calculator.h
         )
@@ -22511,7 +22513,7 @@ add_custom_command(TARGET frame_dependencies_calculator PRE_BUILD
 
 
 set(h264_packet_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/h264_packet_buffer.cc
         ${webrtc_source_path}modules/video_coding/h264_packet_buffer.h
         )
@@ -22560,7 +22562,7 @@ add_custom_command(TARGET h264_packet_buffer PRE_BUILD
 
 
 set(mock_libvpx_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/interface/mock_libvpx_interface.h
         )
 
@@ -22617,7 +22619,7 @@ add_custom_command(TARGET mock_libvpx_interface PRE_BUILD
 
 
 set(nack_requester_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/histogram.cc
         ${webrtc_source_path}modules/video_coding/histogram.h
         ${webrtc_source_path}modules/video_coding/nack_requester.cc
@@ -22667,7 +22669,7 @@ add_custom_command(TARGET nack_requester PRE_BUILD
 
 
 set(packet_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/packet_buffer.cc
         ${webrtc_source_path}modules/video_coding/packet_buffer.h
         )
@@ -22716,7 +22718,7 @@ add_custom_command(TARGET packet_buffer PRE_BUILD
 
 
 set(video_codec_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/include/video_codec_interface.cc
         ${webrtc_source_path}modules/video_coding/include/video_codec_interface.h
         ${webrtc_source_path}modules/video_coding/include/video_coding_defines.h
@@ -22768,7 +22770,7 @@ add_custom_command(TARGET video_codec_interface PRE_BUILD
 
 
 set(video_coding_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codec_timer.cc
         ${webrtc_source_path}modules/video_coding/codec_timer.h
         ${webrtc_source_path}modules/video_coding/decoder_database.cc
@@ -22865,7 +22867,7 @@ add_custom_command(TARGET video_coding PRE_BUILD
 
 
 set(video_coding_legacy_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/decoding_state.cc
         ${webrtc_source_path}modules/video_coding/decoding_state.h
         ${webrtc_source_path}modules/video_coding/event_wrapper.cc
@@ -22931,7 +22933,7 @@ add_custom_command(TARGET video_coding_legacy PRE_BUILD
 
 
 set(video_coding_utility_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/utility/bandwidth_quality_scaler.cc
         ${webrtc_source_path}modules/video_coding/utility/bandwidth_quality_scaler.h
         ${webrtc_source_path}modules/video_coding/utility/decoded_frames_history.cc
@@ -23003,7 +23005,7 @@ add_custom_command(TARGET video_coding_utility PRE_BUILD
 
 
 set(webrtc_h264_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/h264/h264.cc
         ${webrtc_source_path}modules/video_coding/codecs/h264/h264_color_space.cc
         ${webrtc_source_path}modules/video_coding/codecs/h264/h264_color_space.h
@@ -23060,7 +23062,7 @@ add_custom_command(TARGET webrtc_h264 PRE_BUILD
 
 
 set(webrtc_libvpx_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/interface/libvpx_interface.cc
         ${webrtc_source_path}modules/video_coding/codecs/interface/libvpx_interface.h
         )
@@ -23109,7 +23111,7 @@ add_custom_command(TARGET webrtc_libvpx_interface PRE_BUILD
 
 
 set(webrtc_multiplex_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/multiplex/augmented_video_frame_buffer.cc
         ${webrtc_source_path}modules/video_coding/codecs/multiplex/include/augmented_video_frame_buffer.h
         ${webrtc_source_path}modules/video_coding/codecs/multiplex/include/multiplex_decoder_adapter.h
@@ -23164,7 +23166,7 @@ add_custom_command(TARGET webrtc_multiplex PRE_BUILD
 
 
 set(webrtc_vp8_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/vp8/include/vp8.h
         ${webrtc_source_path}modules/video_coding/codecs/vp8/libvpx_vp8_decoder.cc
         ${webrtc_source_path}modules/video_coding/codecs/vp8/libvpx_vp8_decoder.h
@@ -23217,7 +23219,7 @@ add_custom_command(TARGET webrtc_vp8 PRE_BUILD
 
 
 set(webrtc_vp8_temporal_layers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/vp8/default_temporal_layers.cc
         ${webrtc_source_path}modules/video_coding/codecs/vp8/default_temporal_layers.h
         ${webrtc_source_path}modules/video_coding/codecs/vp8/include/temporal_layers_checker.h
@@ -23271,7 +23273,7 @@ add_custom_command(TARGET webrtc_vp8_temporal_layers PRE_BUILD
 
 
 set(webrtc_vp9_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/vp9/include/vp9.h
         ${webrtc_source_path}modules/video_coding/codecs/vp9/libvpx_vp9_decoder.cc
         ${webrtc_source_path}modules/video_coding/codecs/vp9/libvpx_vp9_decoder.h
@@ -23327,7 +23329,7 @@ add_custom_command(TARGET webrtc_vp9 PRE_BUILD
 
 
 set(webrtc_vp9_helpers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_coding/codecs/vp9/svc_config.cc
         ${webrtc_source_path}modules/video_coding/codecs/vp9/svc_config.h
         )
@@ -23376,7 +23378,7 @@ add_custom_command(TARGET webrtc_vp9_helpers PRE_BUILD
 
 
 set(denoiser_filter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_processing/util/denoiser_filter.h
         )
 
@@ -23423,7 +23425,7 @@ add_custom_command(TARGET denoiser_filter PRE_BUILD
 
 
 set(video_processing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_processing/util/denoiser_filter.cc
         ${webrtc_source_path}modules/video_processing/util/denoiser_filter_c.cc
         ${webrtc_source_path}modules/video_processing/util/denoiser_filter_c.h
@@ -23479,7 +23481,7 @@ add_custom_command(TARGET video_processing PRE_BUILD
 
 
 set(video_processing_neon_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/video_processing/util/denoiser_filter_neon.cc
         ${webrtc_source_path}modules/video_processing/util/denoiser_filter_neon.h
         )
@@ -23527,7 +23529,7 @@ add_custom_command(TARGET video_processing_neon PRE_BUILD
 
 
 set(module_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/include/module.h
         ${webrtc_source_path}modules/include/module_common_types.h
         )
@@ -23575,7 +23577,7 @@ add_custom_command(TARGET module_api PRE_BUILD
 
 
 set(module_api_public_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/include/module_common_types_public.h
         )
 
@@ -23622,7 +23624,7 @@ add_custom_command(TARGET module_api_public PRE_BUILD
 
 
 set(module_fec_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}modules/include/module_fec_types.h
         )
 
@@ -23669,7 +23671,7 @@ add_custom_command(TARGET module_fec_api PRE_BUILD
 
 
 set(handover_testing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/common/handover_testing.cc
         ${webrtc_source_path}net/dcsctp/common/handover_testing.h
         )
@@ -23718,7 +23720,7 @@ add_custom_command(TARGET handover_testing PRE_BUILD
 
 
 set(internal_types_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/common/internal_types.h
         )
 
@@ -23765,7 +23767,7 @@ add_custom_command(TARGET internal_types PRE_BUILD
 
 
 set(math_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/common/math.h
         )
 
@@ -23812,7 +23814,7 @@ add_custom_command(TARGET math PRE_BUILD
 
 
 set(sequence_numbers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/common/sequence_numbers.h
         )
 
@@ -23859,7 +23861,7 @@ add_custom_command(TARGET sequence_numbers PRE_BUILD
 
 
 set(str_join_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/common/str_join.h
         )
 
@@ -23906,7 +23908,7 @@ add_custom_command(TARGET str_join PRE_BUILD
 
 
 set(bounded_io_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/packet/bounded_byte_reader.h
         ${webrtc_source_path}net/dcsctp/packet/bounded_byte_writer.h
         )
@@ -23954,7 +23956,7 @@ add_custom_command(TARGET bounded_io PRE_BUILD
 
 
 set(chunk_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/packet/chunk/abort_chunk.cc
         ${webrtc_source_path}net/dcsctp/packet/chunk/abort_chunk.h
         ${webrtc_source_path}net/dcsctp/packet/chunk/chunk.cc
@@ -24038,7 +24040,7 @@ add_custom_command(TARGET chunk PRE_BUILD
 
 
 set(chunk_validators_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/packet/chunk_validators.cc
         ${webrtc_source_path}net/dcsctp/packet/chunk_validators.h
         )
@@ -24086,7 +24088,7 @@ add_custom_command(TARGET chunk_validators PRE_BUILD
 
 
 set(crc32c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/packet/crc32c.cc
         ${webrtc_source_path}net/dcsctp/packet/crc32c.h
         )
@@ -24134,7 +24136,7 @@ add_custom_command(TARGET crc32c PRE_BUILD
 
 
 set(data_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/packet/data.h
         )
 
@@ -24181,7 +24183,7 @@ add_custom_command(TARGET data PRE_BUILD
 
 
 set(error_cause_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/packet/error_cause/cookie_received_while_shutting_down_cause.cc
         ${webrtc_source_path}net/dcsctp/packet/error_cause/cookie_received_while_shutting_down_cause.h
         ${webrtc_source_path}net/dcsctp/packet/error_cause/error_cause.cc
@@ -24255,7 +24257,7 @@ add_custom_command(TARGET error_cause PRE_BUILD
 
 
 set(parameter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/packet/parameter/add_incoming_streams_request_parameter.cc
         ${webrtc_source_path}net/dcsctp/packet/parameter/add_incoming_streams_request_parameter.h
         ${webrtc_source_path}net/dcsctp/packet/parameter/add_outgoing_streams_request_parameter.cc
@@ -24323,7 +24325,7 @@ add_custom_command(TARGET parameter PRE_BUILD
 
 
 set(sctp_packet_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/packet/sctp_packet.cc
         ${webrtc_source_path}net/dcsctp/packet/sctp_packet.h
         )
@@ -24371,7 +24373,7 @@ add_custom_command(TARGET sctp_packet PRE_BUILD
 
 
 set(tlv_trait_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/packet/tlv_trait.cc
         ${webrtc_source_path}net/dcsctp/packet/tlv_trait.h
         )
@@ -24419,7 +24421,7 @@ add_custom_command(TARGET tlv_trait PRE_BUILD
 
 
 set(factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/public/dcsctp_socket_factory.cc
         ${webrtc_source_path}net/dcsctp/public/dcsctp_socket_factory.h
         )
@@ -24467,7 +24469,7 @@ add_custom_command(TARGET factory PRE_BUILD
 
 
 set(mocks_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/public/mock_dcsctp_socket.h
         )
 
@@ -24524,7 +24526,7 @@ add_custom_command(TARGET mocks PRE_BUILD
 
 
 set(socket_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/public/dcsctp_handover_state.cc
         ${webrtc_source_path}net/dcsctp/public/dcsctp_handover_state.h
         ${webrtc_source_path}net/dcsctp/public/dcsctp_socket.h
@@ -24575,7 +24577,7 @@ add_custom_command(TARGET socket PRE_BUILD
 
 
 set(types_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/public/dcsctp_message.h
         ${webrtc_source_path}net/dcsctp/public/dcsctp_options.h
         ${webrtc_source_path}net/dcsctp/public/types.h
@@ -24624,7 +24626,7 @@ add_custom_command(TARGET types PRE_BUILD
 
 
 set(utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/public/text_pcap_packet_observer.cc
         ${webrtc_source_path}net/dcsctp/public/text_pcap_packet_observer.h
         )
@@ -24672,7 +24674,7 @@ add_custom_command(TARGET utils PRE_BUILD
 
 
 set(data_tracker_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/rx/data_tracker.cc
         ${webrtc_source_path}net/dcsctp/rx/data_tracker.h
         )
@@ -24720,7 +24722,7 @@ add_custom_command(TARGET data_tracker PRE_BUILD
 
 
 set(reassembly_queue_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/rx/reassembly_queue.cc
         ${webrtc_source_path}net/dcsctp/rx/reassembly_queue.h
         )
@@ -24768,7 +24770,7 @@ add_custom_command(TARGET reassembly_queue PRE_BUILD
 
 
 set(reassembly_streams_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/rx/reassembly_streams.h
         )
 
@@ -24815,7 +24817,7 @@ add_custom_command(TARGET reassembly_streams PRE_BUILD
 
 
 set(traditional_reassembly_streams_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/rx/traditional_reassembly_streams.cc
         ${webrtc_source_path}net/dcsctp/rx/traditional_reassembly_streams.h
         )
@@ -24863,7 +24865,7 @@ add_custom_command(TARGET traditional_reassembly_streams PRE_BUILD
 
 
 set(context_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/socket/context.h
         )
 
@@ -24910,7 +24912,7 @@ add_custom_command(TARGET context PRE_BUILD
 
 
 set(dcsctp_socket_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/socket/callback_deferrer.cc
         ${webrtc_source_path}net/dcsctp/socket/callback_deferrer.h
         ${webrtc_source_path}net/dcsctp/socket/dcsctp_socket.cc
@@ -24962,7 +24964,7 @@ add_custom_command(TARGET dcsctp_socket PRE_BUILD
 
 
 set(heartbeat_handler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/socket/heartbeat_handler.cc
         ${webrtc_source_path}net/dcsctp/socket/heartbeat_handler.h
         )
@@ -25010,7 +25012,7 @@ add_custom_command(TARGET heartbeat_handler PRE_BUILD
 
 
 set(packet_sender_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/socket/packet_sender.cc
         ${webrtc_source_path}net/dcsctp/socket/packet_sender.h
         )
@@ -25058,7 +25060,7 @@ add_custom_command(TARGET packet_sender PRE_BUILD
 
 
 set(stream_reset_handler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/socket/stream_reset_handler.cc
         ${webrtc_source_path}net/dcsctp/socket/stream_reset_handler.h
         )
@@ -25106,7 +25108,7 @@ add_custom_command(TARGET stream_reset_handler PRE_BUILD
 
 
 set(transmission_control_block_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/socket/capabilities.h
         ${webrtc_source_path}net/dcsctp/socket/transmission_control_block.cc
         ${webrtc_source_path}net/dcsctp/socket/transmission_control_block.h
@@ -25155,7 +25157,7 @@ add_custom_command(TARGET transmission_control_block PRE_BUILD
 
 
 set(task_queue_timeout_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/timer/task_queue_timeout.cc
         ${webrtc_source_path}net/dcsctp/timer/task_queue_timeout.h
         )
@@ -25203,7 +25205,7 @@ add_custom_command(TARGET task_queue_timeout PRE_BUILD
 
 
 set(timer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/timer/fake_timeout.h
         ${webrtc_source_path}net/dcsctp/timer/timer.cc
         ${webrtc_source_path}net/dcsctp/timer/timer.h
@@ -25252,7 +25254,7 @@ add_custom_command(TARGET timer PRE_BUILD
 
 
 set(outstanding_data_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/tx/outstanding_data.cc
         ${webrtc_source_path}net/dcsctp/tx/outstanding_data.h
         )
@@ -25300,7 +25302,7 @@ add_custom_command(TARGET outstanding_data PRE_BUILD
 
 
 set(retransmission_error_counter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/tx/retransmission_error_counter.cc
         ${webrtc_source_path}net/dcsctp/tx/retransmission_error_counter.h
         )
@@ -25348,7 +25350,7 @@ add_custom_command(TARGET retransmission_error_counter PRE_BUILD
 
 
 set(retransmission_queue_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/tx/retransmission_queue.cc
         ${webrtc_source_path}net/dcsctp/tx/retransmission_queue.h
         )
@@ -25396,7 +25398,7 @@ add_custom_command(TARGET retransmission_queue PRE_BUILD
 
 
 set(retransmission_timeout_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/tx/retransmission_timeout.cc
         ${webrtc_source_path}net/dcsctp/tx/retransmission_timeout.h
         )
@@ -25444,7 +25446,7 @@ add_custom_command(TARGET retransmission_timeout PRE_BUILD
 
 
 set(rr_send_queue_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/tx/rr_send_queue.cc
         ${webrtc_source_path}net/dcsctp/tx/rr_send_queue.h
         )
@@ -25492,7 +25494,7 @@ add_custom_command(TARGET rr_send_queue PRE_BUILD
 
 
 set(send_queue_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}net/dcsctp/tx/send_queue.h
         )
 
@@ -25539,7 +25541,7 @@ add_custom_command(TARGET send_queue PRE_BUILD
 
 
 set(libstunprober_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}p2p/stunprober/stun_prober.cc
         ${webrtc_source_path}p2p/stunprober/stun_prober.h
         )
@@ -25588,7 +25590,7 @@ add_custom_command(TARGET libstunprober PRE_BUILD
 
 
 set(p2p_server_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}p2p/base/stun_server.cc
         ${webrtc_source_path}p2p/base/stun_server.h
         ${webrtc_source_path}p2p/base/turn_server.cc
@@ -25640,7 +25642,7 @@ add_custom_command(TARGET p2p_server_utils PRE_BUILD
 
 
 set(rtc_p2p_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}p2p/base/async_stun_tcp_socket.cc
         ${webrtc_source_path}p2p/base/async_stun_tcp_socket.h
         ${webrtc_source_path}p2p/base/basic_async_resolver_factory.cc
@@ -25750,7 +25752,7 @@ add_custom_command(TARGET rtc_p2p PRE_BUILD
 
 
 set(audio_rtp_receiver_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/audio_rtp_receiver.cc
         ${webrtc_source_path}pc/audio_rtp_receiver.h
         )
@@ -25799,7 +25801,7 @@ add_custom_command(TARGET audio_rtp_receiver PRE_BUILD
 
 
 set(audio_track_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/audio_track.cc
         ${webrtc_source_path}pc/audio_track.h
         )
@@ -25848,7 +25850,7 @@ add_custom_command(TARGET audio_track PRE_BUILD
 
 
 set(connection_context_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/connection_context.cc
         ${webrtc_source_path}pc/connection_context.h
         )
@@ -25897,7 +25899,7 @@ add_custom_command(TARGET connection_context PRE_BUILD
 
 
 set(dtmf_sender_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/dtmf_sender.cc
         ${webrtc_source_path}pc/dtmf_sender.h
         )
@@ -25946,7 +25948,7 @@ add_custom_command(TARGET dtmf_sender PRE_BUILD
 
 
 set(jitter_buffer_delay_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/jitter_buffer_delay.cc
         ${webrtc_source_path}pc/jitter_buffer_delay.h
         )
@@ -25994,7 +25996,7 @@ add_custom_command(TARGET jitter_buffer_delay PRE_BUILD
 
 
 set(libjingle_peerconnection_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(libjingle_peerconnection STATIC
@@ -26041,7 +26043,7 @@ add_custom_command(TARGET libjingle_peerconnection PRE_BUILD
 
 
 set(media_protocol_names_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/media_protocol_names.cc
         ${webrtc_source_path}pc/media_protocol_names.h
         )
@@ -26089,7 +26091,7 @@ add_custom_command(TARGET media_protocol_names PRE_BUILD
 
 
 set(media_stream_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/media_stream.cc
         ${webrtc_source_path}pc/media_stream.h
         )
@@ -26138,7 +26140,7 @@ add_custom_command(TARGET media_stream PRE_BUILD
 
 
 set(peer_connection_message_handler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/peer_connection_message_handler.cc
         ${webrtc_source_path}pc/peer_connection_message_handler.h
         )
@@ -26187,7 +26189,7 @@ add_custom_command(TARGET peer_connection_message_handler PRE_BUILD
 
 
 set(peerconnection_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/data_channel_controller.cc
         ${webrtc_source_path}pc/data_channel_controller.h
         ${webrtc_source_path}pc/data_channel_utils.cc
@@ -26272,7 +26274,7 @@ add_custom_command(TARGET peerconnection PRE_BUILD
 
 
 set(proxy_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/proxy.cc
         ${webrtc_source_path}pc/proxy.h
         )
@@ -26320,7 +26322,7 @@ add_custom_command(TARGET proxy PRE_BUILD
 
 
 set(remote_audio_source_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/remote_audio_source.cc
         ${webrtc_source_path}pc/remote_audio_source.h
         )
@@ -26369,7 +26371,7 @@ add_custom_command(TARGET remote_audio_source PRE_BUILD
 
 
 set(rtc_pc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(rtc_pc STATIC
@@ -26417,7 +26419,7 @@ add_custom_command(TARGET rtc_pc PRE_BUILD
 
 
 set(rtc_pc_base_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/channel.cc
         ${webrtc_source_path}pc/channel.h
         ${webrtc_source_path}pc/channel_interface.h
@@ -26540,7 +26542,7 @@ add_custom_command(TARGET rtc_pc_base PRE_BUILD
 
 
 set(rtp_parameters_conversion_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/rtp_parameters_conversion.cc
         ${webrtc_source_path}pc/rtp_parameters_conversion.h
         )
@@ -26589,7 +26591,7 @@ add_custom_command(TARGET rtp_parameters_conversion PRE_BUILD
 
 
 set(rtp_receiver4_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/rtp_receiver.cc
         ${webrtc_source_path}pc/rtp_receiver.h
         )
@@ -26638,7 +26640,7 @@ add_custom_command(TARGET rtp_receiver4 PRE_BUILD
 
 
 set(rtp_sender5_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/rtp_sender.cc
         ${webrtc_source_path}pc/rtp_sender.h
         )
@@ -26687,7 +26689,7 @@ add_custom_command(TARGET rtp_sender5 PRE_BUILD
 
 
 set(rtp_transceiver_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/rtp_transceiver.cc
         ${webrtc_source_path}pc/rtp_transceiver.h
         )
@@ -26736,7 +26738,7 @@ add_custom_command(TARGET rtp_transceiver PRE_BUILD
 
 
 set(rtp_transmission_manager_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/rtp_transmission_manager.cc
         ${webrtc_source_path}pc/rtp_transmission_manager.h
         )
@@ -26785,7 +26787,7 @@ add_custom_command(TARGET rtp_transmission_manager PRE_BUILD
 
 
 set(sdp_state_provider_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/sdp_state_provider.h
         )
 
@@ -26833,7 +26835,7 @@ add_custom_command(TARGET sdp_state_provider PRE_BUILD
 
 
 set(session_description_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/session_description.cc
         ${webrtc_source_path}pc/session_description.h
         )
@@ -26882,7 +26884,7 @@ add_custom_command(TARGET session_description PRE_BUILD
 
 
 set(simulcast_description_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/simulcast_description.cc
         ${webrtc_source_path}pc/simulcast_description.h
         )
@@ -26930,7 +26932,7 @@ add_custom_command(TARGET simulcast_description PRE_BUILD
 
 
 set(stats_collector_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/stats_collector_interface.h
         )
 
@@ -26978,7 +26980,7 @@ add_custom_command(TARGET stats_collector_interface PRE_BUILD
 
 
 set(transceiver_list_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/transceiver_list.cc
         ${webrtc_source_path}pc/transceiver_list.h
         )
@@ -27027,7 +27029,7 @@ add_custom_command(TARGET transceiver_list PRE_BUILD
 
 
 set(usage_pattern_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/usage_pattern.cc
         ${webrtc_source_path}pc/usage_pattern.h
         )
@@ -27076,7 +27078,7 @@ add_custom_command(TARGET usage_pattern PRE_BUILD
 
 
 set(video_rtp_receiver_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/video_rtp_receiver.cc
         ${webrtc_source_path}pc/video_rtp_receiver.h
         )
@@ -27125,7 +27127,7 @@ add_custom_command(TARGET video_rtp_receiver PRE_BUILD
 
 
 set(video_rtp_track_source_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/video_rtp_track_source.cc
         ${webrtc_source_path}pc/video_rtp_track_source.h
         )
@@ -27174,7 +27176,7 @@ add_custom_command(TARGET video_rtp_track_source PRE_BUILD
 
 
 set(video_track_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/video_track.cc
         ${webrtc_source_path}pc/video_track.h
         )
@@ -27223,7 +27225,7 @@ add_custom_command(TARGET video_track PRE_BUILD
 
 
 set(video_track_source_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}pc/video_track_source.cc
         ${webrtc_source_path}pc/video_track_source.h
         )
@@ -27272,7 +27274,7 @@ add_custom_command(TARGET video_track_source PRE_BUILD
 
 
 set(flat_containers_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/containers/as_const.h
         ${webrtc_source_path}rtc_base/containers/flat_tree.cc
         ${webrtc_source_path}rtc_base/containers/flat_tree.h
@@ -27326,7 +27328,7 @@ add_custom_command(TARGET flat_containers_internal PRE_BUILD
 
 
 set(flat_map_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/containers/flat_map.h
         )
 
@@ -27373,7 +27375,7 @@ add_custom_command(TARGET flat_map PRE_BUILD
 
 
 set(flat_set_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/containers/flat_set.h
         )
 
@@ -27420,7 +27422,7 @@ add_custom_command(TARGET flat_set PRE_BUILD
 
 
 set(unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/containers/flat_map_unittest.cc
         ${webrtc_source_path}rtc_base/containers/flat_set_unittest.cc
         ${webrtc_source_path}rtc_base/containers/flat_tree_unittest.cc
@@ -27480,7 +27482,7 @@ add_custom_command(TARGET unittests PRE_BUILD
 
 
 set(alr_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/alr_experiment.cc
         ${webrtc_source_path}rtc_base/experiments/alr_experiment.h
         )
@@ -27528,7 +27530,7 @@ add_custom_command(TARGET alr_experiment PRE_BUILD
 
 
 set(balanced_degradation_settings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/balanced_degradation_settings.cc
         ${webrtc_source_path}rtc_base/experiments/balanced_degradation_settings.h
         )
@@ -27577,7 +27579,7 @@ add_custom_command(TARGET balanced_degradation_settings PRE_BUILD
 
 
 set(bandwidth_quality_scaler_settings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/bandwidth_quality_scaler_settings.cc
         ${webrtc_source_path}rtc_base/experiments/bandwidth_quality_scaler_settings.h
         )
@@ -27625,7 +27627,7 @@ add_custom_command(TARGET bandwidth_quality_scaler_settings PRE_BUILD
 
 
 set(cpu_speed_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/cpu_speed_experiment.cc
         ${webrtc_source_path}rtc_base/experiments/cpu_speed_experiment.h
         )
@@ -27673,7 +27675,7 @@ add_custom_command(TARGET cpu_speed_experiment PRE_BUILD
 
 
 set(encoder_info_settings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/encoder_info_settings.cc
         ${webrtc_source_path}rtc_base/experiments/encoder_info_settings.h
         )
@@ -27722,7 +27724,7 @@ add_custom_command(TARGET encoder_info_settings PRE_BUILD
 
 
 set(field_trial_parser_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/field_trial_list.cc
         ${webrtc_source_path}rtc_base/experiments/field_trial_list.h
         ${webrtc_source_path}rtc_base/experiments/field_trial_parser.cc
@@ -27776,7 +27778,7 @@ add_custom_command(TARGET field_trial_parser PRE_BUILD
 
 
 set(jitter_upper_bound_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/jitter_upper_bound_experiment.cc
         ${webrtc_source_path}rtc_base/experiments/jitter_upper_bound_experiment.h
         )
@@ -27824,7 +27826,7 @@ add_custom_command(TARGET jitter_upper_bound_experiment PRE_BUILD
 
 
 set(keyframe_interval_settings_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/keyframe_interval_settings.cc
         ${webrtc_source_path}rtc_base/experiments/keyframe_interval_settings.h
         )
@@ -27872,7 +27874,7 @@ add_custom_command(TARGET keyframe_interval_settings_experiment PRE_BUILD
 
 
 set(min_video_bitrate_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/min_video_bitrate_experiment.cc
         ${webrtc_source_path}rtc_base/experiments/min_video_bitrate_experiment.h
         )
@@ -27921,7 +27923,7 @@ add_custom_command(TARGET min_video_bitrate_experiment PRE_BUILD
 
 
 set(normalize_simulcast_size_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/normalize_simulcast_size_experiment.cc
         ${webrtc_source_path}rtc_base/experiments/normalize_simulcast_size_experiment.h
         )
@@ -27969,7 +27971,7 @@ add_custom_command(TARGET normalize_simulcast_size_experiment PRE_BUILD
 
 
 set(quality_rampup_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/quality_rampup_experiment.cc
         ${webrtc_source_path}rtc_base/experiments/quality_rampup_experiment.h
         )
@@ -28017,7 +28019,7 @@ add_custom_command(TARGET quality_rampup_experiment PRE_BUILD
 
 
 set(quality_scaler_settings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/quality_scaler_settings.cc
         ${webrtc_source_path}rtc_base/experiments/quality_scaler_settings.h
         )
@@ -28065,7 +28067,7 @@ add_custom_command(TARGET quality_scaler_settings PRE_BUILD
 
 
 set(quality_scaling_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/quality_scaling_experiment.cc
         ${webrtc_source_path}rtc_base/experiments/quality_scaling_experiment.h
         )
@@ -28114,7 +28116,7 @@ add_custom_command(TARGET quality_scaling_experiment PRE_BUILD
 
 
 set(rate_control_settings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/rate_control_settings.cc
         ${webrtc_source_path}rtc_base/experiments/rate_control_settings.h
         )
@@ -28163,7 +28165,7 @@ add_custom_command(TARGET rate_control_settings PRE_BUILD
 
 
 set(rtt_mult_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/rtt_mult_experiment.cc
         ${webrtc_source_path}rtc_base/experiments/rtt_mult_experiment.h
         )
@@ -28211,7 +28213,7 @@ add_custom_command(TARGET rtt_mult_experiment PRE_BUILD
 
 
 set(stable_target_rate_experiment_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/experiments/stable_target_rate_experiment.cc
         ${webrtc_source_path}rtc_base/experiments/stable_target_rate_experiment.h
         )
@@ -28260,7 +28262,7 @@ add_custom_command(TARGET stable_target_rate_experiment PRE_BUILD
 
 
 set(aligned_malloc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/memory/aligned_malloc.cc
         ${webrtc_source_path}rtc_base/memory/aligned_malloc.h
         )
@@ -28308,7 +28310,7 @@ add_custom_command(TARGET aligned_malloc PRE_BUILD
 
 
 set(fifo_buffer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/memory/fifo_buffer.cc
         ${webrtc_source_path}rtc_base/memory/fifo_buffer.h
         )
@@ -28357,7 +28359,7 @@ add_custom_command(TARGET fifo_buffer PRE_BUILD
 
 
 set(unittests6_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/memory/aligned_malloc_unittest.cc
         ${webrtc_source_path}rtc_base/memory/fifo_buffer_unittest.cc
         )
@@ -28415,7 +28417,7 @@ add_custom_command(TARGET unittests6 PRE_BUILD
 
 
 set(sent_packet_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/network/sent_packet.cc
         ${webrtc_source_path}rtc_base/network/sent_packet.h
         )
@@ -28463,7 +28465,7 @@ add_custom_command(TARGET sent_packet PRE_BUILD
 
 
 set(mutex_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/synchronization/mutex.cc
         ${webrtc_source_path}rtc_base/synchronization/mutex.h
         ${webrtc_source_path}rtc_base/synchronization/mutex_critical_section.h
@@ -28513,7 +28515,7 @@ add_custom_command(TARGET mutex PRE_BUILD
 
 
 set(sequence_checker_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/synchronization/sequence_checker_internal.cc
         ${webrtc_source_path}rtc_base/synchronization/sequence_checker_internal.h
         )
@@ -28561,7 +28563,7 @@ add_custom_command(TARGET sequence_checker_internal PRE_BUILD
 
 
 set(yield_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/synchronization/yield.cc
         ${webrtc_source_path}rtc_base/synchronization/yield.h
         )
@@ -28609,7 +28611,7 @@ add_custom_command(TARGET yield PRE_BUILD
 
 
 set(yield_policy_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/synchronization/yield_policy.cc
         ${webrtc_source_path}rtc_base/synchronization/yield_policy.h
         )
@@ -28657,7 +28659,7 @@ add_custom_command(TARGET yield_policy PRE_BUILD
 
 
 set(arch_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/arch.h
         )
 
@@ -28704,7 +28706,7 @@ add_custom_command(TARGET arch PRE_BUILD
 
 
 set(asm_defines_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/asm_defines.h
         )
 
@@ -28751,7 +28753,7 @@ add_custom_command(TARGET asm_defines PRE_BUILD
 
 
 set(assume_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/assume.h
         )
 
@@ -28798,7 +28800,7 @@ add_custom_command(TARGET assume PRE_BUILD
 
 
 set(file_wrapper_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/file_wrapper.cc
         ${webrtc_source_path}rtc_base/system/file_wrapper.h
         )
@@ -28846,7 +28848,7 @@ add_custom_command(TARGET file_wrapper PRE_BUILD
 
 
 set(ignore_warnings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/ignore_warnings.h
         )
 
@@ -28893,7 +28895,7 @@ add_custom_command(TARGET ignore_warnings PRE_BUILD
 
 
 set(inline_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/inline.h
         )
 
@@ -28940,7 +28942,7 @@ add_custom_command(TARGET inline PRE_BUILD
 
 
 set(no_unique_address_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/no_unique_address.h
         )
 
@@ -28987,7 +28989,7 @@ add_custom_command(TARGET no_unique_address PRE_BUILD
 
 
 set(rtc_export_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/rtc_export.h
         ${webrtc_source_path}rtc_base/system/rtc_export_template.h
         )
@@ -29035,7 +29037,7 @@ add_custom_command(TARGET rtc_export PRE_BUILD
 
 
 set(thread_registry_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/thread_registry.h
         ${webrtc_source_path}rtc_base/system/thread_registry.cc
         )
@@ -29083,7 +29085,7 @@ add_custom_command(TARGET thread_registry PRE_BUILD
 
 
 set(unused_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/unused.h
         )
 
@@ -29130,7 +29132,7 @@ add_custom_command(TARGET unused PRE_BUILD
 
 
 set(warn_current_thread_is_deadlocked_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system/warn_current_thread_is_deadlocked.h
         ${webrtc_source_path}rtc_base/system/warn_current_thread_is_deadlocked.cc
         )
@@ -29178,7 +29180,7 @@ add_custom_command(TARGET warn_current_thread_is_deadlocked PRE_BUILD
 
 
 set(pending_task_safety_flag_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/task_utils/pending_task_safety_flag.cc
         ${webrtc_source_path}rtc_base/task_utils/pending_task_safety_flag.h
         )
@@ -29226,7 +29228,7 @@ add_custom_command(TARGET pending_task_safety_flag PRE_BUILD
 
 
 set(repeating_task_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/task_utils/repeating_task.cc
         ${webrtc_source_path}rtc_base/task_utils/repeating_task.h
         )
@@ -29274,7 +29276,7 @@ add_custom_command(TARGET repeating_task PRE_BUILD
 
 
 set(to_queued_task_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/task_utils/to_queued_task.h
         )
 
@@ -29321,7 +29323,7 @@ add_custom_command(TARGET to_queued_task PRE_BUILD
 
 
 set(base64_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/third_party/base64/base64.cc
         ${webrtc_source_path}rtc_base/third_party/base64/base64.h
         )
@@ -29369,7 +29371,7 @@ add_custom_command(TARGET base64 PRE_BUILD
 
 
 set(sigslot_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/third_party/sigslot/sigslot.cc
         ${webrtc_source_path}rtc_base/third_party/sigslot/sigslot.h
         )
@@ -29417,7 +29419,7 @@ add_custom_command(TARGET sigslot PRE_BUILD
 
 
 set(timestamp_extrapolator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/time/timestamp_extrapolator.cc
         ${webrtc_source_path}rtc_base/time/timestamp_extrapolator.h
         )
@@ -29465,7 +29467,7 @@ add_custom_command(TARGET timestamp_extrapolator PRE_BUILD
 
 
 set(unit_base_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/units/unit_base.h
         )
 
@@ -29512,7 +29514,7 @@ add_custom_command(TARGET unit_base PRE_BUILD
 
 
 set(async_resolver_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/async_resolver_interface.cc
         ${webrtc_source_path}rtc_base/async_resolver_interface.h
         )
@@ -29560,7 +29562,7 @@ add_custom_command(TARGET async_resolver_interface PRE_BUILD
 
 
 set(async_socket_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/async_socket.cc
         ${webrtc_source_path}rtc_base/async_socket.h
         )
@@ -29608,7 +29610,7 @@ add_custom_command(TARGET async_socket PRE_BUILD
 
 
 set(atomicops_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/atomic_ops.h
         )
 
@@ -29655,7 +29657,7 @@ add_custom_command(TARGET atomicops PRE_BUILD
 
 
 set(audio_format_to_string_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/strings/audio_format_to_string.cc
         ${webrtc_source_path}rtc_base/strings/audio_format_to_string.h
         )
@@ -29703,7 +29705,7 @@ add_custom_command(TARGET audio_format_to_string PRE_BUILD
 
 
 set(bitstream_reader_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/bitstream_reader.cc
         ${webrtc_source_path}rtc_base/bitstream_reader.h
         )
@@ -29751,7 +29753,7 @@ add_custom_command(TARGET bitstream_reader PRE_BUILD
 
 
 set(bounded_inline_vector_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/bounded_inline_vector_impl.h
         )
 
@@ -29798,7 +29800,7 @@ add_custom_command(TARGET bounded_inline_vector PRE_BUILD
 
 
 set(callback_list_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/callback_list.cc
         ${webrtc_source_path}rtc_base/callback_list.h
         )
@@ -29846,7 +29848,7 @@ add_custom_command(TARGET callback_list PRE_BUILD
 
 
 set(callback_list_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/callback_list_unittest.cc
         )
 
@@ -29903,7 +29905,7 @@ add_custom_command(TARGET callback_list_unittests PRE_BUILD
 
 
 set(checks_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/checks.cc
         ${webrtc_source_path}rtc_base/checks.h
         )
@@ -29951,7 +29953,7 @@ add_custom_command(TARGET checks PRE_BUILD
 
 
 set(compile_assert_c_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/compile_assert_c.h
         )
 
@@ -29998,7 +30000,7 @@ add_custom_command(TARGET compile_assert_c PRE_BUILD
 
 
 set(criticalsection_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/deprecated/recursive_critical_section.cc
         ${webrtc_source_path}rtc_base/deprecated/recursive_critical_section.h
         )
@@ -30046,7 +30048,7 @@ add_custom_command(TARGET criticalsection PRE_BUILD
 
 
 set(divide_round_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/numerics/divide_round.h
         )
 
@@ -30093,7 +30095,7 @@ add_custom_command(TARGET divide_round PRE_BUILD
 
 
 set(gtest_prod_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/gtest_prod_util.h
         )
 
@@ -30140,7 +30142,7 @@ add_custom_command(TARGET gtest_prod PRE_BUILD
 
 
 set(gunit_helpers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/gunit.cc
         ${webrtc_source_path}rtc_base/gunit.h
         )
@@ -30198,7 +30200,7 @@ add_custom_command(TARGET gunit_helpers PRE_BUILD
 
 
 set(ifaddrs_android_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/ifaddrs_android.cc
         ${webrtc_source_path}rtc_base/ifaddrs_android.h
         )
@@ -30246,7 +30248,7 @@ add_custom_command(TARGET ifaddrs_android PRE_BUILD
 
 
 set(ignore_wundef_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/ignore_wundef.h
         )
 
@@ -30293,7 +30295,7 @@ add_custom_command(TARGET ignore_wundef PRE_BUILD
 
 
 set(ip_address_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/ip_address.cc
         ${webrtc_source_path}rtc_base/ip_address.h
         )
@@ -30341,7 +30343,7 @@ add_custom_command(TARGET ip_address PRE_BUILD
 
 
 set(logging_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/logging.cc
         ${webrtc_source_path}rtc_base/logging.h
         )
@@ -30389,7 +30391,7 @@ add_custom_command(TARGET logging PRE_BUILD
 
 
 set(macromagic_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/arraysize.h
         ${webrtc_source_path}rtc_base/constructor_magic.h
         ${webrtc_source_path}rtc_base/format_macros.h
@@ -30439,7 +30441,7 @@ add_custom_command(TARGET macromagic PRE_BUILD
 
 
 set(net_helpers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/net_helpers.cc
         ${webrtc_source_path}rtc_base/net_helpers.h
         )
@@ -30487,7 +30489,7 @@ add_custom_command(TARGET net_helpers PRE_BUILD
 
 
 set(network_constants_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/network_constants.cc
         ${webrtc_source_path}rtc_base/network_constants.h
         )
@@ -30535,7 +30537,7 @@ add_custom_command(TARGET network_constants PRE_BUILD
 
 
 set(null_socket_server_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/null_socket_server.cc
         ${webrtc_source_path}rtc_base/null_socket_server.h
         )
@@ -30583,7 +30585,7 @@ add_custom_command(TARGET null_socket_server PRE_BUILD
 
 
 set(platform_thread_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/platform_thread.cc
         ${webrtc_source_path}rtc_base/platform_thread.h
         )
@@ -30631,7 +30633,7 @@ add_custom_command(TARGET platform_thread PRE_BUILD
 
 
 set(platform_thread_types_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/platform_thread_types.cc
         ${webrtc_source_path}rtc_base/platform_thread_types.h
         )
@@ -30679,7 +30681,7 @@ add_custom_command(TARGET platform_thread_types PRE_BUILD
 
 
 set(protobuf_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/protobuf_utils.h
         )
 
@@ -30730,7 +30732,7 @@ add_custom_command(TARGET protobuf_utils PRE_BUILD
 
 
 set(rate_limiter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/rate_limiter.cc
         ${webrtc_source_path}rtc_base/rate_limiter.h
         )
@@ -30778,7 +30780,7 @@ add_custom_command(TARGET rate_limiter PRE_BUILD
 
 
 set(refcount_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/ref_count.h
         ${webrtc_source_path}rtc_base/ref_counted_object.h
         ${webrtc_source_path}rtc_base/ref_counter.h
@@ -30827,7 +30829,7 @@ add_custom_command(TARGET refcount PRE_BUILD
 
 
 set(rtc_base_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/async_invoker.cc
         ${webrtc_source_path}rtc_base/async_invoker.h
         ${webrtc_source_path}rtc_base/async_invoker_inl.h
@@ -30953,7 +30955,7 @@ add_custom_command(TARGET rtc_base PRE_BUILD
 
 
 set(rtc_base_approved_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/bit_buffer.cc
         ${webrtc_source_path}rtc_base/bit_buffer.h
         ${webrtc_source_path}rtc_base/buffer.h
@@ -31035,7 +31037,7 @@ add_custom_command(TARGET rtc_base_approved PRE_BUILD
 
 
 set(rtc_base_tests_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/cpu_time.cc
         ${webrtc_source_path}rtc_base/cpu_time.h
         ${webrtc_source_path}rtc_base/fake_clock.cc
@@ -31117,7 +31119,7 @@ add_custom_command(TARGET rtc_base_tests_utils PRE_BUILD
 
 
 set(rtc_event_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/event.cc
         ${webrtc_source_path}rtc_base/event.h
         )
@@ -31165,7 +31167,7 @@ add_custom_command(TARGET rtc_event PRE_BUILD
 
 
 set(rtc_json_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/strings/json.cc
         ${webrtc_source_path}rtc_base/strings/json.h
         )
@@ -31214,7 +31216,7 @@ add_custom_command(TARGET rtc_json PRE_BUILD
 
 
 set(rtc_numerics_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/numerics/event_based_exponential_moving_average.cc
         ${webrtc_source_path}rtc_base/numerics/event_based_exponential_moving_average.h
         ${webrtc_source_path}rtc_base/numerics/exp_filter.cc
@@ -31271,7 +31273,7 @@ add_custom_command(TARGET rtc_numerics PRE_BUILD
 
 
 set(rtc_operations_chain_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/operations_chain.cc
         ${webrtc_source_path}rtc_base/operations_chain.h
         )
@@ -31319,7 +31321,7 @@ add_custom_command(TARGET rtc_operations_chain PRE_BUILD
 
 
 set(rtc_stats_counters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/numerics/event_rate_counter.cc
         ${webrtc_source_path}rtc_base/numerics/event_rate_counter.h
         ${webrtc_source_path}rtc_base/numerics/sample_stats.cc
@@ -31369,7 +31371,7 @@ add_custom_command(TARGET rtc_stats_counters PRE_BUILD
 
 
 set(rtc_task_queue_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/task_queue.cc
         ${webrtc_source_path}rtc_base/task_queue.h
         )
@@ -31417,7 +31419,7 @@ add_custom_command(TARGET rtc_task_queue PRE_BUILD
 
 
 set(rtc_task_queue_libevent_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/task_queue_libevent.cc
         ${webrtc_source_path}rtc_base/task_queue_libevent.h
         )
@@ -31465,7 +31467,7 @@ add_custom_command(TARGET rtc_task_queue_libevent PRE_BUILD
 
 
 set(rtc_task_queue_stdlib_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/task_queue_stdlib.cc
         ${webrtc_source_path}rtc_base/task_queue_stdlib.h
         )
@@ -31513,7 +31515,7 @@ add_custom_command(TARGET rtc_task_queue_stdlib PRE_BUILD
 
 
 set(safe_compare_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/numerics/safe_compare.h
         )
 
@@ -31560,7 +31562,7 @@ add_custom_command(TARGET safe_compare PRE_BUILD
 
 
 set(safe_conversions_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/numerics/safe_conversions.h
         ${webrtc_source_path}rtc_base/numerics/safe_conversions_impl.h
         )
@@ -31608,7 +31610,7 @@ add_custom_command(TARGET safe_conversions PRE_BUILD
 
 
 set(safe_minmax_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/numerics/safe_minmax.h
         )
 
@@ -31655,7 +31657,7 @@ add_custom_command(TARGET safe_minmax PRE_BUILD
 
 
 set(sanitizer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/sanitizer.h
         )
 
@@ -31702,7 +31704,7 @@ add_custom_command(TARGET sanitizer PRE_BUILD
 
 
 set(socket7_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/socket.cc
         ${webrtc_source_path}rtc_base/socket.h
         )
@@ -31750,7 +31752,7 @@ add_custom_command(TARGET socket7 PRE_BUILD
 
 
 set(socket_address_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/socket_address.cc
         ${webrtc_source_path}rtc_base/socket_address.h
         )
@@ -31798,7 +31800,7 @@ add_custom_command(TARGET socket_address PRE_BUILD
 
 
 set(socket_factory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/socket_factory.h
         )
 
@@ -31845,7 +31847,7 @@ add_custom_command(TARGET socket_factory PRE_BUILD
 
 
 set(socket_server_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/socket_server.h
         )
 
@@ -31892,7 +31894,7 @@ add_custom_command(TARGET socket_server PRE_BUILD
 
 
 set(stringutils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/string_encode.cc
         ${webrtc_source_path}rtc_base/string_encode.h
         ${webrtc_source_path}rtc_base/string_to_number.cc
@@ -31948,7 +31950,7 @@ add_custom_command(TARGET stringutils PRE_BUILD
 
 
 set(task_queue_for_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/task_queue_for_test.cc
         ${webrtc_source_path}rtc_base/task_queue_for_test.h
         )
@@ -31997,7 +31999,7 @@ add_custom_command(TARGET task_queue_for_test PRE_BUILD
 
 
 set(testclient_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/test_client.cc
         ${webrtc_source_path}rtc_base/test_client.h
         )
@@ -32054,7 +32056,7 @@ add_custom_command(TARGET testclient PRE_BUILD
 
 
 set(threading_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/async_resolver.cc
         ${webrtc_source_path}rtc_base/async_resolver.h
         ${webrtc_source_path}rtc_base/internal/default_socket_server.cc
@@ -32115,7 +32117,7 @@ add_custom_command(TARGET threading PRE_BUILD
 
 
 set(timeutils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/system_time.cc
         ${webrtc_source_path}rtc_base/system_time.h
         ${webrtc_source_path}rtc_base/time_utils.cc
@@ -32165,7 +32167,7 @@ add_custom_command(TARGET timeutils PRE_BUILD
 
 
 set(type_traits_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/type_traits.h
         )
 
@@ -32212,7 +32214,7 @@ add_custom_command(TARGET type_traits PRE_BUILD
 
 
 set(untyped_function_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/untyped_function.h
         )
 
@@ -32259,7 +32261,7 @@ add_custom_command(TARGET untyped_function PRE_BUILD
 
 
 set(weak_ptr_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}rtc_base/weak_ptr.cc
         ${webrtc_source_path}rtc_base/weak_ptr.h
         )
@@ -32307,7 +32309,7 @@ add_custom_command(TARGET weak_ptr PRE_BUILD
 
 
 set(audio_device_module_base_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/audio_device/audio_common.h
         ${webrtc_source_path}sdk/android/src/jni/audio_device/audio_device_module.cc
         ${webrtc_source_path}sdk/android/src/jni/audio_device/audio_device_module.h
@@ -32357,7 +32359,7 @@ add_custom_command(TARGET audio_device_module_base PRE_BUILD
 
 
 set(audio_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/pc/audio.cc
         )
 
@@ -32405,7 +32407,7 @@ add_custom_command(TARGET audio_jni PRE_BUILD
 
 
 set(base_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/android_histogram.cc
         ${webrtc_source_path}sdk/android/src/jni/android_network_monitor.cc
         ${webrtc_source_path}sdk/android/src/jni/android_network_monitor.h
@@ -32465,7 +32467,7 @@ add_custom_command(TARGET base_jni PRE_BUILD
 
 
 set(builtin_audio_codecs_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/builtin_audio_decoder_factory_factory.cc
         ${webrtc_source_path}sdk/android/src/jni/builtin_audio_encoder_factory_factory.cc
         )
@@ -32514,7 +32516,7 @@ add_custom_command(TARGET builtin_audio_codecs_jni PRE_BUILD
 
 
 set(default_video_codec_factory_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(default_video_codec_factory_jni STATIC
@@ -32561,7 +32563,7 @@ add_custom_command(TARGET default_video_codec_factory_jni PRE_BUILD
 
 
 set(instrumentationtests_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/instrumentationtests/loggable_test.cc
         ${webrtc_source_path}sdk/android/instrumentationtests/video_frame_buffer_test.cc
         )
@@ -32611,7 +32613,7 @@ add_custom_command(TARGET instrumentationtests_jni PRE_BUILD
 
 
 set(internal_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/jvm.cc
         ${webrtc_source_path}sdk/android/src/jni/jvm.h
         )
@@ -32659,7 +32661,7 @@ add_custom_command(TARGET internal_jni PRE_BUILD
 
 
 set(java_audio_device_module_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/audio_device/audio_record_jni.cc
         ${webrtc_source_path}sdk/android/src/jni/audio_device/audio_record_jni.h
         ${webrtc_source_path}sdk/android/src/jni/audio_device/audio_track_jni.cc
@@ -32710,7 +32712,7 @@ add_custom_command(TARGET java_audio_device_module PRE_BUILD
 
 
 set(java_audio_device_module_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/audio_device/java_audio_device_module.cc
         )
 
@@ -32758,7 +32760,7 @@ add_custom_command(TARGET java_audio_device_module_jni PRE_BUILD
 
 
 set(libaom_av1_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/av1_codec.cc
         )
 
@@ -32806,7 +32808,7 @@ add_custom_command(TARGET libaom_av1_jni PRE_BUILD
 
 
 set(libjingle_peerconnection_instrumentationtests_so_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/jni_onload.cc
         )
 
@@ -32853,7 +32855,7 @@ add_custom_command(TARGET libjingle_peerconnection_instrumentationtests_so_stati
         )
 
 add_library(libjingle_peerconnection_instrumentationtests_so SHARED
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 #add_custom_command(TARGET libjingle_peerconnection_instrumentationtests_so POST_BUILD
@@ -32863,7 +32865,7 @@ add_library(libjingle_peerconnection_instrumentationtests_so SHARED
 
 
 set(libjingle_peerconnection_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(libjingle_peerconnection_jni STATIC
@@ -32910,7 +32912,7 @@ add_custom_command(TARGET libjingle_peerconnection_jni PRE_BUILD
 
 
 set(libjingle_peerconnection_metrics_default_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/android_metrics.cc
         )
 
@@ -32958,7 +32960,7 @@ add_custom_command(TARGET libjingle_peerconnection_metrics_default_jni PRE_BUILD
 
 
 set(libjingle_peerconnection_so_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/jni_onload.cc
         )
 
@@ -33004,7 +33006,7 @@ add_custom_command(TARGET libjingle_peerconnection_so_static PRE_BUILD
         )
 
 add_library(jingle_peerconnection_so SHARED
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 #copy libjingle_peerconnection_so.so
 add_custom_command(TARGET jingle_peerconnection_so POST_BUILD
@@ -33014,7 +33016,7 @@ add_custom_command(TARGET jingle_peerconnection_so POST_BUILD
 
 
 set(libvpx_vp8_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/vp8_codec.cc
         )
 
@@ -33062,7 +33064,7 @@ add_custom_command(TARGET libvpx_vp8_jni PRE_BUILD
 
 
 set(libvpx_vp9_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/vp9_codec.cc
         )
 
@@ -33110,7 +33112,7 @@ add_custom_command(TARGET libvpx_vp9_jni PRE_BUILD
 
 
 set(logging_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/logging/log_sink.cc
         ${webrtc_source_path}sdk/android/src/jni/logging/log_sink.h
         )
@@ -33159,7 +33161,7 @@ add_custom_command(TARGET logging_jni PRE_BUILD
 
 
 set(native_api_audio_device_module_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/native_api/audio_device_module/audio_device_android.cc
         ${webrtc_source_path}sdk/android/native_api/audio_device_module/audio_device_android.h
         )
@@ -33208,7 +33210,7 @@ add_custom_command(TARGET native_api_audio_device_module PRE_BUILD
 
 
 set(native_api_base_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/native_api/base/init.cc
         ${webrtc_source_path}sdk/android/native_api/base/init.h
         )
@@ -33257,7 +33259,7 @@ add_custom_command(TARGET native_api_base PRE_BUILD
 
 
 set(native_api_codecs_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/native_api/codecs/wrapper.cc
         ${webrtc_source_path}sdk/android/native_api/codecs/wrapper.h
         )
@@ -33306,7 +33308,7 @@ add_custom_command(TARGET native_api_codecs PRE_BUILD
 
 
 set(native_api_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/native_api/jni/class_loader.cc
         ${webrtc_source_path}sdk/android/native_api/jni/java_types.cc
         ${webrtc_source_path}sdk/android/native_api/jni/jvm.cc
@@ -33357,7 +33359,7 @@ add_custom_command(TARGET native_api_jni PRE_BUILD
 
 
 set(native_api_network_monitor_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/native_api/network_monitor/network_monitor.cc
         ${webrtc_source_path}sdk/android/native_api/network_monitor/network_monitor.h
         )
@@ -33406,7 +33408,7 @@ add_custom_command(TARGET native_api_network_monitor PRE_BUILD
 
 
 set(native_api_peerconnection_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/native_api/peerconnection/peer_connection_factory.cc
         ${webrtc_source_path}sdk/android/native_api/peerconnection/peer_connection_factory.h
         )
@@ -33455,7 +33457,7 @@ add_custom_command(TARGET native_api_peerconnection PRE_BUILD
 
 
 set(native_api_stacktrace_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/native_api/stacktrace/stacktrace.cc
         ${webrtc_source_path}sdk/android/native_api/stacktrace/stacktrace.h
         )
@@ -33503,7 +33505,7 @@ add_custom_command(TARGET native_api_stacktrace PRE_BUILD
 
 
 set(native_api_video_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/native_api/video/video_source.cc
         ${webrtc_source_path}sdk/android/native_api/video/video_source.h
         ${webrtc_source_path}sdk/android/native_api/video/wrapper.cc
@@ -33554,7 +33556,7 @@ add_custom_command(TARGET native_api_video PRE_BUILD
 
 
 set(native_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/native_unittests/android_network_monitor_unittest.cc
         ${webrtc_source_path}sdk/android/native_unittests/application_context_provider.cc
         ${webrtc_source_path}sdk/android/native_unittests/application_context_provider.h
@@ -33623,7 +33625,7 @@ add_custom_command(TARGET native_unittests PRE_BUILD
 
 
 set(opensles_audio_device_module_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/audio_device/opensles_common.cc
         ${webrtc_source_path}sdk/android/src/jni/audio_device/opensles_common.h
         ${webrtc_source_path}sdk/android/src/jni/audio_device/opensles_player.cc
@@ -33676,7 +33678,7 @@ add_custom_command(TARGET opensles_audio_device_module PRE_BUILD
 
 
 set(peerconnection_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/pc/add_ice_candidate_observer.cc
         ${webrtc_source_path}sdk/android/src/jni/pc/add_ice_candidate_observer.h
         ${webrtc_source_path}sdk/android/src/jni/pc/android_network_monitor.h
@@ -33771,7 +33773,7 @@ add_custom_command(TARGET peerconnection_jni PRE_BUILD
 
 
 set(swcodecs_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(swcodecs_jni STATIC
@@ -33818,7 +33820,7 @@ add_custom_command(TARGET swcodecs_jni PRE_BUILD
 
 
 set(video_egl_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/egl_base_10_impl.cc
         )
 
@@ -33865,7 +33867,7 @@ add_custom_command(TARGET video_egl_jni PRE_BUILD
 
 
 set(video_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/android_video_track_source.cc
         ${webrtc_source_path}sdk/android/src/jni/android_video_track_source.h
         ${webrtc_source_path}sdk/android/src/jni/encoded_image.cc
@@ -33943,7 +33945,7 @@ add_custom_command(TARGET video_jni PRE_BUILD
 
 
 set(videoframe_jni_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/video_frame.cc
         ${webrtc_source_path}sdk/android/src/jni/video_frame.h
         ${webrtc_source_path}sdk/android/src/jni/wrapped_native_i420_buffer.cc
@@ -33994,7 +33996,7 @@ add_custom_command(TARGET videoframe_jni PRE_BUILD
 
 
 set(media_constraints_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/media_constraints.cc
         ${webrtc_source_path}sdk/media_constraints.h
         )
@@ -34043,7 +34045,7 @@ add_custom_command(TARGET media_constraints PRE_BUILD
 
 
 set(sdk_tests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/media_constraints_unittest.cc
         )
 
@@ -34101,7 +34103,7 @@ add_custom_command(TARGET sdk_tests PRE_BUILD
 
 
 set(rtc_stats_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}stats/rtc_stats.cc
         ${webrtc_source_path}stats/rtc_stats_report.cc
         ${webrtc_source_path}stats/rtcstats_objects.cc
@@ -34150,7 +34152,7 @@ add_custom_command(TARGET rtc_stats PRE_BUILD
 
 
 set(rtc_stats_test_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}stats/test/rtc_test_stats.cc
         ${webrtc_source_path}stats/test/rtc_test_stats.h
         )
@@ -34198,7 +34200,7 @@ add_custom_command(TARGET rtc_stats_test_utils PRE_BUILD
 
 
 set(denormal_disabler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}system_wrappers/source/denormal_disabler.cc
         )
 
@@ -34245,7 +34247,7 @@ add_custom_command(TARGET denormal_disabler PRE_BUILD
 
 
 set(field_trial_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}system_wrappers/source/field_trial.cc
         )
 
@@ -34292,7 +34294,7 @@ add_custom_command(TARGET field_trial PRE_BUILD
 
 
 set(metrics_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}system_wrappers/source/metrics.cc
         )
 
@@ -34339,7 +34341,7 @@ add_custom_command(TARGET metrics PRE_BUILD
 
 
 set(system_wrappers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}system_wrappers/include/clock.h
         ${webrtc_source_path}system_wrappers/include/cpu_features_wrapper.h
         ${webrtc_source_path}system_wrappers/include/cpu_info.h
@@ -34398,7 +34400,7 @@ add_custom_command(TARGET system_wrappers PRE_BUILD
 
 
 set(log_writer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/logging/file_log_writer.cc
         ${webrtc_source_path}test/logging/file_log_writer.h
         ${webrtc_source_path}test/logging/log_writer.cc
@@ -34451,7 +34453,7 @@ add_custom_command(TARGET log_writer PRE_BUILD
 
 
 set(cross_traffic_unittest_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/network/cross_traffic_unittest.cc
         )
 
@@ -34509,7 +34511,7 @@ add_custom_command(TARGET cross_traffic_unittest PRE_BUILD
 
 
 set(emulated_network_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/network/cross_traffic.cc
         ${webrtc_source_path}test/network/cross_traffic.h
         ${webrtc_source_path}test/network/emulated_network_manager.cc
@@ -34571,7 +34573,7 @@ add_custom_command(TARGET emulated_network PRE_BUILD
 
 
 set(network_emulation_unittest_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/network/network_emulation_unittest.cc
         )
 
@@ -34629,7 +34631,7 @@ add_custom_command(TARGET network_emulation_unittest PRE_BUILD
 
 
 set(column_printer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/scenario/column_printer.cc
         ${webrtc_source_path}test/scenario/column_printer.h
         )
@@ -34678,7 +34680,7 @@ add_custom_command(TARGET column_printer PRE_BUILD
 
 
 set(time_controller8_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/time_controller/external_time_controller.cc
         ${webrtc_source_path}test/time_controller/external_time_controller.h
         ${webrtc_source_path}test/time_controller/real_time_controller.cc
@@ -34737,7 +34739,7 @@ add_custom_command(TARGET time_controller8 PRE_BUILD
 
 
 set(audio_codec_mocks_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/audio_decoder_proxy_factory.h
         ${webrtc_source_path}test/function_audio_decoder_factory.h
         ${webrtc_source_path}test/mock_audio_decoder.cc
@@ -34801,7 +34803,7 @@ add_custom_command(TARGET audio_codec_mocks PRE_BUILD
 
 
 set(call_config_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/call_config_utils.cc
         ${webrtc_source_path}test/call_config_utils.h
         )
@@ -34851,7 +34853,7 @@ add_custom_command(TARGET call_config_utils PRE_BUILD
 
 
 set(copy_to_file_audio_capturer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/testsupport/copy_to_file_audio_capturer.cc
         ${webrtc_source_path}test/testsupport/copy_to_file_audio_capturer.h
         )
@@ -34900,7 +34902,7 @@ add_custom_command(TARGET copy_to_file_audio_capturer PRE_BUILD
 
 
 set(copy_to_file_audio_capturer_unittest_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/testsupport/copy_to_file_audio_capturer_unittest.cc
         )
 
@@ -34957,7 +34959,7 @@ add_custom_command(TARGET copy_to_file_audio_capturer_unittest PRE_BUILD
 
 
 set(direct_transport_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/direct_transport.cc
         ${webrtc_source_path}test/direct_transport.h
         )
@@ -35007,7 +35009,7 @@ add_custom_command(TARGET direct_transport PRE_BUILD
 
 
 set(encoder_settings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/encoder_settings.cc
         ${webrtc_source_path}test/encoder_settings.h
         )
@@ -35057,7 +35059,7 @@ add_custom_command(TARGET encoder_settings PRE_BUILD
 
 
 set(explicit_key_value_config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/explicit_key_value_config.cc
         ${webrtc_source_path}test/explicit_key_value_config.h
         )
@@ -35105,7 +35107,7 @@ add_custom_command(TARGET explicit_key_value_config PRE_BUILD
 
 
 set(fake_video_codecs_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/configurable_frame_size_encoder.cc
         ${webrtc_source_path}test/configurable_frame_size_encoder.h
         ${webrtc_source_path}test/fake_decoder.cc
@@ -35162,7 +35164,7 @@ add_custom_command(TARGET fake_video_codecs PRE_BUILD
 
 
 set(field_trial9_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/field_trial.cc
         ${webrtc_source_path}test/field_trial.h
         )
@@ -35211,7 +35213,7 @@ add_custom_command(TARGET field_trial9 PRE_BUILD
 
 
 set(fileutils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/testsupport/file_utils.cc
         ${webrtc_source_path}test/testsupport/file_utils.h
         )
@@ -35260,7 +35262,7 @@ add_custom_command(TARGET fileutils PRE_BUILD
 
 
 set(fileutils_override_api_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/testsupport/file_utils_override.h
         )
 
@@ -35308,7 +35310,7 @@ add_custom_command(TARGET fileutils_override_api PRE_BUILD
 
 
 set(fileutils_override_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/testsupport/file_utils_override.cc
         )
 
@@ -35356,7 +35358,7 @@ add_custom_command(TARGET fileutils_override_impl PRE_BUILD
 
 
 set(fileutils_unittests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/testsupport/file_utils_unittest.cc
         )
 
@@ -35413,7 +35415,7 @@ add_custom_command(TARGET fileutils_unittests PRE_BUILD
 
 
 set(frame_generator_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/frame_generator.cc
         ${webrtc_source_path}test/frame_generator.h
         ${webrtc_source_path}test/testsupport/ivf_video_frame_generator.cc
@@ -35465,7 +35467,7 @@ add_custom_command(TARGET frame_generator_impl PRE_BUILD
 
 
 set(frame_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/frame_utils.cc
         ${webrtc_source_path}test/frame_utils.h
         )
@@ -35515,7 +35517,7 @@ add_custom_command(TARGET frame_utils PRE_BUILD
 
 
 set(mock_frame_transformer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/mock_frame_transformer.h
         )
 
@@ -35573,7 +35575,7 @@ add_custom_command(TARGET mock_frame_transformer PRE_BUILD
 
 
 set(mock_transformable_frame_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/mock_transformable_frame.h
         )
 
@@ -35631,7 +35633,7 @@ add_custom_command(TARGET mock_transformable_frame PRE_BUILD
 
 
 set(mock_transport_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/mock_transport.cc
         ${webrtc_source_path}test/mock_transport.h
         )
@@ -35689,7 +35691,7 @@ add_custom_command(TARGET mock_transport PRE_BUILD
 
 
 set(null_transport_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/null_transport.cc
         ${webrtc_source_path}test/null_transport.h
         )
@@ -35738,7 +35740,7 @@ add_custom_command(TARGET null_transport PRE_BUILD
 
 
 set(perf_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/testsupport/perf_result_reporter.cc
         ${webrtc_source_path}test/testsupport/perf_result_reporter.h
         ${webrtc_source_path}test/testsupport/perf_test.cc
@@ -35798,7 +35800,7 @@ add_custom_command(TARGET perf_test PRE_BUILD
 
 
 set(platform_video_capturer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/platform_video_capturer.cc
         ${webrtc_source_path}test/platform_video_capturer.h
         ${webrtc_source_path}test/vcm_capturer.cc
@@ -35850,7 +35852,7 @@ add_custom_command(TARGET platform_video_capturer PRE_BUILD
 
 
 set(rtc_expect_death_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/testsupport/rtc_expect_death.h
         )
 
@@ -35907,7 +35909,7 @@ add_custom_command(TARGET rtc_expect_death PRE_BUILD
 
 
 set(rtp_test_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/rtcp_packet_parser.cc
         ${webrtc_source_path}test/rtcp_packet_parser.h
         ${webrtc_source_path}test/rtp_file_reader.cc
@@ -35961,7 +35963,7 @@ add_custom_command(TARGET rtp_test_utils PRE_BUILD
 
 
 set(run_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(run_test STATIC
@@ -36008,7 +36010,7 @@ add_custom_command(TARGET run_test PRE_BUILD
 
 
 set(run_test_generic_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/run_test.cc
         )
 
@@ -36056,7 +36058,7 @@ add_custom_command(TARGET run_test_generic PRE_BUILD
 
 
 set(run_test_interface_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/run_test.h
         )
 
@@ -36103,7 +36105,7 @@ add_custom_command(TARGET run_test_interface PRE_BUILD
 
 
 set(test_common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/call_test.cc
         ${webrtc_source_path}test/call_test.h
         ${webrtc_source_path}test/drifting_clock.cc
@@ -36172,7 +36174,7 @@ add_custom_command(TARGET test_common PRE_BUILD
 
 
 set(test_renderer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(test_renderer STATIC
@@ -36220,7 +36222,7 @@ add_custom_command(TARGET test_renderer PRE_BUILD
 
 
 set(test_renderer_generic_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/video_renderer.cc
         ${webrtc_source_path}test/video_renderer.h
         ${webrtc_source_path}test/null_platform_renderer.cc
@@ -36271,7 +36273,7 @@ add_custom_command(TARGET test_renderer_generic PRE_BUILD
 
 
 set(test_support10_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/gmock.h
         ${webrtc_source_path}test/gtest.h
         )
@@ -36330,7 +36332,7 @@ add_custom_command(TARGET test_support10 PRE_BUILD
 
 
 set(video_test_common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/fake_texture_frame.cc
         ${webrtc_source_path}test/fake_texture_frame.h
         ${webrtc_source_path}test/frame_forwarder.cc
@@ -36389,7 +36391,7 @@ add_custom_command(TARGET video_test_common PRE_BUILD
 
 
 set(video_test_support_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}test/testsupport/frame_reader.h
         ${webrtc_source_path}test/testsupport/frame_writer.h
         ${webrtc_source_path}test/testsupport/mock/mock_frame_reader.h
@@ -36460,7 +36462,7 @@ add_custom_command(TARGET video_test_support PRE_BUILD
 
 
 set(native_browser_test_support_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}testing/android/native_test/native_browser_test_support.cc
         ${webrtc_source_path}testing/android/native_test/native_browser_test_support.h
         )
@@ -36494,7 +36496,7 @@ add_custom_command(TARGET native_browser_test_support PRE_BUILD
 
 
 set(native_test_native_code_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}testing/android/native_test/native_test_jni_onload.cc
         )
 
@@ -36527,7 +36529,7 @@ add_custom_command(TARGET native_test_native_code PRE_BUILD
 
 
 set(native_test_support_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}testing/android/native_test/main_runner.cc
         ${webrtc_source_path}testing/android/native_test/main_runner.h
         ${webrtc_source_path}testing/android/native_test/native_test_launcher.cc
@@ -36584,7 +36586,7 @@ add_custom_command(TARGET native_test_support PRE_BUILD
 
 
 set(base_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(base_unittests_filters STATIC
@@ -36614,7 +36616,7 @@ add_custom_command(TARGET base_unittests_filters PRE_BUILD
 
 
 set(blink_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(blink_unittests_filters STATIC
@@ -36644,7 +36646,7 @@ add_custom_command(TARGET blink_unittests_filters PRE_BUILD
 
 
 set(blink_web_tests_filter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(blink_web_tests_filter STATIC
@@ -36674,7 +36676,7 @@ add_custom_command(TARGET blink_web_tests_filter PRE_BUILD
 
 
 set(breakpad_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(breakpad_unittests_filters STATIC
@@ -36704,7 +36706,7 @@ add_custom_command(TARGET breakpad_unittests_filters PRE_BUILD
 
 
 set(browser_tests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(browser_tests_filters STATIC
@@ -36734,7 +36736,7 @@ add_custom_command(TARGET browser_tests_filters PRE_BUILD
 
 
 set(cc_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(cc_unittests_filters STATIC
@@ -36764,7 +36766,7 @@ add_custom_command(TARGET cc_unittests_filters PRE_BUILD
 
 
 set(chrome_junit_tests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(chrome_junit_tests_filters STATIC
@@ -36794,7 +36796,7 @@ add_custom_command(TARGET chrome_junit_tests_filters PRE_BUILD
 
 
 set(chrome_public_test_apk_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(chrome_public_test_apk_filters STATIC
@@ -36824,7 +36826,7 @@ add_custom_command(TARGET chrome_public_test_apk_filters PRE_BUILD
 
 
 set(chromeos_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(chromeos_filters STATIC
@@ -36854,7 +36856,7 @@ add_custom_command(TARGET chromeos_filters PRE_BUILD
 
 
 set(components_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(components_unittests_filters STATIC
@@ -36884,7 +36886,7 @@ add_custom_command(TARGET components_unittests_filters PRE_BUILD
 
 
 set(content_browsertests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(content_browsertests_filters STATIC
@@ -36914,7 +36916,7 @@ add_custom_command(TARGET content_browsertests_filters PRE_BUILD
 
 
 set(content_junit_tests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(content_junit_tests_filters STATIC
@@ -36944,7 +36946,7 @@ add_custom_command(TARGET content_junit_tests_filters PRE_BUILD
 
 
 set(content_shell_test_apk_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(content_shell_test_apk_filters STATIC
@@ -36974,7 +36976,7 @@ add_custom_command(TARGET content_shell_test_apk_filters PRE_BUILD
 
 
 set(content_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(content_unittests_filters STATIC
@@ -37004,7 +37006,7 @@ add_custom_command(TARGET content_unittests_filters PRE_BUILD
 
 
 set(crashpad_tests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(crashpad_tests_filters STATIC
@@ -37034,7 +37036,7 @@ add_custom_command(TARGET crashpad_tests_filters PRE_BUILD
 
 
 set(device_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(device_unittests_filters STATIC
@@ -37064,7 +37066,7 @@ add_custom_command(TARGET device_unittests_filters PRE_BUILD
 
 
 set(fuchsia_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(fuchsia_filters STATIC
@@ -37094,7 +37096,7 @@ add_custom_command(TARGET fuchsia_filters PRE_BUILD
 
 
 set(gl_tests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(gl_tests_filters STATIC
@@ -37124,7 +37126,7 @@ add_custom_command(TARGET gl_tests_filters PRE_BUILD
 
 
 set(interactive_ui_tests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(interactive_ui_tests_filters STATIC
@@ -37154,7 +37156,7 @@ add_custom_command(TARGET interactive_ui_tests_filters PRE_BUILD
 
 
 set(lacros_chrome_browsertests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(lacros_chrome_browsertests_filters STATIC
@@ -37184,7 +37186,7 @@ add_custom_command(TARGET lacros_chrome_browsertests_filters PRE_BUILD
 
 
 set(linux_ozone_views_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(linux_ozone_views_unittests_filters STATIC
@@ -37214,7 +37216,7 @@ add_custom_command(TARGET linux_ozone_views_unittests_filters PRE_BUILD
 
 
 set(linux_trusty_rel_browser_tests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(linux_trusty_rel_browser_tests_filters STATIC
@@ -37244,7 +37246,7 @@ add_custom_command(TARGET linux_trusty_rel_browser_tests_filters PRE_BUILD
 
 
 set(media_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(media_unittests_filters STATIC
@@ -37274,7 +37276,7 @@ add_custom_command(TARGET media_unittests_filters PRE_BUILD
 
 
 set(net_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(net_unittests_filters STATIC
@@ -37304,7 +37306,7 @@ add_custom_command(TARGET net_unittests_filters PRE_BUILD
 
 
 set(ozone_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(ozone_unittests_filters STATIC
@@ -37334,7 +37336,7 @@ add_custom_command(TARGET ozone_unittests_filters PRE_BUILD
 
 
 set(sandbox_linux_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(sandbox_linux_unittests_filters STATIC
@@ -37364,7 +37366,7 @@ add_custom_command(TARGET sandbox_linux_unittests_filters PRE_BUILD
 
 
 set(sync_integration_tests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(sync_integration_tests_filters STATIC
@@ -37394,7 +37396,7 @@ add_custom_command(TARGET sync_integration_tests_filters PRE_BUILD
 
 
 set(unit_tests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(unit_tests_filters STATIC
@@ -37424,7 +37426,7 @@ add_custom_command(TARGET unit_tests_filters PRE_BUILD
 
 
 set(viz_unittests_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(viz_unittests_filters STATIC
@@ -37454,7 +37456,7 @@ add_custom_command(TARGET viz_unittests_filters PRE_BUILD
 
 
 set(webview_instrumentation_test_apk_filters_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(webview_instrumentation_test_apk_filters STATIC
@@ -37484,7 +37486,7 @@ add_custom_command(TARGET webview_instrumentation_test_apk_filters PRE_BUILD
 
 
 set(gmock_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}testing/gmock/include/gmock/gmock-actions.h
         ${webrtc_source_path}testing/gmock/include/gmock/gmock-matchers.h
         ${webrtc_source_path}testing/gmock/include/gmock/gmock.h
@@ -37526,7 +37528,7 @@ add_custom_command(TARGET gmock PRE_BUILD
 
 
 set(gmock_main_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(gmock_main STATIC
@@ -37556,7 +37558,7 @@ add_custom_command(TARGET gmock_main PRE_BUILD
 
 
 set(gtest_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}testing/gtest/include/gtest/gtest-death-test.h
         ${webrtc_source_path}testing/gtest/include/gtest/gtest-message.h
         ${webrtc_source_path}testing/gtest/include/gtest/gtest-param-test.h
@@ -37605,7 +37607,7 @@ add_custom_command(TARGET gtest PRE_BUILD
 
 
 set(gtest_main_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(gtest_main STATIC
@@ -37635,7 +37637,7 @@ add_custom_command(TARGET gtest_main PRE_BUILD
 
 
 set(perf_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}testing/perf/luci_test_result.cc
         ${webrtc_source_path}testing/perf/luci_test_result.h
         ${webrtc_source_path}testing/perf/perf_result_reporter.cc
@@ -37681,7 +37683,7 @@ add_custom_command(TARGET perf PRE_BUILD
 
 
 set(unit_tests_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}testing/perf/luci_test_result_unittest.cc
         )
 
@@ -37722,7 +37724,7 @@ add_custom_command(TARGET unit_tests PRE_BUILD
 
 
 set(algorithm_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(algorithm STATIC
@@ -37752,7 +37754,7 @@ add_custom_command(TARGET algorithm PRE_BUILD
 
 
 set(algorithm_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/algorithm/algorithm_test.cc
         )
 
@@ -37791,7 +37793,7 @@ add_custom_command(TARGET algorithm_test PRE_BUILD
 
 
 set(container_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(container STATIC
@@ -37821,7 +37823,7 @@ add_custom_command(TARGET container PRE_BUILD
 
 
 set(container_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/algorithm/container_test.cc
         )
 
@@ -37860,7 +37862,7 @@ add_custom_command(TARGET container_test PRE_BUILD
 
 
 set(atomic_hook_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(atomic_hook STATIC
@@ -37890,7 +37892,7 @@ add_custom_command(TARGET atomic_hook PRE_BUILD
 
 
 set(base11_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/cycleclock.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/spinlock.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/sysinfo.cc
@@ -37925,7 +37927,7 @@ add_custom_command(TARGET base11 PRE_BUILD
 
 
 set(base_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(base_internal STATIC
@@ -37955,7 +37957,7 @@ add_custom_command(TARGET base_internal PRE_BUILD
 
 
 set(config_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(config STATIC
@@ -37985,7 +37987,7 @@ add_custom_command(TARGET config PRE_BUILD
 
 
 set(config_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/config_test.cc
         )
 
@@ -38023,7 +38025,7 @@ add_custom_command(TARGET config_test PRE_BUILD
 
 
 set(core_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(core_headers STATIC
@@ -38053,7 +38055,7 @@ add_custom_command(TARGET core_headers PRE_BUILD
 
 
 set(dynamic_annotations12_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(dynamic_annotations12 STATIC
@@ -38083,7 +38085,7 @@ add_custom_command(TARGET dynamic_annotations12 PRE_BUILD
 
 
 set(endian_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(endian STATIC
@@ -38113,7 +38115,7 @@ add_custom_command(TARGET endian PRE_BUILD
 
 
 set(errno_saver_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(errno_saver STATIC
@@ -38143,7 +38145,7 @@ add_custom_command(TARGET errno_saver PRE_BUILD
 
 
 set(exception_testing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(exception_testing STATIC
@@ -38173,7 +38175,7 @@ add_custom_command(TARGET exception_testing PRE_BUILD
 
 
 set(fast_type_id_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(fast_type_id STATIC
@@ -38203,7 +38205,7 @@ add_custom_command(TARGET fast_type_id PRE_BUILD
 
 
 set(log_severity_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/log_severity.cc
         )
 
@@ -38234,7 +38236,7 @@ add_custom_command(TARGET log_severity PRE_BUILD
 
 
 set(malloc_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/low_level_alloc.cc
         )
 
@@ -38265,7 +38267,7 @@ add_custom_command(TARGET malloc_internal PRE_BUILD
 
 
 set(pretty_function_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(pretty_function STATIC
@@ -38295,7 +38297,7 @@ add_custom_command(TARGET pretty_function PRE_BUILD
 
 
 set(raw_logging_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/raw_logging.cc
         )
 
@@ -38326,7 +38328,7 @@ add_custom_command(TARGET raw_logging_internal PRE_BUILD
 
 
 set(scoped_set_env_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/scoped_set_env.cc
         )
 
@@ -38357,7 +38359,7 @@ add_custom_command(TARGET scoped_set_env PRE_BUILD
 
 
 set(spinlock_test_common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/spinlock_test_common.cc
         )
 
@@ -38395,7 +38397,7 @@ add_custom_command(TARGET spinlock_test_common PRE_BUILD
 
 
 set(spinlock_wait_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/spinlock_akaros.inc
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/spinlock_linux.inc
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/spinlock_posix.inc
@@ -38430,7 +38432,7 @@ add_custom_command(TARGET spinlock_wait PRE_BUILD
 
 
 set(strerror_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/strerror.cc
         )
 
@@ -38461,7 +38463,7 @@ add_custom_command(TARGET strerror PRE_BUILD
 
 
 set(throw_delegate_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/base/internal/throw_delegate.cc
         )
 
@@ -38492,7 +38494,7 @@ add_custom_command(TARGET throw_delegate PRE_BUILD
 
 
 set(cleanup_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(cleanup STATIC
@@ -38522,7 +38524,7 @@ add_custom_command(TARGET cleanup PRE_BUILD
 
 
 set(cleanup_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(cleanup_internal STATIC
@@ -38552,7 +38554,7 @@ add_custom_command(TARGET cleanup_internal PRE_BUILD
 
 
 set(cleanup_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/cleanup/cleanup_test.cc
         )
 
@@ -38590,7 +38592,7 @@ add_custom_command(TARGET cleanup_test PRE_BUILD
 
 
 set(btree_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/container/internal/btree.h
         ${webrtc_source_path}third_party/abseil-cpp/absl/container/internal/btree_container.h
         )
@@ -38622,7 +38624,7 @@ add_custom_command(TARGET btree PRE_BUILD
 
 
 set(common13_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(common13 STATIC
@@ -38652,7 +38654,7 @@ add_custom_command(TARGET common13 PRE_BUILD
 
 
 set(compressed_tuple_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(compressed_tuple STATIC
@@ -38682,7 +38684,7 @@ add_custom_command(TARGET compressed_tuple PRE_BUILD
 
 
 set(container_memory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(container_memory STATIC
@@ -38712,7 +38714,7 @@ add_custom_command(TARGET container_memory PRE_BUILD
 
 
 set(counting_allocator_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(counting_allocator STATIC
@@ -38742,7 +38744,7 @@ add_custom_command(TARGET counting_allocator PRE_BUILD
 
 
 set(fixed_array_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(fixed_array STATIC
@@ -38772,7 +38774,7 @@ add_custom_command(TARGET fixed_array PRE_BUILD
 
 
 set(flat_hash_map_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(flat_hash_map STATIC
@@ -38802,7 +38804,7 @@ add_custom_command(TARGET flat_hash_map PRE_BUILD
 
 
 set(flat_hash_set_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(flat_hash_set STATIC
@@ -38832,7 +38834,7 @@ add_custom_command(TARGET flat_hash_set PRE_BUILD
 
 
 set(hash_function_defaults_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(hash_function_defaults STATIC
@@ -38862,7 +38864,7 @@ add_custom_command(TARGET hash_function_defaults PRE_BUILD
 
 
 set(hash_generator_testing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/container/internal/hash_generator_testing.cc
         )
 
@@ -38893,7 +38895,7 @@ add_custom_command(TARGET hash_generator_testing PRE_BUILD
 
 
 set(hash_policy_testing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(hash_policy_testing STATIC
@@ -38923,7 +38925,7 @@ add_custom_command(TARGET hash_policy_testing PRE_BUILD
 
 
 set(hash_policy_traits_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(hash_policy_traits STATIC
@@ -38953,7 +38955,7 @@ add_custom_command(TARGET hash_policy_traits PRE_BUILD
 
 
 set(hashtable_debug_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(hashtable_debug STATIC
@@ -38983,7 +38985,7 @@ add_custom_command(TARGET hashtable_debug PRE_BUILD
 
 
 set(hashtable_debug_hooks_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(hashtable_debug_hooks STATIC
@@ -39013,7 +39015,7 @@ add_custom_command(TARGET hashtable_debug_hooks PRE_BUILD
 
 
 set(hashtablez_sampler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/container/internal/hashtablez_sampler.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/container/internal/hashtablez_sampler_force_weak_definition.cc
         )
@@ -39045,7 +39047,7 @@ add_custom_command(TARGET hashtablez_sampler PRE_BUILD
 
 
 set(have_sse_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(have_sse STATIC
@@ -39075,7 +39077,7 @@ add_custom_command(TARGET have_sse PRE_BUILD
 
 
 set(inlined_vector_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(inlined_vector STATIC
@@ -39105,7 +39107,7 @@ add_custom_command(TARGET inlined_vector PRE_BUILD
 
 
 set(inlined_vector_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(inlined_vector_internal STATIC
@@ -39135,7 +39137,7 @@ add_custom_command(TARGET inlined_vector_internal PRE_BUILD
 
 
 set(inlined_vector_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/container/inlined_vector_test.cc
         )
 
@@ -39174,7 +39176,7 @@ add_custom_command(TARGET inlined_vector_test PRE_BUILD
 
 
 set(layout_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(layout STATIC
@@ -39204,7 +39206,7 @@ add_custom_command(TARGET layout PRE_BUILD
 
 
 set(node_hash_map_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(node_hash_map STATIC
@@ -39234,7 +39236,7 @@ add_custom_command(TARGET node_hash_map PRE_BUILD
 
 
 set(node_hash_set_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(node_hash_set STATIC
@@ -39264,7 +39266,7 @@ add_custom_command(TARGET node_hash_set PRE_BUILD
 
 
 set(node_slot_policy_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(node_slot_policy STATIC
@@ -39294,7 +39296,7 @@ add_custom_command(TARGET node_slot_policy PRE_BUILD
 
 
 set(node_slot_policy_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/container/internal/node_slot_policy_test.cc
         )
 
@@ -39333,7 +39335,7 @@ add_custom_command(TARGET node_slot_policy_test PRE_BUILD
 
 
 set(raw_hash_map_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(raw_hash_map STATIC
@@ -39363,7 +39365,7 @@ add_custom_command(TARGET raw_hash_map PRE_BUILD
 
 
 set(raw_hash_set_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/container/internal/raw_hash_set.cc
         )
 
@@ -39394,7 +39396,7 @@ add_custom_command(TARGET raw_hash_set PRE_BUILD
 
 
 set(sample_element_size_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(sample_element_size_test STATIC
@@ -39431,7 +39433,7 @@ add_custom_command(TARGET sample_element_size_test PRE_BUILD
 
 
 set(test_instance_tracker_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/container/internal/test_instance_tracker.cc
         )
 
@@ -39462,7 +39464,7 @@ add_custom_command(TARGET test_instance_tracker PRE_BUILD
 
 
 set(tracked_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(tracked STATIC
@@ -39492,7 +39494,7 @@ add_custom_command(TARGET tracked PRE_BUILD
 
 
 set(unordered_map_constructor_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(unordered_map_constructor_test STATIC
@@ -39529,7 +39531,7 @@ add_custom_command(TARGET unordered_map_constructor_test PRE_BUILD
 
 
 set(unordered_map_lookup_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(unordered_map_lookup_test STATIC
@@ -39566,7 +39568,7 @@ add_custom_command(TARGET unordered_map_lookup_test PRE_BUILD
 
 
 set(unordered_map_members_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(unordered_map_members_test STATIC
@@ -39603,7 +39605,7 @@ add_custom_command(TARGET unordered_map_members_test PRE_BUILD
 
 
 set(unordered_map_modifiers_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(unordered_map_modifiers_test STATIC
@@ -39640,7 +39642,7 @@ add_custom_command(TARGET unordered_map_modifiers_test PRE_BUILD
 
 
 set(unordered_set_constructor_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(unordered_set_constructor_test STATIC
@@ -39677,7 +39679,7 @@ add_custom_command(TARGET unordered_set_constructor_test PRE_BUILD
 
 
 set(unordered_set_lookup_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(unordered_set_lookup_test STATIC
@@ -39714,7 +39716,7 @@ add_custom_command(TARGET unordered_set_lookup_test PRE_BUILD
 
 
 set(unordered_set_members_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(unordered_set_members_test STATIC
@@ -39751,7 +39753,7 @@ add_custom_command(TARGET unordered_set_members_test PRE_BUILD
 
 
 set(unordered_set_modifiers_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(unordered_set_modifiers_test STATIC
@@ -39788,7 +39790,7 @@ add_custom_command(TARGET unordered_set_modifiers_test PRE_BUILD
 
 
 set(debugging_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/internal/address_is_readable.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/internal/elf_mem_image.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/internal/vdso_support.cc
@@ -39821,7 +39823,7 @@ add_custom_command(TARGET debugging_internal PRE_BUILD
 
 
 set(demangle_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/internal/demangle.cc
         )
 
@@ -39852,7 +39854,7 @@ add_custom_command(TARGET demangle_internal PRE_BUILD
 
 
 set(examine_stack_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/internal/examine_stack.cc
         )
 
@@ -39883,7 +39885,7 @@ add_custom_command(TARGET examine_stack PRE_BUILD
 
 
 set(failure_signal_handler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc
         )
 
@@ -39914,7 +39916,7 @@ add_custom_command(TARGET failure_signal_handler PRE_BUILD
 
 
 set(leak_check_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/leak_check.cc
         )
 
@@ -39945,7 +39947,7 @@ add_custom_command(TARGET leak_check PRE_BUILD
 
 
 set(leak_check_api_disabled_for_testing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/leak_check.cc
         )
 
@@ -39976,7 +39978,7 @@ add_custom_command(TARGET leak_check_api_disabled_for_testing PRE_BUILD
 
 
 set(leak_check_disable_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/leak_check_disable.cc
         )
 
@@ -40007,7 +40009,7 @@ add_custom_command(TARGET leak_check_disable PRE_BUILD
 
 
 set(stack_consumption_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/internal/stack_consumption.cc
         )
 
@@ -40038,7 +40040,7 @@ add_custom_command(TARGET stack_consumption PRE_BUILD
 
 
 set(stacktrace_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/internal/stacktrace_aarch64-inl.inc
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/internal/stacktrace_arm-inl.inc
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/internal/stacktrace_config.h
@@ -40079,7 +40081,7 @@ add_custom_command(TARGET stacktrace PRE_BUILD
 
 
 set(symbolize_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/symbolize.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/symbolize_darwin.inc
         ${webrtc_source_path}third_party/abseil-cpp/absl/debugging/symbolize_elf.inc
@@ -40115,7 +40117,7 @@ add_custom_command(TARGET symbolize PRE_BUILD
 
 
 set(commandlineflag_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/commandlineflag.cc
         )
 
@@ -40146,7 +40148,7 @@ add_custom_command(TARGET commandlineflag PRE_BUILD
 
 
 set(commandlineflag_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/internal/commandlineflag.cc
         )
 
@@ -40177,7 +40179,7 @@ add_custom_command(TARGET commandlineflag_internal PRE_BUILD
 
 
 set(config14_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/usage_config.cc
         )
 
@@ -40209,7 +40211,7 @@ add_custom_command(TARGET config14 PRE_BUILD
 
 
 set(flag_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/flag.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/internal/flag_msvc.inc
         )
@@ -40242,7 +40244,7 @@ add_custom_command(TARGET flag PRE_BUILD
 
 
 set(flag_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/internal/flag.cc
         )
 
@@ -40274,7 +40276,7 @@ add_custom_command(TARGET flag_internal PRE_BUILD
 
 
 set(marshalling_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/marshalling.cc
         )
 
@@ -40305,7 +40307,7 @@ add_custom_command(TARGET marshalling PRE_BUILD
 
 
 set(parse_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/parse.cc
         )
 
@@ -40337,7 +40339,7 @@ add_custom_command(TARGET parse PRE_BUILD
 
 
 set(path_util_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(path_util STATIC
@@ -40367,7 +40369,7 @@ add_custom_command(TARGET path_util PRE_BUILD
 
 
 set(private_handle_accessor_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/internal/private_handle_accessor.cc
         )
 
@@ -40398,7 +40400,7 @@ add_custom_command(TARGET private_handle_accessor PRE_BUILD
 
 
 set(program_name_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/internal/program_name.cc
         )
 
@@ -40429,7 +40431,7 @@ add_custom_command(TARGET program_name PRE_BUILD
 
 
 set(reflection_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/reflection.cc
         )
 
@@ -40461,7 +40463,7 @@ add_custom_command(TARGET reflection PRE_BUILD
 
 
 set(usage_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/usage.cc
         )
 
@@ -40492,7 +40494,7 @@ add_custom_command(TARGET usage PRE_BUILD
 
 
 set(usage_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/flags/internal/usage.cc
         )
 
@@ -40524,7 +40526,7 @@ add_custom_command(TARGET usage_internal PRE_BUILD
 
 
 set(bind_front_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/functional/internal/front_binder.h
         )
 
@@ -40555,7 +40557,7 @@ add_custom_command(TARGET bind_front PRE_BUILD
 
 
 set(function_ref_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/functional/internal/function_ref.h
         )
 
@@ -40586,7 +40588,7 @@ add_custom_command(TARGET function_ref PRE_BUILD
 
 
 set(city_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/hash/internal/city.cc
         )
 
@@ -40617,7 +40619,7 @@ add_custom_command(TARGET city PRE_BUILD
 
 
 set(hash_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/hash/internal/hash.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/hash/internal/hash.h
         )
@@ -40649,7 +40651,7 @@ add_custom_command(TARGET hash PRE_BUILD
 
 
 set(hash_testing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(hash_testing STATIC
@@ -40686,7 +40688,7 @@ add_custom_command(TARGET hash_testing PRE_BUILD
 
 
 set(low_level_hash_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/hash/internal/low_level_hash.cc
         )
 
@@ -40717,7 +40719,7 @@ add_custom_command(TARGET low_level_hash PRE_BUILD
 
 
 set(low_level_hash_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/hash/internal/low_level_hash_test.cc
         )
 
@@ -40756,7 +40758,7 @@ add_custom_command(TARGET low_level_hash_test PRE_BUILD
 
 
 set(spy_hash_state_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(spy_hash_state STATIC
@@ -40786,7 +40788,7 @@ add_custom_command(TARGET spy_hash_state PRE_BUILD
 
 
 set(memory_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(memory STATIC
@@ -40816,7 +40818,7 @@ add_custom_command(TARGET memory PRE_BUILD
 
 
 set(memory_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/memory/memory_test.cc
         )
 
@@ -40855,7 +40857,7 @@ add_custom_command(TARGET memory_test PRE_BUILD
 
 
 set(type_traits15_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(type_traits15 STATIC
@@ -40885,7 +40887,7 @@ add_custom_command(TARGET type_traits15 PRE_BUILD
 
 
 set(type_traits_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/meta/type_traits_test.cc
         )
 
@@ -40923,7 +40925,7 @@ add_custom_command(TARGET type_traits_test PRE_BUILD
 
 
 set(bits_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(bits STATIC
@@ -40953,7 +40955,7 @@ add_custom_command(TARGET bits PRE_BUILD
 
 
 set(int128_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/numeric/int128.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/numeric/int128_have_intrinsic.inc
         ${webrtc_source_path}third_party/abseil-cpp/absl/numeric/int128_no_intrinsic.inc
@@ -40986,7 +40988,7 @@ add_custom_command(TARGET int128 PRE_BUILD
 
 
 set(representation_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(representation STATIC
@@ -41016,7 +41018,7 @@ add_custom_command(TARGET representation PRE_BUILD
 
 
 set(exponential_biased_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/profiling/internal/exponential_biased.cc
         )
 
@@ -41047,7 +41049,7 @@ add_custom_command(TARGET exponential_biased PRE_BUILD
 
 
 set(exponential_biased_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/profiling/internal/exponential_biased_test.cc
         )
 
@@ -41086,7 +41088,7 @@ add_custom_command(TARGET exponential_biased_test PRE_BUILD
 
 
 set(periodic_sampler_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/profiling/internal/periodic_sampler.cc
         )
 
@@ -41117,7 +41119,7 @@ add_custom_command(TARGET periodic_sampler PRE_BUILD
 
 
 set(periodic_sampler_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/profiling/internal/periodic_sampler_test.cc
         )
 
@@ -41156,7 +41158,7 @@ add_custom_command(TARGET periodic_sampler_test PRE_BUILD
 
 
 set(sample_recorder_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(sample_recorder STATIC
@@ -41186,7 +41188,7 @@ add_custom_command(TARGET sample_recorder PRE_BUILD
 
 
 set(status_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/status/internal/status_internal.h
         ${webrtc_source_path}third_party/abseil-cpp/absl/status/status.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/status/status_payload_printer.cc
@@ -41219,7 +41221,7 @@ add_custom_command(TARGET status PRE_BUILD
 
 
 set(statusor_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/status/internal/statusor_internal.h
         ${webrtc_source_path}third_party/abseil-cpp/absl/status/statusor.cc
         )
@@ -41251,7 +41253,7 @@ add_custom_command(TARGET statusor PRE_BUILD
 
 
 set(statusor_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/status/statusor_test.cc
         )
 
@@ -41290,7 +41292,7 @@ add_custom_command(TARGET statusor_test PRE_BUILD
 
 
 set(ascii_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/ascii_test.cc
         )
 
@@ -41328,7 +41330,7 @@ add_custom_command(TARGET ascii_test PRE_BUILD
 
 
 set(cord_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/cord.cc
         )
 
@@ -41359,7 +41361,7 @@ add_custom_command(TARGET cord PRE_BUILD
 
 
 set(cord_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cord_internal.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cord_rep_btree.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cord_rep_btree_navigator.cc
@@ -41397,7 +41399,7 @@ add_custom_command(TARGET cord_internal PRE_BUILD
 
 
 set(cord_rep_btree_navigator_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cord_rep_btree_navigator_test.cc
         )
 
@@ -41436,7 +41438,7 @@ add_custom_command(TARGET cord_rep_btree_navigator_test PRE_BUILD
 
 
 set(cord_rep_btree_reader_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cord_rep_btree_reader_test.cc
         )
 
@@ -41475,7 +41477,7 @@ add_custom_command(TARGET cord_rep_btree_reader_test PRE_BUILD
 
 
 set(cord_rep_btree_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cord_rep_btree_test.cc
         )
 
@@ -41514,7 +41516,7 @@ add_custom_command(TARGET cord_rep_btree_test PRE_BUILD
 
 
 set(cord_rep_concat_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cord_rep_concat_test.cc
         )
 
@@ -41553,7 +41555,7 @@ add_custom_command(TARGET cord_rep_concat_test PRE_BUILD
 
 
 set(cord_rep_consume_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cord_rep_consume_test.cc
         )
 
@@ -41592,7 +41594,7 @@ add_custom_command(TARGET cord_rep_consume_test PRE_BUILD
 
 
 set(cord_rep_crc_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cord_rep_crc_test.cc
         )
 
@@ -41631,7 +41633,7 @@ add_custom_command(TARGET cord_rep_crc_test PRE_BUILD
 
 
 set(cord_rep_test_util_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(cord_rep_test_util STATIC
@@ -41661,7 +41663,7 @@ add_custom_command(TARGET cord_rep_test_util PRE_BUILD
 
 
 set(cord_test_helpers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(cord_test_helpers STATIC
@@ -41691,7 +41693,7 @@ add_custom_command(TARGET cord_test_helpers PRE_BUILD
 
 
 set(cordz_functions_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cordz_functions.cc
         )
 
@@ -41722,7 +41724,7 @@ add_custom_command(TARGET cordz_functions PRE_BUILD
 
 
 set(cordz_functions_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cordz_functions_test.cc
         )
 
@@ -41761,7 +41763,7 @@ add_custom_command(TARGET cordz_functions_test PRE_BUILD
 
 
 set(cordz_handle_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cordz_handle.cc
         )
 
@@ -41792,7 +41794,7 @@ add_custom_command(TARGET cordz_handle PRE_BUILD
 
 
 set(cordz_info_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cordz_info.cc
         )
 
@@ -41823,7 +41825,7 @@ add_custom_command(TARGET cordz_info PRE_BUILD
 
 
 set(cordz_info_statistics_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cordz_info_statistics_test.cc
         )
 
@@ -41862,7 +41864,7 @@ add_custom_command(TARGET cordz_info_statistics_test PRE_BUILD
 
 
 set(cordz_info_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cordz_info_test.cc
         )
 
@@ -41901,7 +41903,7 @@ add_custom_command(TARGET cordz_info_test PRE_BUILD
 
 
 set(cordz_sample_token_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cordz_sample_token.cc
         )
 
@@ -41932,7 +41934,7 @@ add_custom_command(TARGET cordz_sample_token PRE_BUILD
 
 
 set(cordz_statistics_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(cordz_statistics STATIC
@@ -41962,7 +41964,7 @@ add_custom_command(TARGET cordz_statistics PRE_BUILD
 
 
 set(cordz_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/cordz_test.cc
         )
 
@@ -42001,7 +42003,7 @@ add_custom_command(TARGET cordz_test PRE_BUILD
 
 
 set(cordz_test_helpers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(cordz_test_helpers STATIC
@@ -42038,7 +42040,7 @@ add_custom_command(TARGET cordz_test_helpers PRE_BUILD
 
 
 set(cordz_update_scope_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(cordz_update_scope STATIC
@@ -42068,7 +42070,7 @@ add_custom_command(TARGET cordz_update_scope PRE_BUILD
 
 
 set(cordz_update_scope_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cordz_update_scope_test.cc
         )
 
@@ -42107,7 +42109,7 @@ add_custom_command(TARGET cordz_update_scope_test PRE_BUILD
 
 
 set(cordz_update_tracker_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(cordz_update_tracker STATIC
@@ -42137,7 +42139,7 @@ add_custom_command(TARGET cordz_update_tracker PRE_BUILD
 
 
 set(cordz_update_tracker_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/cordz_update_tracker_test.cc
         )
 
@@ -42176,7 +42178,7 @@ add_custom_command(TARGET cordz_update_tracker_test PRE_BUILD
 
 
 set(internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/escaping.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/ostringstream.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/utf8.cc
@@ -42209,7 +42211,7 @@ add_custom_command(TARGET internal PRE_BUILD
 
 
 set(match_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/match_test.cc
         )
 
@@ -42247,7 +42249,7 @@ add_custom_command(TARGET match_test PRE_BUILD
 
 
 set(pow10_helper_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/pow10_helper.cc
         )
 
@@ -42278,7 +42280,7 @@ add_custom_command(TARGET pow10_helper PRE_BUILD
 
 
 set(str_format_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(str_format STATIC
@@ -42308,7 +42310,7 @@ add_custom_command(TARGET str_format PRE_BUILD
 
 
 set(str_format_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/str_format/arg.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/str_format/bind.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/internal/str_format/extension.cc
@@ -42344,7 +42346,7 @@ add_custom_command(TARGET str_format_internal PRE_BUILD
 
 
 set(str_replace_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/str_replace_test.cc
         )
 
@@ -42382,7 +42384,7 @@ add_custom_command(TARGET str_replace_test PRE_BUILD
 
 
 set(string_view_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/string_view_test.cc
         )
 
@@ -42420,7 +42422,7 @@ add_custom_command(TARGET string_view_test PRE_BUILD
 
 
 set(strings_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/ascii.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/charconv.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/strings/escaping.cc
@@ -42469,7 +42471,7 @@ add_custom_command(TARGET strings PRE_BUILD
 
 
 set(graphcycles_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
         )
 
@@ -42500,7 +42502,7 @@ add_custom_command(TARGET graphcycles_internal PRE_BUILD
 
 
 set(kernel_timeout_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(kernel_timeout_internal STATIC
@@ -42530,7 +42532,7 @@ add_custom_command(TARGET kernel_timeout_internal PRE_BUILD
 
 
 set(per_thread_sem_test_common_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/synchronization/internal/per_thread_sem_test.cc
         )
 
@@ -42568,7 +42570,7 @@ add_custom_command(TARGET per_thread_sem_test_common PRE_BUILD
 
 
 set(synchronization_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/synchronization/barrier.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/synchronization/blocking_counter.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/synchronization/internal/create_thread_identity.cc
@@ -42605,7 +42607,7 @@ add_custom_command(TARGET synchronization PRE_BUILD
 
 
 set(thread_pool_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(thread_pool STATIC
@@ -42635,7 +42637,7 @@ add_custom_command(TARGET thread_pool PRE_BUILD
 
 
 set(civil_time_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/time/internal/cctz/src/civil_time_detail.cc
         )
 
@@ -42666,7 +42668,7 @@ add_custom_command(TARGET civil_time PRE_BUILD
 
 
 set(time_zone_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/time/internal/cctz/src/time_zone_fixed.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/time/internal/cctz/src/time_zone_fixed.h
         ${webrtc_source_path}third_party/abseil-cpp/absl/time/internal/cctz/src/time_zone_format.cc
@@ -42712,7 +42714,7 @@ add_custom_command(TARGET time_zone PRE_BUILD
 
 
 set(test_util_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/time/internal/test_util.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/time/internal/zoneinfo.inc
         )
@@ -42752,7 +42754,7 @@ add_custom_command(TARGET test_util PRE_BUILD
 
 
 set(time_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/time/civil_time.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/time/clock.cc
         ${webrtc_source_path}third_party/abseil-cpp/absl/time/duration.cc
@@ -42789,7 +42791,7 @@ add_custom_command(TARGET time PRE_BUILD
 
 
 set(any_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(any STATIC
@@ -42819,7 +42821,7 @@ add_custom_command(TARGET any PRE_BUILD
 
 
 set(bad_any_cast_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(bad_any_cast STATIC
@@ -42849,7 +42851,7 @@ add_custom_command(TARGET bad_any_cast PRE_BUILD
 
 
 set(bad_any_cast_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/types/bad_any_cast.cc
         )
 
@@ -42880,7 +42882,7 @@ add_custom_command(TARGET bad_any_cast_impl PRE_BUILD
 
 
 set(bad_optional_access_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/types/bad_optional_access.cc
         )
 
@@ -42911,7 +42913,7 @@ add_custom_command(TARGET bad_optional_access PRE_BUILD
 
 
 set(bad_variant_access_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/types/bad_variant_access.cc
         )
 
@@ -42942,7 +42944,7 @@ add_custom_command(TARGET bad_variant_access PRE_BUILD
 
 
 set(compare_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(compare STATIC
@@ -42972,7 +42974,7 @@ add_custom_command(TARGET compare PRE_BUILD
 
 
 set(optional_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/types/internal/optional.h
         )
 
@@ -43003,7 +43005,7 @@ add_custom_command(TARGET optional PRE_BUILD
 
 
 set(optional_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/types/optional_test.cc
         )
 
@@ -43041,7 +43043,7 @@ add_custom_command(TARGET optional_test PRE_BUILD
 
 
 set(span_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/types/internal/span.h
         )
 
@@ -43072,7 +43074,7 @@ add_custom_command(TARGET span PRE_BUILD
 
 
 set(variant_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/types/internal/variant.h
         )
 
@@ -43103,7 +43105,7 @@ add_custom_command(TARGET variant PRE_BUILD
 
 
 set(variant_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/abseil-cpp/absl/types/variant_test.cc
         )
 
@@ -43142,7 +43144,7 @@ add_custom_command(TARGET variant_test PRE_BUILD
 
 
 set(utility16_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(utility16 STATIC
@@ -43172,7 +43174,7 @@ add_custom_command(TARGET utility16 PRE_BUILD
 
 
 set(absl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(absl STATIC
@@ -43203,7 +43205,7 @@ add_custom_command(TARGET absl PRE_BUILD
 
 
 set(cpu_features17_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/android_ndk/sources/android/cpufeatures/cpu-features.c
         )
 
@@ -43233,7 +43235,7 @@ add_custom_command(TARGET cpu_features17 PRE_BUILD
 
 
 set(ashmem_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/ashmem/ashmem-dev.c
         ${webrtc_source_path}third_party/ashmem/ashmem.h
         )
@@ -43265,7 +43267,7 @@ add_custom_command(TARGET ashmem PRE_BUILD
 
 
 set(fiat_license_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(fiat_license STATIC
@@ -43295,7 +43297,7 @@ add_custom_command(TARGET fiat_license PRE_BUILD
 
 
 set(boringssl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/boringssl/err_data.c
         ${webrtc_source_path}third_party/boringssl/src/crypto/asn1/a_bitstr.c
         ${webrtc_source_path}third_party/boringssl/src/crypto/asn1/a_bool.c
@@ -43649,7 +43651,7 @@ add_custom_command(TARGET boringssl PRE_BUILD
 
 
 set(boringssl_asm_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/boringssl/linux-aarch64/crypto/chacha/chacha-armv8.S
         ${webrtc_source_path}third_party/boringssl/linux-aarch64/crypto/fipsmodule/aesv8-armx64.S
         ${webrtc_source_path}third_party/boringssl/linux-aarch64/crypto/fipsmodule/armv8-mont.S
@@ -43690,7 +43692,7 @@ add_custom_command(TARGET boringssl_asm PRE_BUILD
 
 
 set(breakpad_client_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(breakpad_client STATIC
@@ -43738,7 +43740,7 @@ add_custom_command(TARGET breakpad_client PRE_BUILD
 
 
 set(breakpad_client_lib_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/breakpad/breakpad/src/client/crash_handler.cc
         ${webrtc_source_path}third_party/breakpad/breakpad/src/client/crash_handler.h
         )
@@ -43788,7 +43790,7 @@ add_custom_command(TARGET breakpad_client_lib PRE_BUILD
 
 
 set(client_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/breakpad/breakpad/src/client/linux/crash_generation/crash_generation_client.cc
         ${webrtc_source_path}third_party/breakpad/breakpad/src/client/linux/crash_generation/crash_generation_client.h
         ${webrtc_source_path}third_party/breakpad/breakpad/src/client/linux/dump_writer_common/mapping_info.h
@@ -43880,7 +43882,7 @@ add_custom_command(TARGET client PRE_BUILD
 
 
 set(clang_x64_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/breakpad/breakpad/src/common/dwarf/bytereader.cc
         ${webrtc_source_path}third_party/breakpad/breakpad/src/common/dwarf/dwarf2diehandler.cc
         ${webrtc_source_path}third_party/breakpad/breakpad/src/common/dwarf/dwarf2reader.cc
@@ -43938,7 +43940,7 @@ add_custom_command(TARGET clang_x64 PRE_BUILD
 
 
 set(processor_support_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/breakpad/breakpad/src/common/scoped_ptr.h
         ${webrtc_source_path}third_party/breakpad/breakpad/src/processor/basic_code_module.h
         ${webrtc_source_path}third_party/breakpad/breakpad/src/processor/basic_code_modules.cc
@@ -43984,7 +43986,7 @@ add_custom_command(TARGET processor_support PRE_BUILD
 
 
 set(clang_x64_23_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/breakpad/breakpad/src/common/path_helper.cc
         ${webrtc_source_path}third_party/breakpad/breakpad/src/common/path_helper.h
         ${webrtc_source_path}third_party/breakpad/breakpad/src/common/scoped_ptr.h
@@ -44087,7 +44089,7 @@ add_custom_command(TARGET clang_x64_23 PRE_BUILD
 
 
 set(histogram_proto_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_build_path}/gen/tracing/tracing/proto/histogram.pb.h
         ${webrtc_build_path}/gen/tracing/tracing/proto/histogram.pb.cc
         )
@@ -44127,7 +44129,7 @@ add_custom_command(TARGET histogram_proto PRE_BUILD
 #[[
 
 set(histogram_sources 
-   ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+  ${EMPTY_PATH}
   ${webrtc_source_path}third_party/catapult/tracing/tracing/value/histogram.cc
   ${webrtc_source_path}third_party/catapult/tracing/tracing/value/histogram.h
   ${webrtc_source_path}third_party/catapult/tracing/tracing/value/running_statistics.cc
@@ -44168,7 +44170,7 @@ add_custom_command(TARGET histogram PRE_BUILD
 ]]
 
 set(reserved_infos_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/catapult/tracing/tracing/value/diagnostics/reserved_infos.cc
         ${webrtc_source_path}third_party/catapult/tracing/tracing/value/diagnostics/reserved_infos.h
         )
@@ -44201,7 +44203,7 @@ add_custom_command(TARGET reserved_infos PRE_BUILD
 
 
 set(ced_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/ced/src/compact_enc_det/compact_enc_det.cc
         ${webrtc_source_path}third_party/ced/src/compact_enc_det/compact_enc_det_generated_tables.h
         ${webrtc_source_path}third_party/ced/src/compact_enc_det/compact_enc_det_generated_tables2.h
@@ -44252,7 +44254,7 @@ add_custom_command(TARGET ced PRE_BUILD
 ]]
 
 set(crc32c25_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/crc32c/src/include/crc32c/crc32c.h
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c.cc
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c_portable.cc
@@ -44295,7 +44297,7 @@ add_custom_command(TARGET crc32c25 PRE_BUILD
 
 
 set(crc32c_arm64_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c_arm64.cc
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c_arm64.h
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c_arm64_check.h
@@ -44338,7 +44340,7 @@ add_custom_command(TARGET crc32c_arm64 PRE_BUILD
 
 
 set(crc32c_internal_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/crc32c/config/crc32c/crc32c_config.h
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c_internal.h
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c_prefetch.h
@@ -44373,7 +44375,7 @@ add_custom_command(TARGET crc32c_internal_headers PRE_BUILD
 
 
 set(crc32c_sse42_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c_sse42.cc
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c_sse42.h
         ${webrtc_source_path}third_party/crc32c/src/src/crc32c_sse42_check.h
@@ -44416,7 +44418,7 @@ add_custom_command(TARGET crc32c_sse42 PRE_BUILD
 
 
 set(dav1d_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/cdf.c
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/cpu.c
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/data.c
@@ -44472,7 +44474,7 @@ add_custom_command(TARGET dav1d PRE_BUILD
 
 
 set(dav1d_10bit_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/cdef_apply_tmpl.c
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/cdef_tmpl.c
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/fg_apply_tmpl.c
@@ -44527,7 +44529,7 @@ add_custom_command(TARGET dav1d_10bit PRE_BUILD
 
 
 set(dav1d_8bit_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/cdef_apply_tmpl.c
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/cdef_tmpl.c
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/fg_apply_tmpl.c
@@ -44582,7 +44584,7 @@ add_custom_command(TARGET dav1d_8bit PRE_BUILD
 
 
 set(dav1d_arm_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/arm/cpu.c
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/arm/cpu.h
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/arm/refmvs_init.c
@@ -44640,7 +44642,7 @@ add_custom_command(TARGET dav1d_arm PRE_BUILD
 
 
 set(dav1d_entrypoints_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/lib.c
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/thread_task.c
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/thread_task.h
@@ -44678,7 +44680,7 @@ add_custom_command(TARGET dav1d_entrypoints PRE_BUILD
 
 
 set(dav1d_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/cdef.h
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/cdef_apply.h
         ${webrtc_source_path}third_party/dav1d/libdav1d/src/cdf.h
@@ -44753,7 +44755,7 @@ add_custom_command(TARGET dav1d_headers PRE_BUILD
 
 
 set(ffmpeg_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(ffmpeg STATIC
@@ -44785,7 +44787,7 @@ add_custom_command(TARGET ffmpeg PRE_BUILD
 
 
 set(ffmpeg_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/ffmpeg/libavcodec/ac3_parser.c
         ${webrtc_source_path}third_party/ffmpeg/libavcodec/ac3tab.c
         ${webrtc_source_path}third_party/ffmpeg/libavcodec/adts_parser.c
@@ -45035,7 +45037,7 @@ add_custom_command(TARGET ffmpeg_internal PRE_BUILD
 
 
 set(freetype_source_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/freetype/include/freetype-custom/freetype/config/ftmodule.h
         ${webrtc_source_path}third_party/freetype/include/freetype-custom/freetype/config/ftoption.h
         ${webrtc_source_path}third_party/freetype/include/freetype-custom/freetype/config/public-macros.h
@@ -45102,7 +45104,7 @@ add_custom_command(TARGET freetype_source PRE_BUILD
 
 
 set(benchmark_main_sources 
-   ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+  ${EMPTY_PATH}
   ${webrtc_source_path}third_party/google_benchmark/src/src/benchmark_main.cc
 )
 
@@ -45134,7 +45136,7 @@ add_custom_command(TARGET benchmark_main PRE_BUILD
 
 
 set(google_benchmark_sources 
-   ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+  ${EMPTY_PATH}
   ${webrtc_source_path}third_party/google_benchmark/src/src/arraysize.h
   ${webrtc_source_path}third_party/google_benchmark/src/src/benchmark.cc
   ${webrtc_source_path}third_party/google_benchmark/src/src/benchmark_api_internal.cc
@@ -45208,7 +45210,7 @@ add_custom_command(TARGET google_benchmark PRE_BUILD
 
 
 set(gmock26_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/googletest/src/googlemock/include/gmock/gmock-actions.h
         ${webrtc_source_path}third_party/googletest/src/googlemock/include/gmock/gmock-cardinalities.h
         ${webrtc_source_path}third_party/googletest/src/googlemock/include/gmock/gmock-function-mocker.h
@@ -45265,7 +45267,7 @@ add_custom_command(TARGET gmock26 PRE_BUILD
 
 
 set(gmock_main27_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/googletest/src/googlemock/src/gmock_main.cc
         )
 
@@ -45305,7 +45307,7 @@ add_custom_command(TARGET gmock_main27 PRE_BUILD
 
 
 set(gtest28_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/googletest/custom/gtest/internal/custom/gtest.h
         ${webrtc_source_path}third_party/googletest/custom/gtest/internal/custom/chrome_custom_temp_dir.cc
         ${webrtc_source_path}third_party/googletest/custom/gtest/internal/custom/chrome_custom_temp_dir.h
@@ -45376,7 +45378,7 @@ add_custom_command(TARGET gtest28 PRE_BUILD
 
 
 set(gtest_main29_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/googletest/src/googletest/src/gtest_main.cc
         )
 
@@ -45415,7 +45417,7 @@ add_custom_command(TARGET gtest_main29 PRE_BUILD
 
 
 set(harfbuzz_source_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/harfbuzz-ng/src/src/hb-aat-layout-ankr-table.hh
         ${webrtc_source_path}third_party/harfbuzz-ng/src/src/hb-aat-layout-bsln-table.hh
         ${webrtc_source_path}third_party/harfbuzz-ng/src/src/hb-aat-layout-common.hh
@@ -45678,7 +45680,7 @@ set(harfbuzz_source_sources
 
 
 set(hb_scoped_util_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/harfbuzz-ng/utils/hb_scoped.h
         )
 
@@ -45717,7 +45719,7 @@ add_custom_command(TARGET hb_scoped_util PRE_BUILD
 
 
 set(icui18n_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/icu/source/i18n/alphaindex.cpp
         ${webrtc_source_path}third_party/icu/source/i18n/anytrans.cpp
         ${webrtc_source_path}third_party/icu/source/i18n/anytrans.h
@@ -46175,7 +46177,7 @@ add_custom_command(TARGET icui18n PRE_BUILD
 
 
 set(icui18n_hidden_visibility_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/icu/source/i18n/alphaindex.cpp
         ${webrtc_source_path}third_party/icu/source/i18n/anytrans.cpp
         ${webrtc_source_path}third_party/icu/source/i18n/anytrans.h
@@ -46633,7 +46635,7 @@ add_custom_command(TARGET icui18n_hidden_visibility PRE_BUILD
 
 
 set(icuuc_private_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/icu/source/common/appendable.cpp
         ${webrtc_source_path}third_party/icu/source/common/bmpset.cpp
         ${webrtc_source_path}third_party/icu/source/common/bmpset.h
@@ -46991,7 +46993,7 @@ add_custom_command(TARGET icuuc_private PRE_BUILD
 
 
 set(icuuc_private_hidden_visibility_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/icu/source/common/appendable.cpp
         ${webrtc_source_path}third_party/icu/source/common/bmpset.cpp
         ${webrtc_source_path}third_party/icu/source/common/bmpset.h
@@ -47349,7 +47351,7 @@ add_custom_command(TARGET icuuc_private_hidden_visibility PRE_BUILD
 
 
 set(icuuc_public_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/icu/source/common/unicode/appendable.h
         ${webrtc_source_path}third_party/icu/source/common/unicode/brkiter.h
         ${webrtc_source_path}third_party/icu/source/common/unicode/bytestream.h
@@ -47478,7 +47480,7 @@ add_custom_command(TARGET icuuc_public PRE_BUILD
 
 
 set(jsoncpp_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/jsoncpp/source/include/json/allocator.h
         ${webrtc_source_path}third_party/jsoncpp/source/include/json/assertions.h
         ${webrtc_source_path}third_party/jsoncpp/source/include/json/config.h
@@ -47526,7 +47528,7 @@ add_custom_command(TARGET jsoncpp PRE_BUILD
 
 
 set(libjpeg_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libjpeg_turbo/jcapimin.c
         ${webrtc_source_path}third_party/libjpeg_turbo/jcapistd.c
         ${webrtc_source_path}third_party/libjpeg_turbo/jccoefct.c
@@ -47610,7 +47612,7 @@ add_custom_command(TARGET libjpeg PRE_BUILD
 
 
 set(libjpeg_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libjpeg_turbo/jconfig.h
         ${webrtc_source_path}third_party/libjpeg_turbo/jdct.h
         ${webrtc_source_path}third_party/libjpeg_turbo/jinclude.h
@@ -47646,7 +47648,7 @@ add_custom_command(TARGET libjpeg_headers PRE_BUILD
 
 
 set(simd_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libjpeg_turbo/simd/arm/jccolor-neon.c
         ${webrtc_source_path}third_party/libjpeg_turbo/simd/arm/jcgray-neon.c
         ${webrtc_source_path}third_party/libjpeg_turbo/simd/arm/jcphuff-neon.c
@@ -47695,7 +47697,7 @@ add_custom_command(TARGET simd PRE_BUILD
 
 
 set(turbojpeg_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libjpeg_turbo/jdatadst-tj.c
         ${webrtc_source_path}third_party/libjpeg_turbo/jdatasrc-tj.c
         ${webrtc_source_path}third_party/libjpeg_turbo/rdbmp.c
@@ -47738,7 +47740,7 @@ add_custom_command(TARGET turbojpeg PRE_BUILD
 
 
 set(libpng_sources_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libpng/png.c
         ${webrtc_source_path}third_party/libpng/png.h
         ${webrtc_source_path}third_party/libpng/pngconf.h
@@ -47797,7 +47799,7 @@ add_custom_command(TARGET libpng_sources PRE_BUILD
 
 
 set(libsrtp_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libsrtp/include/ekt.h
         ${webrtc_source_path}third_party/libsrtp/include/srtp.h
         ${webrtc_source_path}third_party/libsrtp/crypto/include/aes.h
@@ -47891,7 +47893,7 @@ add_custom_command(TARGET libsrtp PRE_BUILD
 
 
 set(libunwindstack_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libunwindstack/src/android-base/file.cpp
         ${webrtc_source_path}third_party/libunwindstack/src/android-base/include/android-base/file.h
         ${webrtc_source_path}third_party/libunwindstack/src/android-base/include/android-base/macros.h
@@ -47997,7 +47999,7 @@ add_custom_command(TARGET libunwindstack PRE_BUILD
 
 
 set(libvpx_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.c
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/arm/loopfilter_arm.c
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/arm/neon/bilinearpredict_neon.c
@@ -48243,7 +48245,7 @@ add_custom_command(TARGET libvpx PRE_BUILD
 
 
 set(libvpx_arm64_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/arm/loopfilter_arm.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
@@ -48467,7 +48469,7 @@ add_custom_command(TARGET libvpx_arm64_headers PRE_BUILD
 
 
 set(libvpx_arm64_highbd_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/arm/loopfilter_arm.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
@@ -48692,7 +48694,7 @@ add_custom_command(TARGET libvpx_arm64_highbd_headers PRE_BUILD
 
 
 set(libvpx_arm_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/coefupdateprobs.h
@@ -48909,7 +48911,7 @@ add_custom_command(TARGET libvpx_arm_headers PRE_BUILD
 
 
 set(libvpx_arm_neon_cpu_detect_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/arm/loopfilter_arm.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
@@ -49134,7 +49136,7 @@ add_custom_command(TARGET libvpx_arm_neon_cpu_detect_headers PRE_BUILD
 
 
 set(libvpx_arm_neon_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/arm/loopfilter_arm.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
@@ -49359,7 +49361,7 @@ add_custom_command(TARGET libvpx_arm_neon_headers PRE_BUILD
 
 
 set(libvpx_arm_neon_highbd_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/arm/loopfilter_arm.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
@@ -49585,7 +49587,7 @@ add_custom_command(TARGET libvpx_arm_neon_highbd_headers PRE_BUILD
 
 
 set(libvpx_generic_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/coefupdateprobs.h
@@ -49802,7 +49804,7 @@ add_custom_command(TARGET libvpx_generic_headers PRE_BUILD
 
 
 set(libvpx_mips_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/coefupdateprobs.h
@@ -50020,7 +50022,7 @@ add_custom_command(TARGET libvpx_mips_headers PRE_BUILD
 
 
 set(libvpx_nacl_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/coefupdateprobs.h
@@ -50237,7 +50239,7 @@ add_custom_command(TARGET libvpx_nacl_headers PRE_BUILD
 
 
 set(libvpx_x86_64_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/coefupdateprobs.h
@@ -50473,7 +50475,7 @@ add_custom_command(TARGET libvpx_x86_64_headers PRE_BUILD
 
 
 set(libvpx_x86_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/alloccommon.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/blockd.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/common/coefupdateprobs.h
@@ -50709,7 +50711,7 @@ add_custom_command(TARGET libvpx_x86_headers PRE_BUILD
 
 
 set(libvpxrc_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/vp8_ratectrl_rtc.cc
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp8/vp8_ratectrl_rtc.h
         ${webrtc_source_path}third_party/libvpx/source/libvpx/vp9/ratectrl_rtc.cc
@@ -50745,7 +50747,7 @@ add_custom_command(TARGET libvpxrc PRE_BUILD
 
 
 set(libxml_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libxml/src/HTMLparser.c
         ${webrtc_source_path}third_party/libxml/src/HTMLtree.c
         ${webrtc_source_path}third_party/libxml/src/SAX2.c
@@ -50869,7 +50871,7 @@ add_custom_command(TARGET libxml PRE_BUILD
 
 
 set(libxml_utils_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libxml/chromium/libxml_utils.cc
         ${webrtc_source_path}third_party/libxml/chromium/libxml_utils.h
         )
@@ -50912,7 +50914,7 @@ add_custom_command(TARGET libxml_utils PRE_BUILD
 
 
 set(xml_reader_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libxml/chromium/xml_reader.cc
         ${webrtc_source_path}third_party/libxml/chromium/xml_reader.h
         )
@@ -50955,7 +50957,7 @@ add_custom_command(TARGET xml_reader PRE_BUILD
 
 
 set(xml_writer_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libxml/chromium/xml_writer.cc
         ${webrtc_source_path}third_party/libxml/chromium/xml_writer.h
         )
@@ -50998,7 +51000,7 @@ add_custom_command(TARGET xml_writer PRE_BUILD
 
 
 set(libyuv_internal_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libyuv/include/libyuv.h
         ${webrtc_source_path}third_party/libyuv/include/libyuv/basic_types.h
         ${webrtc_source_path}third_party/libyuv/include/libyuv/compare.h
@@ -51086,7 +51088,7 @@ add_custom_command(TARGET libyuv_internal PRE_BUILD
 
 
 set(libyuv_neon_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/libyuv/source/compare_neon.cc
         ${webrtc_source_path}third_party/libyuv/source/compare_neon64.cc
         ${webrtc_source_path}third_party/libyuv/source/rotate_neon.cc
@@ -51125,7 +51127,7 @@ add_custom_command(TARGET libyuv_neon PRE_BUILD
 
 
 set(lzma_sdk_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/lzma_sdk/7z.h
         ${webrtc_source_path}third_party/lzma_sdk/7zAlloc.c
         ${webrtc_source_path}third_party/lzma_sdk/7zAlloc.h
@@ -51197,7 +51199,7 @@ add_custom_command(TARGET lzma_sdk PRE_BUILD
 
 
 set(lzma_sdk_xz_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/lzma_sdk/BraIA64.c
         ${webrtc_source_path}third_party/lzma_sdk/RotateDefs.h
         ${webrtc_source_path}third_party/lzma_sdk/Sha256.c
@@ -51239,7 +51241,7 @@ add_custom_command(TARGET lzma_sdk_xz PRE_BUILD
 
 
 set(modp_b64_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/modp_b64/modp_b64.cc
         ${webrtc_source_path}third_party/modp_b64/modp_b64.h
         ${webrtc_source_path}third_party/modp_b64/modp_b64_data.h
@@ -51272,7 +51274,7 @@ add_custom_command(TARGET modp_b64 PRE_BUILD
 
 
 set(common32_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/openh264/src/codec/common/inc/WelsList.h
         ${webrtc_source_path}third_party/openh264/src/codec/common/inc/WelsLock.h
         ${webrtc_source_path}third_party/openh264/src/codec/common/inc/WelsTask.h
@@ -51350,7 +51352,7 @@ add_custom_command(TARGET common32 PRE_BUILD
 
 
 set(encoder_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/openh264/src/codec/encoder/core/inc/as264_common.h
         ${webrtc_source_path}third_party/openh264/src/codec/encoder/core/inc/au_set.h
         ${webrtc_source_path}third_party/openh264/src/codec/encoder/core/inc/deblocking.h
@@ -51470,7 +51472,7 @@ add_custom_command(TARGET encoder PRE_BUILD
 
 
 set(processing_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/openh264/src/codec/processing/interface/IWelsVP.h
         ${webrtc_source_path}third_party/openh264/src/codec/processing/src/adaptivequantization/AdaptiveQuantization.cpp
         ${webrtc_source_path}third_party/openh264/src/codec/processing/src/adaptivequantization/AdaptiveQuantization.h
@@ -51549,7 +51551,7 @@ add_custom_command(TARGET processing PRE_BUILD
 
 
 set(opus_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/opus/src/celt/_kiss_fft_guts.h
         ${webrtc_source_path}third_party/opus/src/celt/arch.h
         ${webrtc_source_path}third_party/opus/src/celt/bands.c
@@ -51785,7 +51787,7 @@ add_custom_command(TARGET opus PRE_BUILD
 
 
 set(fftpack_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/pffft/src/fftpack.c
         ${webrtc_source_path}third_party/pffft/src/fftpack.h
         )
@@ -51817,7 +51819,7 @@ add_custom_command(TARGET fftpack PRE_BUILD
 
 
 set(pffft_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/pffft/src/pffft.c
         ${webrtc_source_path}third_party/pffft/src/pffft.h
         )
@@ -51849,7 +51851,7 @@ add_custom_command(TARGET pffft PRE_BUILD
 
 
 set(protobuf_full_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/any_lite.cc
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/arena.cc
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/arena.h
@@ -52073,7 +52075,7 @@ add_custom_command(TARGET protobuf_full PRE_BUILD
 
 
 set(clang_x64_33_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/any_lite.cc
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/arena.cc
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/arena.h
@@ -52296,7 +52298,7 @@ add_custom_command(TARGET clang_x64_33 PRE_BUILD
 
 
 set(protobuf_lite_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/any_lite.cc
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/arena.cc
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/arena.h
@@ -52405,7 +52407,7 @@ add_custom_command(TARGET protobuf_lite PRE_BUILD
 
 
 set(clang_x64_35_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/compiler/code_generator.cc
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/compiler/code_generator.h
         ${webrtc_source_path}third_party/protobuf/src/google/protobuf/compiler/command_line_interface.cc
@@ -52602,7 +52604,7 @@ add_custom_command(TARGET clang_x64_35 PRE_BUILD
 
 
 set(rnn_vad36_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/rnnoise/src/rnn_activations.h
         ${webrtc_source_path}third_party/rnnoise/src/rnn_vad_weights.cc
         ${webrtc_source_path}third_party/rnnoise/src/rnn_vad_weights.h
@@ -52635,7 +52637,7 @@ add_custom_command(TARGET rnn_vad36 PRE_BUILD
 
 
 set(usrsctp_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp.h
         ${webrtc_source_path}third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_asconf.c
         ${webrtc_source_path}third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_asconf.h
@@ -52732,7 +52734,7 @@ add_custom_command(TARGET usrsctp PRE_BUILD
 
 
 set(minizip_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/contrib/minizip/ioapi.c
         ${webrtc_source_path}third_party/zlib/contrib/minizip/ioapi.h
         ${webrtc_source_path}third_party/zlib/contrib/minizip/unzip.c
@@ -52768,7 +52770,7 @@ add_custom_command(TARGET minizip PRE_BUILD
 
 
 set(zlib_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/adler32.c
         ${webrtc_source_path}third_party/zlib/chromeconf.h
         ${webrtc_source_path}third_party/zlib/compress.c
@@ -52835,7 +52837,7 @@ add_custom_command(TARGET zlib PRE_BUILD
 
 
 set(clang_x64_37_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/adler32.c
         ${webrtc_source_path}third_party/zlib/chromeconf.h
         ${webrtc_source_path}third_party/zlib/compress.c
@@ -52900,7 +52902,7 @@ add_custom_command(TARGET clang_x64_37 PRE_BUILD
 
 
 set(zlib_adler32_simd_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/adler32_simd.c
         ${webrtc_source_path}third_party/zlib/adler32_simd.h
         )
@@ -52935,7 +52937,7 @@ add_custom_command(TARGET zlib_adler32_simd PRE_BUILD
 
 
 set(clang_x64_38_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/adler32_simd.c
         ${webrtc_source_path}third_party/zlib/adler32_simd.h
         )
@@ -52970,7 +52972,7 @@ add_custom_command(TARGET clang_x64_38 PRE_BUILD
 
 
 set(zlib_arm_crc32_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/crc32_simd.c
         ${webrtc_source_path}third_party/zlib/crc32_simd.h
         )
@@ -53007,7 +53009,7 @@ add_custom_command(TARGET zlib_arm_crc32 PRE_BUILD
 
 
 set(zlib_common_headers_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/chromeconf.h
         ${webrtc_source_path}third_party/zlib/deflate.h
         ${webrtc_source_path}third_party/zlib/inffast.h
@@ -53046,7 +53048,7 @@ add_custom_command(TARGET zlib_common_headers PRE_BUILD
 
 
 set(clang_x64_39_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/chromeconf.h
         ${webrtc_source_path}third_party/zlib/deflate.h
         ${webrtc_source_path}third_party/zlib/inffast.h
@@ -53084,7 +53086,7 @@ add_custom_command(TARGET clang_x64_39 PRE_BUILD
 
 
 set(zlib_crc32_simd_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(zlib_crc32_simd STATIC
@@ -53116,7 +53118,7 @@ add_custom_command(TARGET zlib_crc32_simd PRE_BUILD
 
 
 set(clang_x64_40_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/crc32_simd.c
         ${webrtc_source_path}third_party/zlib/crc32_simd.h
         )
@@ -53150,7 +53152,7 @@ add_custom_command(TARGET clang_x64_40 PRE_BUILD
 
 
 set(zlib_inflate_chunk_simd_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/contrib/optimizations/chunkcopy.h
         ${webrtc_source_path}third_party/zlib/contrib/optimizations/inffast_chunk.c
         ${webrtc_source_path}third_party/zlib/contrib/optimizations/inffast_chunk.h
@@ -53187,7 +53189,7 @@ add_custom_command(TARGET zlib_inflate_chunk_simd PRE_BUILD
 
 
 set(clang_x64_41_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/contrib/optimizations/chunkcopy.h
         ${webrtc_source_path}third_party/zlib/contrib/optimizations/inffast_chunk.c
         ${webrtc_source_path}third_party/zlib/contrib/optimizations/inffast_chunk.h
@@ -53223,7 +53225,7 @@ add_custom_command(TARGET clang_x64_41 PRE_BUILD
 
 
 set(zlib_x86_simd_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(zlib_x86_simd STATIC
@@ -53255,7 +53257,7 @@ add_custom_command(TARGET zlib_x86_simd PRE_BUILD
 
 
 set(clang_x64_42_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}third_party/zlib/crc_folding.c
         ${webrtc_source_path}third_party/zlib/fill_window_sse.c
         )
@@ -53290,7 +53292,7 @@ add_custom_command(TARGET clang_x64_42 PRE_BUILD
 
 
 set(freetype_harfbuzz_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 add_library(freetype_harfbuzz STATIC
@@ -53328,7 +53330,7 @@ add_custom_command(TARGET freetype_harfbuzz PRE_BUILD
 
 
 set(video_adaptation43_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}video/adaptation/balanced_constraint.cc
         ${webrtc_source_path}video/adaptation/balanced_constraint.h
         ${webrtc_source_path}video/adaptation/bandwidth_quality_scaler_resource.cc
@@ -53395,7 +53397,7 @@ add_custom_command(TARGET video_adaptation43 PRE_BUILD
 
 
 set(frame_cadence_adapter_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}video/frame_cadence_adapter.cc
         ${webrtc_source_path}video/frame_cadence_adapter.h
         )
@@ -53444,7 +53446,7 @@ add_custom_command(TARGET frame_cadence_adapter PRE_BUILD
 
 
 set(frame_dumping_decoder_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}video/frame_dumping_decoder.cc
         ${webrtc_source_path}video/frame_dumping_decoder.h
         )
@@ -53493,7 +53495,7 @@ add_custom_command(TARGET frame_dumping_decoder PRE_BUILD
 
 
 set(video_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}video/buffered_frame_decryptor.cc
         ${webrtc_source_path}video/buffered_frame_decryptor.h
         ${webrtc_source_path}video/call_stats2.cc
@@ -53580,7 +53582,7 @@ add_custom_command(TARGET video PRE_BUILD
 
 
 set(video_legacy_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}video/call_stats.cc
         ${webrtc_source_path}video/call_stats.h
         ${webrtc_source_path}video/receive_statistics_proxy.cc
@@ -53639,7 +53641,7 @@ add_custom_command(TARGET video_legacy PRE_BUILD
 
 
 set(video_stream_decoder_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}video/video_stream_decoder_impl.cc
         ${webrtc_source_path}video/video_stream_decoder_impl.h
         )
@@ -53688,7 +53690,7 @@ add_custom_command(TARGET video_stream_decoder_impl PRE_BUILD
 
 
 set(video_stream_encoder_impl_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}video/alignment_adjuster.cc
         ${webrtc_source_path}video/alignment_adjuster.h
         ${webrtc_source_path}video/encoder_bitrate_adjuster.cc
@@ -53747,7 +53749,7 @@ add_custom_command(TARGET video_stream_encoder_impl PRE_BUILD
 
 
 set(media_test_static_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_root_path}/examples/smoke_test/src/media_test_utils/audio_utils.cpp
         ${webrtc_root_path}/examples/smoke_test/src/media_test_utils/audio_utils.h
         ${webrtc_root_path}/examples/smoke_test/src/media_test_utils/byte_stream_utils.cpp
@@ -53813,7 +53815,7 @@ add_custom_command(TARGET media_test_static PRE_BUILD
 
 
 set(smoke_test_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_source_path}sdk/android/src/jni/jni_onload.cc
         )
 
@@ -53876,7 +53878,7 @@ add_custom_command(TARGET smoke_test_static PRE_BUILD
         )
 
 add_library(smoke_test SHARED
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         )
 
 #add_custom_command(TARGET smoke_test POST_BUILD
@@ -53891,7 +53893,7 @@ set_target_properties(smoke_test
 
 
 set(test_cases_sources
-         ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+        ${EMPTY_PATH}
         ${webrtc_root_path}/examples/smoke_test/src/camera_capture_test.cpp
         ${webrtc_root_path}/examples/smoke_test/src/crash_catch_test.cpp
         ${webrtc_root_path}/examples/smoke_test/src/peer_connection_test.cpp
@@ -53959,7 +53961,7 @@ add_custom_command(TARGET test_cases PRE_BUILD
         )
 
 add_library(all_projects STATIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/empty.cpp
+       ${EMPTY_PATH}
         )
 
 

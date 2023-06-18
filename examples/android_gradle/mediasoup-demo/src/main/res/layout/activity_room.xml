@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="roomProps"
+            type="org.mediasoup.droid.demo.vm.RoomProps" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_room"
+        android:orientation="vertical"
+        tools:context=".RoomActivity">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/remote_peers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/room_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_state_new_close"
+            bind:edias_state="@{roomProps.connectionState}"
+            bind:edias_state_animation="@{roomProps.getConnectingAnimation}" />
+
+        <TextView
+            android:id="@+id/invitation_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_area"
+            android:paddingLeft="15dp"
+            android:paddingTop="8dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="8dp"
+            android:text="@string/invitation_link"
+            android:textColor="@color/text_color"
+            android:textSize="15sp"
+            bind:edias_link="@{roomProps.invitationLink}" />
+
+        <ImageView
+            android:id="@+id/hide_videos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mute_audio"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_left_box_off"
+            android:padding="8dp"
+            android:src="@drawable/icon_video_white_off"
+            bind:edias_hide_videos="@{roomProps.audioOnly}"
+            bind:edias_hide_videos_progress="@{roomProps.audioOnlyInProgress}" />
+
+        <ImageView
+            android:id="@+id/mute_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_left_box_off"
+            android:padding="8dp"
+            android:src="@drawable/icon_volume_white_off"
+            bind:edias_audio_muted="@{roomProps.audioMuted}" />
+
+        <ImageView
+            android:id="@+id/restart_ice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mute_audio"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_left_box"
+            android:padding="8dp"
+            android:src="@drawable/icon_restart_ice_white"
+            bind:edias_restart_ice_progress="@{roomProps.restartIceInProgress}"
+            bind:edias_restart_ice_ani="@{roomProps.restartIceAnimation}" />
+
+
+        <org.mediasoup.droid.demo.view.MeView
+            android:id="@+id/me"
+            android:layout_width="220dp"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="68dp"/>
+
+        <EditText
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:id="@+id/chat_input"
+            android:layout_width="220dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:textColor="@color/text_color" />
+
+    </RelativeLayout>
+</layout>

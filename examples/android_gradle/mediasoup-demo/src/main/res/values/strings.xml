@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Mediasoup</string>
+    <string name="invitation_link">invitation link</string>
+    <string name="connection">connection</string>
+    <string name="setting">setting</string>
+    <string name="title_activity_room">Room</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="invite_link_copied">Room link copied to the clipboard</string>
+    <string name="audio_producer_copied">Copy audio producer id to clipboard</string>
+    <string name="audio_consumer_copied">Copy audio consumer id to clipboard</string>
+    <string name="video_producer_copied">Copy video producer id to clipboard</string>
+    <string name="video_consumer_copied">Copy video consumer id to clipboard</string>
+
+    <!-- Preference Titles -->
+    <string name="room_header">Room</string>
+    <string name="device_header">Device</string>
+
+    <!-- Room Preferences -->
+    <string name="room_id">roomId</string>
+    <string name="peer_id">peerId</string>
+    <string name="display_name">displayName</string>
+    <string name="force_tcp">forceTcp</string>
+    <string name="force_h264">forceH264</string>
+    <string name="produce">produce</string>
+    <string name="consume">consume</string>
+    <string name="dataChannel">dataChannel</string>
+    <string name="force_vp9">forceVP9</string>
+
+    <!-- Device Preferences -->
+    <string name="camera">camera</string>
+</resources>
