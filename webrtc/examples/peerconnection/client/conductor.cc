@@ -127,22 +127,30 @@ void Conductor::Close() {
 }
 
 bool Conductor::InitializePeerConnection() {
+  // 检查是否已存在 peer_connection_factory_ 或
+  // peer_connection_，都应该是空的，否则报错
   RTC_DCHECK(!peer_connection_factory_);
   RTC_DCHECK(!peer_connection_);
-
+  // 没有 signaling_thread_ 的话就创建一个新的
   if (!signaling_thread_.get()) {
     signaling_thread_ = rtc::Thread::CreateWithSocketServer();
     signaling_thread_->Start();
   }
+
+  // 使用 signaling_thread_ 创建 PeerConnectionFactory
+  // PeerConnectionFactory 是用于生成 PeerConnections, MediaStreams 和 MediaTracks 的工厂类
   peer_connection_factory_ = webrtc::CreatePeerConnectionFactory(
-      nullptr /* network_thread */, nullptr /* worker_thread */,
-      signaling_thread_.get(), nullptr /* default_adm */,
+      nullptr /* network_thread */, 
+      nullptr /* worker_thread */,
+      signaling_thread_.get(), /* signaling_thread */
+      nullptr /* default_adm */,
       webrtc::CreateBuiltinAudioEncoderFactory(),
       webrtc::CreateBuiltinAudioDecoderFactory(),
       webrtc::CreateBuiltinVideoEncoderFactory(),
       webrtc::CreateBuiltinVideoDecoderFactory(), nullptr /* audio_mixer */,
       nullptr /* audio_processing */);
 
+    // 如果 PeerConnectionFactory 初始化失败，清理资源并返回错误
   if (!peer_connection_factory_) {
     main_wnd_->MessageBox("Error", "Failed to initialize PeerConnectionFactory",
                           true);
@@ -150,13 +158,14 @@ bool Conductor::InitializePeerConnection() {
     return false;
   }
 
+  // 创建 PeerConnection，如果失败，清理资源并返回错误
   if (!CreatePeerConnection()) {
     main_wnd_->MessageBox("Error", "CreatePeerConnection failed", true);
     DeletePeerConnection();
   }
-
+  // 添加音频和视频轨道
   AddTracks();
-
+  // 返回 peer_connection_ 是否已初始化
   return peer_connection_ != nullptr;
 }
 
@@ -182,15 +191,19 @@ bool Conductor::ReinitializePeerConnectionForLoopback() {
 }
 
 bool Conductor::CreatePeerConnection() {
+  // 检查 peer_connection_factory_ 是否存在且 peer_connection_
+  // 是否为空，否则报错
   RTC_DCHECK(peer_connection_factory_);
   RTC_DCHECK(!peer_connection_);
 
+  // 创建一个新的 PeerConnection 配置
   webrtc::PeerConnectionInterface::RTCConfiguration config;
   config.sdp_semantics = webrtc::SdpSemantics::kUnifiedPlan;
   webrtc::PeerConnectionInterface::IceServer server;
   server.uri = GetPeerConnectionString();
   config.servers.push_back(server);
 
+  // 使用 PeerConnectionFactory 和配置创建新的 PeerConnection
   peer_connection_ = peer_connection_factory_->CreatePeerConnection(
       config, nullptr, nullptr, this);
   return peer_connection_ != nullptr;
@@ -260,7 +273,7 @@ void Conductor::OnIceCandidate(const webrtc::IceCandidateInterface* candidate) {
 // PeerConnectionClientObserver implementation.
 //
 
-void Conductor::OnSignedIn() {
+void Conductor::OnSignedIn() {//登录成功，切换显示用户列表
   RTC_LOG(LS_INFO) << __FUNCTION__;
   main_wnd_->SwitchToPeerList(client_->peers());
 }
@@ -296,11 +309,11 @@ void Conductor::OnPeerDisconnected(int id) {
 void Conductor::OnMessageFromPeer(int peer_id, const std::string& message) {
   RTC_DCHECK(peer_id_ == peer_id || peer_id_ == -1);
   RTC_DCHECK(!message.empty());
-
+  /*此时被动peer还没有创建PeerConnection对象*/
   if (!peer_connection_.get()) {
     RTC_DCHECK(peer_id_ == -1);
     peer_id_ = peer_id;
-
+    /*创建PeerConnection对象*/
     if (!InitializePeerConnection()) {
       RTC_LOG(LS_ERROR) << "Failed to initialize our PeerConnection instance";
       client_->SignOut();
@@ -313,7 +326,7 @@ void Conductor::OnMessageFromPeer(int peer_id, const std::string& message) {
            "conversation with a different peer.";
     return;
   }
-
+  /*将收到的消息解析成json对象*/
   Json::Reader reader;
   Json::Value jmessage;
   if (!reader.parse(message, jmessage)) {
@@ -322,7 +335,7 @@ void Conductor::OnMessageFromPeer(int peer_id, const std::string& message) {
   }
   std::string type_str;
   std::string json_object;
-
+  /*从json消息中解析出消息的类型*/
   rtc::GetStringFromJsonObject(jmessage, kSessionDescriptionTypeName,
                                &type_str);
   if (!type_str.empty()) {
@@ -336,12 +349,14 @@ void Conductor::OnMessageFromPeer(int peer_id, const std::string& message) {
       }
       return;
     }
+    /*获取消息的类型*/
     absl::optional<webrtc::SdpType> type_maybe =
         webrtc::SdpTypeFromString(type_str);
     if (!type_maybe) {
       RTC_LOG(LS_ERROR) << "Unknown SDP type: " << type_str;
       return;
     }
+    /*从json消息中获取sdp，此处为offer。*/
     webrtc::SdpType type = *type_maybe;
     std::string sdp;
     if (!rtc::GetStringFromJsonObject(jmessage, kSessionDescriptionSdpName,
@@ -350,6 +365,7 @@ void Conductor::OnMessageFromPeer(int peer_id, const std::string& message) {
           << "Can't parse received session description message.";
       return;
     }
+    /*将offer转成webrtc可以理解的对象*/
     webrtc::SdpParseError error;
     std::unique_ptr<webrtc::SessionDescriptionInterface> session_description =
         webrtc::CreateSessionDescription(type, sdp, &error);
@@ -361,9 +377,11 @@ void Conductor::OnMessageFromPeer(int peer_id, const std::string& message) {
       return;
     }
     RTC_LOG(LS_INFO) << " Received session description :" << message;
+    /*将offer通过SetRemoteDescription设置到PeerConnection中*/
     peer_connection_->SetRemoteDescription(
         DummySetSessionDescriptionObserver::Create(),
         session_description.release());
+    /*收到了对端的offer，本端需要产生answer。*/
     if (type == webrtc::SdpType::kOffer) {
       peer_connection_->CreateAnswer(
           this, webrtc::PeerConnectionInterface::RTCOfferAnswerOptions());
@@ -433,6 +451,7 @@ void Conductor::ConnectToPeer(int peer_id) {
     return;
   }
 
+  //初始化 peer ，成功就创建 CreateOffer
   if (InitializePeerConnection()) {
     peer_id_ = peer_id;
     peer_connection_->CreateOffer(
@@ -443,10 +462,11 @@ void Conductor::ConnectToPeer(int peer_id) {
 }
 
 void Conductor::AddTracks() {
+  // 如果已经添加了轨道，则不再添加
   if (!peer_connection_->GetSenders().empty()) {
     return;  // Already added tracks.
   }
-
+  // 创建音频轨道并添加到 PeerConnection
   rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track(
       peer_connection_factory_->CreateAudioTrack(
           kAudioLabel, peer_connection_factory_->CreateAudioSource(
@@ -456,7 +476,7 @@ void Conductor::AddTracks() {
     RTC_LOG(LS_ERROR) << "Failed to add audio track to PeerConnection: "
                       << result_or_error.error().message();
   }
-
+  // 创建视频源和视频轨道并添加到 PeerConnection
   rtc::scoped_refptr<CapturerTrackSource> video_device =
       CapturerTrackSource::Create();
   if (video_device) {
@@ -473,6 +493,7 @@ void Conductor::AddTracks() {
     RTC_LOG(LS_ERROR) << "OpenVideoCaptureDevice failed";
   }
 
+  // 将界面切换到流媒体 UI
   main_wnd_->SwitchToStreamingUI();
 }
 
@@ -554,6 +575,7 @@ void Conductor::UIThreadCallback(int msg_id, void* data) {
   }
 }
 
+/** SDP 设置成功回调*/
 void Conductor::OnSuccess(webrtc::SessionDescriptionInterface* desc) {
   peer_connection_->SetLocalDescription(
       DummySetSessionDescriptionObserver::Create(), desc);
@@ -579,7 +601,7 @@ void Conductor::OnSuccess(webrtc::SessionDescriptionInterface* desc) {
   jmessage[kSessionDescriptionSdpName] = sdp;
   SendMessage(writer.write(jmessage));
 }
-
+/**设置失败回调*/
 void Conductor::OnFailure(webrtc::RTCError error) {
   RTC_LOG(LS_ERROR) << ToString(error.type()) << ": " << error.message();
 }

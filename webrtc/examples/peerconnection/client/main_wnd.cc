@@ -333,12 +333,12 @@ void MainWnd::OnDestroyed() {
 void MainWnd::OnDefaultAction() {
   if (!callback_)
     return;
-  if (ui_ == CONNECT_TO_SERVER) {
+  if (ui_ == CONNECT_TO_SERVER) {//接收 Connect 点击事件
     std::string server(GetWindowText(edit1_));
     std::string port_str(GetWindowText(edit2_));
     int port = port_str.length() ? atoi(port_str.c_str()) : 0;
-    callback_->StartLogin(server, port);
-  } else if (ui_ == LIST_PEERS) {
+    callback_->StartLogin(server, port);//发起登录请求
+  } else if (ui_ == LIST_PEERS) {//接收 ListItem 点击事件 
     LRESULT sel = ::SendMessage(listbox_, LB_GETCURSEL, 0, 0);
     if (sel != LB_ERR) {
       LRESULT peer_id = ::SendMessage(listbox_, LB_GETITEMDATA, sel, 0);

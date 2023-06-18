@@ -95,6 +95,12 @@ void PeerConnectionClient::Connect(const std::string& server,
   server_address_.SetPort(port);
   client_name_ = client_name;
 
+  /**
+  *if (server_address_.IsUnresolvedIP())：
+  检查 server_address_ 是否是一个未解析的 IP 地址
+  （也就是说，它实际上是一个域名）。如果是，
+  那么需要进行 DNS 解析。在这种情况下，代码会创建一个 rtc::AsyncResolver 对象来进行异步的 DNS 解析，并设置一个回调函数 PeerConnectionClient::OnResolveResult，当解析完成时这个函数会被调用。然后，代码调用 resolver_->Start(server_address_) 来开始解析过程。
+  */
   if (server_address_.IsUnresolvedIP()) {
     state_ = RESOLVING;
     resolver_ = new rtc::AsyncResolver();
@@ -121,20 +127,27 @@ void PeerConnectionClient::OnResolveResult(
 }
 
 void PeerConnectionClient::DoConnect() {
+  //创建一个控制连接（发送和接收命令）
   control_socket_.reset(CreateClientSocket(server_address_.ipaddr().family()));
+  //用于 hanging GET 操作（长轮询，用于接收服务器的实时更新）
   hanging_get_.reset(CreateClientSocket(server_address_.ipaddr().family()));
+  //初始化套接字信号，包括连接、数据接收等事件的回调处理。
   InitSocketSignals();
   char buffer[1024];
+  //准备一个 HTTP GET 请求，用于登录到服务器。这个请求的路径是 "/sign_in"，并且包含一个查询参数，即客户端的名字。
   snprintf(buffer, sizeof(buffer), "GET /sign_in?%s HTTP/1.0\r\n\r\n",
            client_name_.c_str());
   onconnect_data_ = buffer;
-
+  //尝试连接到控制套接字。如果连接成功，ConnectControlSocket() 将返回 true，否则返回 false。
   bool ret = ConnectControlSocket();
   if (ret)
+    //如果连接成功，将状态设置为 SIGNING_IN，表示正在进行登录操作
     state_ = SIGNING_IN;
-  if (!ret) {
+  if (!ret) {//如果连接失败，调用回调函数 OnServerConnectionFailure()，通知其他部分连接失败
     callback_->OnServerConnectionFailure();
   }
+  //启动当前线程
+  rtc::Thread::Current()->Start();
 }
 
 bool PeerConnectionClient::SendToPeer(int peer_id, const std::string& message) {
@@ -240,6 +253,7 @@ void PeerConnectionClient::OnMessageFromPeer(int peer_id,
       message.compare(kByeMessage) == 0) {
     callback_->OnPeerDisconnected(peer_id);
   } else {
+    /*收到的是offer、answer、candidate信令*/
     callback_->OnMessageFromPeer(peer_id, message);
   }
 }
@@ -376,6 +390,10 @@ void PeerConnectionClient::OnHangingGetRead(rtc::Socket* socket) {
       // Store the position where the body begins.
       size_t pos = eoh + 4;
 
+      //检查是否是自己的ID，如果是，那么这个通知可能是有新的成员加入或者有成员断开连接。
+      // 然后，它尝试解析主体内容，获取 peer 的 id，名称和连接状态。如果解析成功，
+      // 并且 peer 是已连接的，那么就将这个 peer 添加到 peers 列表中，
+      //并通知回调有 peer 连接；如果 peer 是断开的，那么就从 peers 列表中移除，并通知回调有 peer 断开连接
       if (my_id_ == static_cast<int>(peer_id)) {
         // A notification about a new member or a member that just
         // disconnected.
@@ -393,6 +411,7 @@ void PeerConnectionClient::OnHangingGetRead(rtc::Socket* socket) {
           }
         }
       } else {
+          //用于处理offer、answer、candidate信令
         OnMessageFromPeer(static_cast<int>(peer_id),
                           notification_data_.substr(pos));
       }

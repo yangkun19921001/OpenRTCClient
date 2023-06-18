@@ -81,6 +81,8 @@ class CustomSocketServer : public rtc::PhysicalSocketServer {
 };
 
 }  // namespace
+//²Î¿¼£ºhttps://blog.csdn.net/fengliang191/article/details/115797729
+//      https://blog.csdn.net/hclbeloved/article/details/114762838
 int PASCAL wWinMain(HINSTANCE instance,
                     HINSTANCE prev_instance,
                     wchar_t* cmd_line,
@@ -123,7 +125,7 @@ int PASCAL wWinMain(HINSTANCE instance,
   rtc::scoped_refptr<Conductor> conductor(
       new rtc::RefCountedObject<Conductor>(&client, &wnd));
   // Main loop.
-  main_thread.Start();
+ // main_thread.Start();
   MSG msg;
   BOOL gm;
   while ((gm = ::GetMessage(&msg, NULL, 0, 0)) != 0 && gm != -1) {
