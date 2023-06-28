@@ -37,7 +37,7 @@
 
 #include "common/windows/pdb_source_line_writer.h"
 #include "common/windows/pe_source_line_writer.h"
-//in
+//fix webrtc/third_party/breakpad/breakpad/src/tools/windows/dump_syms/dump_syms.cc(44): error C2873: “unique_ptr”: 符号不能用在 using 声明中
 #include <memory>
 
 using std::wstring;

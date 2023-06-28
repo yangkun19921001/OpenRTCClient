@@ -126,6 +126,7 @@
 #endif
 
 // TODO: change this namespace to rtc?
+//namespace rtc {
 namespace sigslot {
 
 class single_threaded {
@@ -235,8 +236,8 @@ class has_slots_interface {
         m_signal_disconnect(disc),
         m_disconnect_all(disc_all) {}
 
-  // Doesn't really need to be virtual, but is for backwards compatibility
-  // (it was virtual in a previous version of sigslot).
+          // Doesn't really need to be virtual, but is for backwards compatibility
+          // (it was virtual in a previous version of sigslot).
   virtual ~has_slots_interface() {}
 
  public:
@@ -321,8 +322,8 @@ class _opaque_connection {
     return res;
   }
 
-  // Just calls the stored "emitter" function pointer stored at construction
-  // time.
+          // Just calls the stored "emitter" function pointer stored at construction
+          // time.
   template <typename... Args>
   void emit(Args... args) const {
     typedef void (*em_t)(const _opaque_connection*, Args...);
@@ -470,8 +471,8 @@ class _signal_base : public _signal_base_interface, public mt_policy {
  protected:
   connections_list m_connected_slots;
 
-  // Used to handle a slot being disconnected while a signal is
-  // firing (iterating m_connected_slots).
+          // Used to handle a slot being disconnected while a signal is
+          // firing (iterating m_connected_slots).
   connections_list::iterator m_current_iterator;
   bool m_erase_current_iterator = false;
 };
@@ -557,6 +558,7 @@ class signal_with_thread_policy : public _signal_base<mt_policy> {
     pclass->signal_connect(static_cast<_signal_base_interface*>(this));
   }
 
+          //第二处
   void emit(Args... args) {
     lock_block<mt_policy> lock(this);
     this->m_current_iterator = this->m_connected_slots.begin();
@@ -645,5 +647,7 @@ using signal8 =
     signal_with_thread_policy<mt_policy, A1, A2, A3, A4, A5, A6, A7, A8>;
 
 }  // namespace sigslot
+
+//} // namespace rtc
 
 #endif /* RTC_BASE_THIRD_PARTY_SIGSLOT_SIGSLOT_H_ */

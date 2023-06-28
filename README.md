@@ -167,6 +167,14 @@ export ANDROID_NDK=~/Library/Android/sdk/ndk/
 
 4、在 windows 的程序和功能里找到 window software development kit，选中后点上面的更改，把 debugging tools for windows 前面的勾打上。
 
+	4.1 打开 "控制面板"，选择 "程序"，然后点击 "程序和功能"。你也可以在开始菜单中直接搜索 "程序和功能"。
+
+	4.2 在程序列表中找到 "Windows Software Development Kit"，点击它，然后点击上面的 "更改" 按钮。
+
+	4.3 这将启动 Windows SDK 的安装程序，在这个程序中，你可以选择或取消选择 SDK 的各种组件。找到 "Debugging Tools for Windows"，并在前面的复选框中打上勾。
+
+	4.4 点击 "更改" 或 "安装" 按钮，安装程序将会安装或更新你选择的组件。
+
 5、另外需要添加两个环境变量
 ```
 DEPOT_TOOLS_WIN_TOOLCHAIN=0

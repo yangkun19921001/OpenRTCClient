@@ -468,7 +468,9 @@ class RTC_EXPORT Network {
     if (type != ADAPTER_TYPE_VPN) {
       underlying_type_for_vpn_ = ADAPTER_TYPE_UNKNOWN;
     }
+#ifndef QT_DEPRECATED_WARNINGS
     SignalTypeChanged(this);
+#endif
   }
 
   void set_underlying_type_for_vpn(AdapterType type) {
@@ -476,7 +478,9 @@ class RTC_EXPORT Network {
       return;
     }
     underlying_type_for_vpn_ = type;
+//#ifndef QT_DEPRECATED_WARNINGS
     SignalTypeChanged(this);
+//#endif
   }
 
   bool IsVpn() const { return type_ == ADAPTER_TYPE_VPN; }
@@ -523,7 +527,9 @@ class RTC_EXPORT Network {
       return;
     }
     network_preference_ = val;
+#ifndef QT_DEPRECATED_WARNINGS
     SignalNetworkPreferenceChanged(this);
+#endif
   }
 
   // Debugging description of this network
