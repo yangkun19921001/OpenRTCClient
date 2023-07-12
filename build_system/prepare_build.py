@@ -112,7 +112,8 @@ def select_build_tools():
 
     build_tools_dir = os.path.join(sdk_path, "build-tools")
     build_tools_dir = os.path.abspath(build_tools_dir)
-
+    print("sdk_path"+sdk_path)
+    print("build_tools_dir"+build_tools_dir)
     dirs = os.listdir(build_tools_dir)
     if not dirs:
         dirs = []

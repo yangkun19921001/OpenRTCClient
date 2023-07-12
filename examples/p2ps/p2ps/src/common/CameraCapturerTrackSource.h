@@ -1,0 +1,44 @@
+#ifndef CAMERACAPTURERTRACKSOURCE_H
+#define CAMERACAPTURERTRACKSOURCE_H
+
+#include "../../webrtc_headers.h"
+#include "CameraCapturer.h"
+namespace PCS {
+class CameraCapturerTrackSource : public webrtc::VideoTrackSource {
+public:
+    static rtc::scoped_refptr<CameraCapturerTrackSource> Create(int width,int height,int fps) {
+        const size_t kWidth = width;
+        const size_t kHeight = height;
+        const size_t kFps = fps;
+        std::unique_ptr<CameraCapturer> capturer;
+        std::unique_ptr<webrtc::VideoCaptureModule::DeviceInfo> info(
+            webrtc::VideoCaptureFactory::CreateDeviceInfo());
+        if (!info) {
+            return nullptr;
+        }
+        int num_devices = info->NumberOfDevices();
+        for (int i = 0; i < num_devices; ++i) {
+            capturer = absl::WrapUnique(
+                CameraCapturer::Create(kWidth, kHeight, kFps, i));
+            if (capturer) {
+                return new rtc::RefCountedObject<CameraCapturerTrackSource>(
+                    std::move(capturer));
+            }
+        }
+
+        return nullptr;
+    }
+
+protected:
+    explicit CameraCapturerTrackSource(
+        std::unique_ptr<CameraCapturer> capturer)
+        : VideoTrackSource(/*remote=*/false), capturer_(std::move(capturer)) {}
+
+private:
+    rtc::VideoSourceInterface<webrtc::VideoFrame>* source() override {
+        return capturer_.get();
+    }
+    std::unique_ptr<CameraCapturer> capturer_;
+};
+}
+#endif // CAMERACAPTURERTRACKSOURCE_H

@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>WebRTC多人音视频通话项目</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="connect">
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -27,7 +27,7 @@
      <string>开始</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="exit">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -40,7 +40,7 @@
      <string>离开</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="serverInfo">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="text">
-     <string>127.0.0.1:8888</string>
+     <string>127.0.0.1:8880</string>
     </property>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget">
@@ -63,13 +63,13 @@
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>631</width>
-      <height>291</height>
+      <width>791</width>
+      <height>511</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout"/>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="mute">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -82,7 +82,7 @@
      <string>静音</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="roomId">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -106,7 +106,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1920</width>
      <height>17</height>
     </rect>
    </property>

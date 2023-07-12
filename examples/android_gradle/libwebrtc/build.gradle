@@ -12,6 +12,8 @@ python3 webrtc/build/android/fast_local_dev_server.py
 //开始编译
 webrtc_build build:webrtc android arm64 debug
 */
+
+def use_lib = true;
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
 //    buildToolsVersion rootProject.ext.androidBuildToolsVersion
@@ -53,13 +55,21 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-
-    externalNativeBuild {
-        cmake {
-            version "3.10.2"
-            path 'CMakeLists.txt'
+    if ( use_lib) {
+        repositories {
+            flatDir {
+                dirs 'libs'
+            }
+        }
+    }else {
+        externalNativeBuild {
+            cmake {
+                version "3.10.2"
+                path 'CMakeLists.txt'
+            }
         }
     }
+
 
     lintOptions {
         abortOnError false
@@ -75,5 +85,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     api "com.android.support:support-annotations:${rootProject.ext.androidSupportSdkVersion}"
     implementation 'io.socket:socket.io-client:1.0.0'
+    //implementation 'io.socket:socket.io-client:2.0.0'
 
 }
