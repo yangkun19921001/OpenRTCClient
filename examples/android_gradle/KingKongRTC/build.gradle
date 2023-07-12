@@ -54,12 +54,12 @@ android {
     }
 
 
-    externalNativeBuild {
+/*    externalNativeBuild {
         cmake {
             version "3.10.2"
             path 'CMakeLists.txt'
         }
-    }
+    }*/
 
     lintOptions {
         abortOnError false

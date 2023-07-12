@@ -123,6 +123,9 @@ void PeerManager::createOffer(const std::string &peerId, OnPeerManagerEvents* et
       auto obs = std::make_unique<CreateSessionDescriptionObserImpl>(true,peerId,ets);
       it->second->peer_conn_inter_->CreateOffer(obs.get(), webrtc::PeerConnectionInterface::RTCOfferAnswerOptions());
       it->second->create_offer_sess_des_impl_ = std::move(obs);
+  }else {
+      RTC_LOG(LS_ERROR) << __FUNCTION__ <<  " peers_ not found id:"<<peerId;
+
   }
 //});
 }
@@ -137,6 +140,9 @@ void PeerManager::createAnswer(const std::string &peerId, OnPeerManagerEvents* e
       auto obs = std::make_unique<CreateSessionDescriptionObserImpl>(false,peerId,ets);
       it->second->peer_conn_inter_->CreateAnswer(obs.get(), webrtc::PeerConnectionInterface::RTCOfferAnswerOptions());
       it->second->create_answer_sess_des_impl_ = std::move(obs);
+  }else {
+      RTC_LOG(LS_ERROR) << __FUNCTION__ <<  " peers_ not found id:"<<peerId;
+
   }
 //});
 }
@@ -150,6 +156,9 @@ void PeerManager::removePeerConnection(const std::string &peerId)
     if(pt->second->peer_conn_inter_ != nullptr)pt->second->peer_conn_inter_->Close();
 
     peers_.erase(pt);
+  }else {
+    RTC_LOG(LS_ERROR) << __FUNCTION__ <<  " peers_ not found id:"<<peerId;
+
   }
 
 }
@@ -163,6 +172,9 @@ void PeerManager::setLocalDescription(const std::string &peerId,webrtc::SessionD
   if (pt != peers_.end()) {
       pt->second->peer_conn_inter_->SetLocalDescription(SetSessionDescriptionObserverImpl::Create(),desc_ptr);
 
+  }else {
+      RTC_LOG(LS_ERROR) << __FUNCTION__ <<  " peers_ not found id:"<<peerId;
+
   }
 
   //});
@@ -175,6 +187,9 @@ void PeerManager::setRemoteDescription(const std::string &peerId,webrtc::Session
   auto pt = peers_.find(peerId);
   if (pt != peers_.end()) {
   pt->second->peer_conn_inter_->SetRemoteDescription(SetSessionDescriptionObserverImpl::Create(),desc_ptr);
+  }else {
+  RTC_LOG(LS_ERROR) << __FUNCTION__ <<  " peers_ not found id:"<<peerId;
+
   }
 //});
 }
@@ -217,6 +232,9 @@ void PeerManager::handleOffer(std::string peerId, std::string sdp, OnPeerManager
               webrtc::CreateSessionDescription(webrtc::SdpType::kOffer, sdp);
           pt->second->peer_conn_inter_->SetRemoteDescription(SetSessionDescriptionObserverImpl::Create(),session_description.release());
           createAnswer(peerId,ets);
+      }else {
+          RTC_LOG(LS_ERROR) << __FUNCTION__ <<  " peers_ not found id:"<<peerId;
+
       }
 }
 
@@ -228,6 +246,9 @@ void PeerManager::handleAnswer(std::string peerId, std::string sdp, OnPeerManage
           std::unique_ptr<webrtc::SessionDescriptionInterface> session_description =
               webrtc::CreateSessionDescription(webrtc::SdpType::kAnswer, sdp);
           pt->second->peer_conn_inter_->SetRemoteDescription(SetSessionDescriptionObserverImpl::Create(),session_description.release());
+      }else {
+          RTC_LOG(LS_ERROR) << __FUNCTION__ <<  " peers_ not found id:"<<peerId;
+
       }
 }
 
@@ -245,6 +266,9 @@ void PeerManager::handleCandidate(std::string peerId, std::unique_ptr<webrtc::Ic
                       RTC_LOG(LS_INFO) <<" peerId:"<< peerId << "AddIceCandidate failed, error: " << error.message();
                   }
        });
-    }
+    }else {
+          RTC_LOG(LS_ERROR) << __FUNCTION__ <<  " peers_ not found id:"<<peerId;
+
+      }
 }
 }

@@ -33,9 +33,12 @@ protected:
     void resizeGL(int w, int h) Q_DECL_OVERRIDE;
     void paintGL() Q_DECL_OVERRIDE;
 
+
+
 public:
     // VideoSinkInterface implementation
     void OnFrame(const webrtc::VideoFrame& frame) override;
+
 
 private:
     /**
@@ -59,6 +62,9 @@ private:
     int m_nVideoH; // 视频分辨率高
     unsigned char *m_pBufYuv420p;
     FILE *m_pYuvFile;
+
+public:
+    webrtc::VideoTrackInterface* video_track_;
 };
 
 }

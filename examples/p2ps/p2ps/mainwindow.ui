@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
-    <height>1080</height>
+    <width>1287</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,12 +62,12 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
+      <y>40</y>
       <width>791</width>
-      <height>511</height>
+      <height>521</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout"/>
+    <layout class="QGridLayout" name="gridLayout" rowminimumheight="0"/>
    </widget>
    <widget class="QPushButton" name="mute">
     <property name="geometry">
@@ -106,8 +106,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1920</width>
-     <height>17</height>
+     <width>1287</width>
+     <height>18</height>
     </rect>
    </property>
   </widget>

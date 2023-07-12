@@ -24,6 +24,7 @@ VideoRendererWidget::VideoRendererWidget(QWidget *parent) : QOpenGLWidget(parent
     m_pTextureU = NULL;
     m_pTextureV = NULL;
     m_pYuvFile = NULL;
+    video_track_ = nullptr;
     m_nVideoH = 0;
     m_nVideoW = 0;
 }

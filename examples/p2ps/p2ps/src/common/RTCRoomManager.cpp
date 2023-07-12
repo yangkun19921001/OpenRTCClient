@@ -74,6 +74,13 @@ void RTCRoomManager::onUIMessage(Message msg)
   RTC_LOG(LS_INFO) << __FUNCTION__ << " what:"<<(int)msg.what;
   switch(msg.what)
   {
+  case PCS::RTCMainEvent::ON_LEAVED:{
+      auto roomId = std::static_pointer_cast<std::string>(msg.data);
+      auto peerId = std::static_pointer_cast<std::string>(msg.data_1);
+      if(this->room_state_change_callback_)
+          this->room_state_change_callback_->onLeaved(*peerId);
+      break;
+  }
   case PCS::RTCMainEvent::ON_JOINED:
   {
       auto roomId = std::static_pointer_cast<std::string>(msg.data);
@@ -91,10 +98,14 @@ void RTCRoomManager::onUIMessage(Message msg)
               return;
           }
 
-          if((*otherClientIds).empty())return;
+          if((*otherClientIds).empty()){
+              RTC_LOG(LS_ERROR) << " otherClientIds size empty";
+              return;
+          }
 
           for(const auto& clientId : *otherClientIds) {
-              this->peer_manager_->createPeerConnection(*peerId,getDefaultRTCConfig(),this);
+               RTC_LOG(LS_ERROR) << " createPeerConnection clientId:"<<clientId;
+              this->peer_manager_->createPeerConnection(clientId,getDefaultRTCConfig(),this);
           }
 
       }else{
@@ -201,6 +212,11 @@ void RTCRoomManager::onJoined(const std::string &room, const std::string &id, co
 void RTCRoomManager::onLeaved(const std::string &room, const std::string &id)
 {
   RTC_LOG(LS_INFO) << __FUNCTION__ <<" room:"<<room <<" id:"<<id;
+  Message msg;
+  msg.what = RTCMainEvent::ON_LEAVED;
+  msg.data = std::make_shared<std::string>(room);
+  msg.data_1 = std::make_shared<std::string>(id);
+  this->room_state_change_callback_->notifyMainUI(msg);
 }
 
 void RTCRoomManager::onMessage(const std::string &from, const std::string &to, const std::string &message)
@@ -258,7 +274,8 @@ void RTCRoomManager::OnAddTrack(std::string peerid, rtc::scoped_refptr<webrtc::R
 void RTCRoomManager::OnRemoveTrack(std::string peerid, rtc::scoped_refptr<webrtc::RtpReceiverInterface> receiver)
 {
   RTC_LOG(LS_INFO) << __FUNCTION__ <<" peerid:"<<peerid ;
-
+  if(this->room_state_change_callback_)
+    this->room_state_change_callback_->onRemoveTrack(peerid,receiver);
 }
 
 void RTCRoomManager::OnDataChannel(std::string peerid, rtc::scoped_refptr<webrtc::DataChannelInterface> channel)

@@ -55,12 +55,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    if ( use_lib) {
-        repositories {
-            flatDir {
-                dirs 'libs'
-            }
-        }
+    if (use_lib) {
+        sourceSets.main.jniLibs.srcDirs = ['libs']
+        print("use_lib")
     }else {
         externalNativeBuild {
             cmake {

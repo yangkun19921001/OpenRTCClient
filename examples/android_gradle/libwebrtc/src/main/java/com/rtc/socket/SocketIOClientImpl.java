@@ -6,6 +6,7 @@ import com.rtc.Constants;
 import com.rtc.event.ISignalEventListener;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URISyntaxException;
@@ -74,9 +75,29 @@ public class SocketIOClientImpl implements ISignalClient {
         socket.on(MESSAGE.getEventName(), new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONObject message = (JSONObject) args[2];
-                String to = (String) args[1];
-                String from = (String) args[0];
+                String from = "",to="";
+                JSONObject message = null;
+                if (args[0] instanceof String)
+                {
+                    from = (String) args[0];
+                }
+                if (args[1] instanceof String)
+                {
+                    to = (String) args[1];
+                }
+                if (args[2] instanceof String)
+                {
+                    try {
+                        message =  new JSONObject((String)args[2]);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if (args[2] instanceof JSONObject)
+                {
+                    message = (JSONObject) args[2];
+                }
+
                 if (events != null)
                     events.onMessage(from, to, message);
             }

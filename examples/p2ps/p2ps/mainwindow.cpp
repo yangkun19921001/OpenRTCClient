@@ -14,11 +14,14 @@ MainWindow::MainWindow(QWidget *parent)
     rtc::LogMessage::SetLogToStderr(false);
     ui->setupUi(this);
 
+//#define TEST_YUV_RENDERER
 #ifdef TEST_YUV_RENDERER
-    for (int var = 0; var < 3; ++var) {
+    for (int var = 0; var < 4; ++var) {
         addVideoRendererWidgetToMainWindow(std::to_string(var));
     }
 #endif
+
+    this->resize(1280, 720); // 设置窗口大小
 
 
     connect(this, &MainWindow::requestGUIUpdate, this, &MainWindow::on_main_thread_message);
@@ -166,6 +169,7 @@ void  MainWindow::onUserJoined(const std::string id) {
 //当离开房间
 void MainWindow::onLeaved(const std::string id){
      RTC_LOG(LS_INFO) <<__FUNCTION__ << " id:"<< id;
+     removeVideoRendererWidgetFromMainWindow(id);
 
 };
 void MainWindow::onAddTrack(std::string peerId,void * track) {
@@ -175,13 +179,14 @@ void MainWindow::onAddTrack(std::string peerId,void * track) {
      if (it != video_renderer_widgets_.end())
      {
         static_cast<webrtc::VideoTrackInterface*>(track)->AddOrUpdateSink(it->second.get(),rtc::VideoSinkWants());
+        it->second.get()->video_track_   = static_cast<webrtc::VideoTrackInterface*>(track);
      }
 
 };
      //当接收到远端的轨道
 void MainWindow::onRemoveTrack(std::string peerId,void * track){
      RTC_LOG(LS_INFO) <<__FUNCTION__ ;
-
+     removeVideoRendererWidgetFromMainWindow(peerId);
 }
 
 
@@ -193,45 +198,29 @@ void MainWindow::onLocalVideoTrack(std::string localPeerId,int width,int height,
      if (it != video_renderer_widgets_.end())
      {
         videoTrack->AddOrUpdateSink(it->second.get(),rtc::VideoSinkWants());
+        it->second.get()->video_track_ =   videoTrack;
      }
 }
 
 void MainWindow::addVideoRendererWidgetToMainWindow(std::string id)
 {
-//     const int itemsPerRow = 3;
-
-//     auto widget = std::make_unique<PCS::VideoRendererWidget>();
-//     widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-//     widget->setMinimumSize(400, 400); // 设置最小尺寸
-//     // 计算新的位置
-//     int count = ui->gridLayout->count();
-//     int row = count / itemsPerRow;
-//     int column = count % itemsPerRow;
-
-//     // 添加到 gridLayout 中
-//     ui->gridLayout->addWidget(widget.get(), row, column);
-
-//     // 将 widget 添加到 map 中
-//     video_renderer_widgets_.insert({id, std::move(widget)});
-
-     const int maxItemWidth = 720/2;  // 定义单个项目的最大宽度
+     const int itemsPerRow = 3;
 
      auto widget = std::make_unique<PCS::VideoRendererWidget>();
-     widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-     widget->setMinimumSize(1280/2, 720/2); // 设置最小尺寸
-
+     //widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
      // 计算新的位置
      int count = ui->gridLayout->count();
-     int itemsPerRow = this->width() / maxItemWidth;  // 动态计算每行的项目数
-     if (itemsPerRow < 1) itemsPerRow = 1;  // 确保至少有一个项目每行
      int row = count / itemsPerRow;
      int column = count % itemsPerRow;
 
      // 添加到 gridLayout 中
-     ui->gridLayout->addWidget(widget.get(), row, column);
-
+     //ui->gridLayout->addWidget(widget.get(), row, column);
+     ui->gridLayout->addWidget(widget.get());
+     widget->setFixedSize(1280/3,720/3);
      // 将 widget 添加到 map 中
      video_renderer_widgets_.insert({id, std::move(widget)});
+
+     ui->gridLayout->setSpacing(2);
 
 }
 
@@ -242,6 +231,11 @@ void MainWindow::removeVideoRendererWidgetFromMainWindow(std::string id)
      auto it = video_renderer_widgets_.find(id);
      if (it != video_renderer_widgets_.end())
      {
+        if(it->second.get()->video_track_)
+        {
+            it->second.get()->video_track_->RemoveSink(it->second.get());
+        }
+
         // 从 layout 中移除 widget
         ui->gridLayout->removeWidget(it->second.get());
 

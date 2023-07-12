@@ -6,6 +6,7 @@ namespace PCS {
 enum class RTCMainEvent {
     NONE = 0,
     ON_JOINED,
+    ON_LEAVED,
     ON_OFFER,
     ON_ANSWER,
     ON_CANDIDATE,
