@@ -12,7 +12,7 @@ webrtc::PeerConnectionInterface::RTCConfiguration getDefaultRTCConfig(){
     server_devyk.uri = "turn:rtcmedia.top:3478";
     server_devyk.username = "devyk";
     server_devyk.password = "devyk";
-    config.servers.push_back(server);
+    //config.servers.push_back(server);
     config.servers.push_back(server_devyk);
     return config;
 }

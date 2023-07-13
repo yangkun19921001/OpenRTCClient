@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="text">
-     <string>https://rtcmedia.top</string>
+     <string>http://81.70.18.250:8880</string>
     </property>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget">
