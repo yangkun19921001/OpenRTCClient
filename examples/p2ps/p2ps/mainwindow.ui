@@ -45,7 +45,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>113</width>
+      <width>131</width>
       <height>21</height>
      </rect>
     </property>
@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="text">
-     <string>127.0.0.1:8880</string>
+     <string>https://rtcmedia.top</string>
     </property>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget">
@@ -107,7 +107,7 @@
      <x>0</x>
      <y>0</y>
      <width>1287</width>
-     <height>18</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>

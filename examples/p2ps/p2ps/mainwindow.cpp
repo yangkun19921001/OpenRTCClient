@@ -59,7 +59,7 @@ void MainWindow::on_connect_clicked()
             QByteArray bytes = serverInfo.toUtf8();
             std::string msg(bytes.data(),bytes.length());
 
-            std::string url = std::string("http://") + msg;
+            std::string url = msg;
             RTC_LOG(LS_INFO) << __FUNCTION__ << " url:"<<url ;
             if (!rtc_room_manager_) {
                 throw std::runtime_error("rtc_room_manager_ is not initialized");

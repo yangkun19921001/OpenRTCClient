@@ -34,6 +34,7 @@ set(DEPS_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/deps)
 set(SOCKET_IO_BINARY_PATH  ${DEPS_ROOT_PATH}/socketio/win/x64/${BUILD_TYPE})
 set(SOCKET_IO_INCLUDE_PATH  ${DEPS_ROOT_PATH}/socketio/include)
 
+
 if(NOT LIBWEBRTC_INCLUDE_PATH)
 	message(FATAL_ERROR "LIBWEBRTC_INCLUDE_PATH not provided")
 endif()
@@ -138,6 +139,9 @@ add_definitions(
         -DJSON_USE_EXCEPTION=0
         -DJSON_USE_NULLREF=0
 
+        #socketio
+        -DSIO_TLS
+
         -DUSE_AURA=1
         -D_HAS_EXCEPTIONS=0
         -D__STD_C
@@ -182,7 +186,9 @@ add_definitions(
 target_link_libraries(p2ps PRIVATE
         Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets
 
-        ${SOCKET_IO_BINARY_PATH}/sioclient.lib
+#        ${SOCKET_IO_BINARY_PATH}/libcrypto64MTd.lib
+#        ${SOCKET_IO_BINARY_PATH}/libssl64.lib
+        #${SOCKET_IO_BINARY_PATH}/sioclient.lib
         ${SOCKET_IO_BINARY_PATH}/sioclient_tls.lib
 
         ${LIBWEBRTC_BINARY_PATH}/webrtc.lib
