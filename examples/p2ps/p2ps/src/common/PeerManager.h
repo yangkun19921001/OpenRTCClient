@@ -63,6 +63,7 @@ public:
     void handleOffer(std::string peerId,std::string sdp, OnPeerManagerEvents* ets);
     void handleAnswer(std::string peerId,std::string sdp, OnPeerManagerEvents* ets);
     void handleCandidate(std::string peerId,std::unique_ptr<webrtc::IceCandidateInterface> candidate);
+    void release();
 
 private:
     // 用于管理 PeerConnectionInterface 实例的 map，每个实例都对应一个远程参与者
@@ -73,10 +74,11 @@ private:
     // PeerConnectionFactoryInterface 实例，用于创建 PeerConnectionInterface 实例
     rtc::scoped_refptr<webrtc::PeerConnectionFactoryInterface>
         peer_connection_factory_;
-    rtc::scoped_refptr<webrtc::MediaStreamInterface> local_stream_;
     std::unique_ptr<rtc::Thread> signaling_thread_,network_thread_,worker_thread_;
     std::unique_ptr<rtc::Thread> main_thread_;
     std::function<void(std::string,int,int,rtc::scoped_refptr<webrtc::VideoTrackInterface>)> local_video_track_;
+    rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track_;
+    rtc::scoped_refptr<webrtc::VideoTrackInterface> video_track_;
 };
 
 }

@@ -39,19 +39,21 @@ public:
 
 private:
     void onLocalVideoTrack(std::string,int,int,rtc::scoped_refptr<webrtc::VideoTrackInterface> videoTrack);
-    void addVideoRendererWidgetToMainWindow(std::string id);
+    void addVideoRendererWidgetToMainWindow(std::string id,std::unique_ptr<PCS::VideoRendererWidget> localVideoRenderer);
     void removeVideoRendererWidgetFromMainWindow(std::string id);
+
+    void exit();
 
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<PCS::RTCRoomManager> rtc_room_manager_;
     std::map<std::string, std::unique_ptr<PCS::VideoRendererWidget>> video_renderer_widgets_;
     std::unique_ptr<rtc::Thread> testTread_;
+
 //https://www.jianshu.com/p/67dde91e6f1f
 private Q_SLOTS:
     void on_connect_clicked();
     void on_exit_clicked();
-    void on_mute_clicked();
     void on_main_thread_message(PCS::Message msg);
 Q_SIGNALS:
     void requestGUIUpdate(PCS::Message msg);

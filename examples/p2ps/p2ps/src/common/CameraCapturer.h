@@ -16,16 +16,19 @@ public:
 
     void OnFrame(const webrtc::VideoFrame& frame) override;
 
+public:
+    void Destroy();
 private:
     CameraCapturer();
     bool Init(size_t width,
               size_t height,
               size_t target_fps,
               size_t capture_device_index);
-    void Destroy();
+
 
     rtc::scoped_refptr<webrtc::VideoCaptureModule> vcm_;
     webrtc::VideoCaptureCapability capability_;
+    std::unique_ptr<rtc::Thread>  vcm_capturer_;
 };
 }
 

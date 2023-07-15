@@ -22,17 +22,14 @@ MainWindow::MainWindow(QWidget *parent)
 #endif
 
     this->resize(1280, 720); // 设置窗口大小
-
-
+    //临时解决方案，避免窗口闪烁
+    addVideoRendererWidgetToMainWindow("devyk",std::make_unique<PCS::VideoRendererWidget>());
+    auto it = video_renderer_widgets_.find("devyk");
+    if (it != video_renderer_widgets_.end())
+    {
+        it->second->hide();
+    }
     connect(this, &MainWindow::requestGUIUpdate, this, &MainWindow::on_main_thread_message);
-//    testTread_ = rtc::Thread::Create();
-//    testTread_->Start();
-//    testTread_->PostDelayedTask(RTC_FROM_HERE,[=](){
-//            RTC_LOG(LS_INFO) << "requestGUIUpdate";
-//            PCS::Message message;
-//            message.what = PCS::RTCMainEvent::NONE;
-//            Q_EMIT requestGUIUpdate(message);
-//        },2000);
 }
 
 MainWindow::~MainWindow()
@@ -89,15 +86,10 @@ void MainWindow::on_exit_clicked()
        QByteArray bytes = text.toUtf8();
        std::string msg(bytes.data(),bytes.length());
        rtc_room_manager_->leave(msg);
+
     }
 }
 
-void MainWindow::on_mute_clicked()
-{
-    // 执行你想要在点击 "mute" 按钮时进行的操作
-    RTC_LOG(LS_INFO) <<"on_mute_clicked";
-
-}
 
 void MainWindow::notifyMainUI(PCS::Message msg)
 {
@@ -170,17 +162,16 @@ void  MainWindow::onUserJoined(const std::string id) {
 void MainWindow::onLeaved(const std::string id){
      RTC_LOG(LS_INFO) <<__FUNCTION__ << " id:"<< id;
      removeVideoRendererWidgetFromMainWindow(id);
+     if(video_renderer_widgets_.empty())
+     {
+        exit();
+     }
 
 };
 void MainWindow::onAddTrack(std::string peerId,void * track) {
      RTC_LOG(LS_INFO) <<__FUNCTION__ ;
-     addVideoRendererWidgetToMainWindow(peerId);
-     auto it = video_renderer_widgets_.find(peerId);
-     if (it != video_renderer_widgets_.end())
-     {
-        static_cast<webrtc::VideoTrackInterface*>(track)->AddOrUpdateSink(it->second.get(),rtc::VideoSinkWants());
-        it->second.get()->video_track_   = static_cast<webrtc::VideoTrackInterface*>(track);
-     }
+     addVideoRendererWidgetToMainWindow(peerId,std::make_unique<PCS::VideoRendererWidget>(peerId,nullptr,static_cast<webrtc::VideoTrackInterface*>(track)));
+
 
 };
      //当接收到远端的轨道
@@ -193,34 +184,32 @@ void MainWindow::onRemoveTrack(std::string peerId,void * track){
 
 void MainWindow::onLocalVideoTrack(std::string localPeerId,int width,int height,rtc::scoped_refptr<webrtc::VideoTrackInterface> videoTrack)
 {
-     addVideoRendererWidgetToMainWindow(localPeerId);
-      auto it = video_renderer_widgets_.find(localPeerId);
-     if (it != video_renderer_widgets_.end())
-     {
-        videoTrack->AddOrUpdateSink(it->second.get(),rtc::VideoSinkWants());
-        it->second.get()->video_track_ =   videoTrack;
-     }
+    removeVideoRendererWidgetFromMainWindow("devyk");
+    addVideoRendererWidgetToMainWindow(localPeerId,std::make_unique<PCS::VideoRendererWidget>("",nullptr,videoTrack));
 }
 
-void MainWindow::addVideoRendererWidgetToMainWindow(std::string id)
+void MainWindow::addVideoRendererWidgetToMainWindow(std::string id, std::unique_ptr<PCS::VideoRendererWidget> renderer)
 {
-     const int itemsPerRow = 3;
 
-     auto widget = std::make_unique<PCS::VideoRendererWidget>();
-     //widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+     const int itemsPerRow = 3;
+     std::unique_ptr<PCS::VideoRendererWidget> videoRenderer;
+     if(renderer == nullptr)
+        videoRenderer =  std::make_unique<PCS::VideoRendererWidget>();
+     else {
+        videoRenderer = std::move(renderer);
+     }
+     videoRenderer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
      // 计算新的位置
      int count = ui->gridLayout->count();
      int row = count / itemsPerRow;
      int column = count % itemsPerRow;
 
      // 添加到 gridLayout 中
-     //ui->gridLayout->addWidget(widget.get(), row, column);
-     ui->gridLayout->addWidget(widget.get());
-     widget->setFixedSize(1280/3,720/3);
+     ui->gridLayout->addWidget(videoRenderer.get(),row,column);
+     //videoRenderer->setFixedSize(1280/3,720/3);
      // 将 widget 添加到 map 中
-     video_renderer_widgets_.insert({id, std::move(widget)});
+     video_renderer_widgets_.insert({id, std::move(videoRenderer)});
 
-     ui->gridLayout->setSpacing(2);
 
 }
 
@@ -231,17 +220,24 @@ void MainWindow::removeVideoRendererWidgetFromMainWindow(std::string id)
      auto it = video_renderer_widgets_.find(id);
      if (it != video_renderer_widgets_.end())
      {
-        if(it->second.get()->video_track_)
-        {
-            it->second.get()->video_track_->RemoveSink(it->second.get());
-        }
-
         // 从 layout 中移除 widget
         ui->gridLayout->removeWidget(it->second.get());
 
         // 从 map 中移除并删除 widget
         video_renderer_widgets_.erase(it);
      }
+    }
+
+    void MainWindow::exit()
+    {
+//     for (const auto& pair : video_renderer_widgets_) {
+//        std::string key = pair.first;
+//        removeVideoRendererWidgetFromMainWindow(key);
+//     }
+
+     PCS::Message msg;
+     msg.what = PCS::RTCMainEvent::ON_RELEASE;
+     notifyMainUI(msg);
     };
 
 

@@ -5,6 +5,9 @@ namespace PCS {
 
 enum class RTCMainEvent {
     NONE = 0,
+    CONNECT,
+    JOIN,
+    LEAVE,
     ON_JOINED,
     ON_LEAVED,
     ON_OFFER,
@@ -12,6 +15,7 @@ enum class RTCMainEvent {
     ON_CANDIDATE,
     ON_ADD_LOCAL_TRACK,
     ON_ADD_REMOTE_TRACK,
+    ON_RELEASE,
 };
 
 struct Message

@@ -17,7 +17,7 @@
    <widget class="QPushButton" name="connect">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>300</x>
       <y>10</y>
       <width>80</width>
       <height>20</height>
@@ -30,7 +30,7 @@
    <widget class="QPushButton" name="exit">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>400</x>
       <y>10</y>
       <width>80</width>
       <height>20</height>
@@ -45,8 +45,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>131</width>
-      <height>21</height>
+      <width>181</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
@@ -69,23 +69,10 @@
     </property>
     <layout class="QGridLayout" name="gridLayout" rowminimumheight="0"/>
    </widget>
-   <widget class="QPushButton" name="mute">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>10</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>静音</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="roomId">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>200</x>
       <y>10</y>
       <width>81</width>
       <height>21</height>
@@ -107,7 +94,7 @@
      <x>0</x>
      <y>0</y>
      <width>1287</width>
-     <height>17</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

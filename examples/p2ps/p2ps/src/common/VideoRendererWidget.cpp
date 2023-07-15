@@ -8,7 +8,11 @@
 namespace PCS {
 
 
-VideoRendererWidget::VideoRendererWidget(QWidget *parent) : QOpenGLWidget(parent)
+VideoRendererWidget::VideoRendererWidget(std::string peerId,QWidget *parent,webrtc::VideoTrackInterface* track)
+    : QOpenGLWidget(parent)
+    ,video_track_(track)
+    ,peer_id_(peerId)
+    ,video_data_(nullptr)
 {
     textureUniformY = 0;
     textureUniformU = 0;
@@ -16,60 +20,33 @@ VideoRendererWidget::VideoRendererWidget(QWidget *parent) : QOpenGLWidget(parent
     id_y = 0;
     id_u = 0;
     id_v = 0;
-    m_pBufYuv420p = NULL;
     m_pVSHader = NULL;
     m_pFSHader = NULL;
     m_pShaderProgram = NULL;
     m_pTextureY = NULL;
     m_pTextureU = NULL;
     m_pTextureV = NULL;
-    m_pYuvFile = NULL;
-    video_track_ = nullptr;
     m_nVideoH = 0;
     m_nVideoW = 0;
+    if(video_track_ != nullptr)
+    {
+        video_track_->AddOrUpdateSink(this,rtc::VideoSinkWants());
+    }
+
 }
+
+
 
 VideoRendererWidget::~VideoRendererWidget()
 {
+    if(video_track_)
+        video_track_->RemoveSink(this);
+    video_track_ = nullptr;
+
 }
 
 void VideoRendererWidget::PlayOneFrame()
 {
-    // 函数功能读取一张yuv图像数据进行显示，每进入一次，就显示一张图片
-    if (NULL == m_pYuvFile)
-    {
-        // 打开yuv视频文件 注意修改文件路径
-        // 可以自行将fopen改为QFile中最新的文件操作接口
-        m_pYuvFile = fopen("C:/Users/devyk/Data/work/code/qt_gui_simple2complex_cmake/003_yuv_video_play/003_yuv_video_play.yuv", "rb");
-
-        // 根据yuv视频数据的分辨率设置宽高，demo当中是128下6，这个地方要注意跟实际数据分辨率对应上
-        m_nVideoW = 128;
-        m_nVideoH = 96;
-    }
-
-    // 申请内存存一帧yuv图像数据，其大小为分辨率的1.5倍
-    int nLen = m_nVideoW * m_nVideoH * 3 / 2;
-    if (NULL == m_pBufYuv420p)
-    {
-        m_pBufYuv420p = new unsigned char[nLen];
-        qDebug("VideoRendererWidget::PlayOneFrame new data memory. Len=%d width=%d height=%d\n",
-               nLen, m_nVideoW, m_nVideoW);
-    }
-
-    // 将一帧yuv图像读到内存中
-    if(NULL == m_pYuvFile)
-    {
-        qFatal("read yuv file err.may be path is wrong!\n");
-        return;
-    }
-
-    // 读一帧数据
-    if (fread(m_pBufYuv420p, 1, nLen, m_pYuvFile) != nLen)
-    {
-        // 关闭文件，并准备重新循环打开播放
-        fclose(m_pYuvFile);
-        m_pYuvFile = NULL;
-    }
 
     // 刷新界面,触发paintGL接口
     update();
@@ -193,14 +170,18 @@ void VideoRendererWidget::initializeGL()
     id_u = m_pTextureU->textureId();
     // 获取返回v分量的纹理索引值
     id_v = m_pTextureV->textureId();
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // 设置背景色
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // 设置背景色
     glClear(GL_COLOR_BUFFER_BIT);
 #ifdef TEST_YUV_RENDERER
     // 启动定时器
     QTimer *ti = new QTimer(this);
     connect(ti, SIGNAL(timeout()), this, SLOT(PlayOneFrame()));
     ti->start(40);
+#else
+    connect(this, &VideoRendererWidget::PlayOneFrame, this, &VideoRendererWidget::PlayOneFrame);
 #endif
+
+
 }
 void VideoRendererWidget::resizeGL(int w, int h)
 {
@@ -215,6 +196,7 @@ void VideoRendererWidget::resizeGL(int w, int h)
 
 void VideoRendererWidget::paintGL()
 {
+     std::lock_guard<std::mutex> guard(renderer_mutex_);
     // 加载y数据纹理
     // 激活纹理单元GL_TEXTURE0
     glActiveTexture(GL_TEXTURE0);
@@ -223,7 +205,7 @@ void VideoRendererWidget::paintGL()
     glBindTexture(GL_TEXTURE_2D, id_y);
 
     // 使用内存中m_pBufYuv420p数据创建真正的y数据纹理
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, m_nVideoW, m_nVideoH, 0, GL_RED, GL_UNSIGNED_BYTE, m_pBufYuv420p);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, m_nVideoW, m_nVideoH, 0, GL_RED, GL_UNSIGNED_BYTE, video_data_.get());
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -233,7 +215,7 @@ void VideoRendererWidget::paintGL()
     glActiveTexture(GL_TEXTURE1); // 激活纹理单元GL_TEXTURE1
     glBindTexture(GL_TEXTURE_2D, id_u);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, m_nVideoW / 2, m_nVideoH / 2, 0, GL_RED,
-                 GL_UNSIGNED_BYTE, (char *)m_pBufYuv420p + m_nVideoW * m_nVideoH);
+                 GL_UNSIGNED_BYTE, (char *)video_data_.get() + m_nVideoW * m_nVideoH);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -243,7 +225,7 @@ void VideoRendererWidget::paintGL()
     glActiveTexture(GL_TEXTURE2); // 激活纹理单元GL_TEXTURE2
     glBindTexture(GL_TEXTURE_2D, id_v);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, m_nVideoW / 2, m_nVideoH / 2, 0, GL_RED,
-                 GL_UNSIGNED_BYTE, (char *)m_pBufYuv420p + m_nVideoW * m_nVideoH * 5 / 4);
+                 GL_UNSIGNED_BYTE, (char *)video_data_.get() + m_nVideoW * m_nVideoH * 5 / 4);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -264,6 +246,7 @@ void VideoRendererWidget::paintGL()
 
 void VideoRendererWidget::OnFrame(const webrtc::VideoFrame &video_frame)
 {
+    std::lock_guard<std::mutex> guard(renderer_mutex_);
     rtc::scoped_refptr<webrtc::I420BufferInterface> buffer(
         video_frame.video_frame_buffer()->ToI420());
     if (video_frame.rotation() != webrtc::kVideoRotation_0) {
@@ -275,24 +258,55 @@ void VideoRendererWidget::OnFrame(const webrtc::VideoFrame &video_frame)
 
     int ySize = width * height;
     int uvSize = ySize / 4;  // For each U and V component
-    if(width != m_nVideoW && height != m_nVideoH && m_pBufYuv420p != nullptr)
+
+    if(m_nVideoW == 0 && m_nVideoH ==0)
     {
-        delete[] m_pBufYuv420p;
-        m_pBufYuv420p = nullptr;
+       if(!peer_id_.empty())  RTC_LOG(LS_INFO) << __FUNCTION__ << " init w:"<<width<<" height:"<<height << " peerId:" <<peer_id_;
     }
 
-    if(m_pBufYuv420p == nullptr){
-        m_pBufYuv420p = new uint8_t[ySize + 2 * uvSize];
-        m_nVideoW = width;
-        m_nVideoH = height;
-        RTC_LOG(LS_INFO) << __FUNCTION__ << " width:" << width <<" height:"<<height;
+    if(width != m_nVideoW && height != m_nVideoH && video_data_ != nullptr)
+    {
+         video_data_ .reset();
+
+        if(!peer_id_.empty()) RTC_LOG(LS_INFO) << __FUNCTION__ << " change w:"<<width<<" height:"<<height << " peerId:" <<peer_id_;
+
     }
 
-    memcpy(m_pBufYuv420p, buffer->DataY(), ySize);
-    memcpy(m_pBufYuv420p + ySize, buffer->DataU(), uvSize);
-    memcpy(m_pBufYuv420p + ySize + uvSize, buffer->DataV(), uvSize);
+    if(video_data_ == nullptr){
+      video_data_ = std::make_unique<uint8_t[]>(width * height * 1.5); // Use make_unique to allocate array
+      if(!peer_id_.empty())
+      RTC_LOG(LS_INFO) << __FUNCTION__ << " malloc Id:"<<peer_id_<<" width:" << width <<" height:"<<height;
+    }
+
+
+    int strideY = buffer->StrideY();
+    int strideU = buffer->StrideU();
+    int strideV = buffer->StrideV();
+  if(!peer_id_.empty()) RTC_LOG(LS_INFO) << __FUNCTION__ << " Id"<<peer_id_<< " width:" << width <<" height:"<<height
+                       << " strideY:"<<strideY
+          << " strideU:"<<strideU
+          << " strideV:"<<strideV
+          ;
+//    // Copy Y plane
+//    for (int i = 0; i < height; ++i) {
+//      memcpy(video_data_.get() + strideY * i, buffer->DataY() + strideY * i, width);
+//    }
+
+//    // Copy U and V planes
+//    for (int i = 0; i < height / 2; ++i) {
+//      memcpy(video_data_.get() + ySize + strideU * i, buffer->DataU() + strideU * i, width / 2);
+//      memcpy(video_data_.get() + ySize + uvSize + strideV * i, buffer->DataV() + strideV * i, width / 2);
+//    }
+
+    memcpy(video_data_.get(), buffer->DataY(), ySize);
+    memcpy(video_data_.get() + ySize, buffer->DataU(), uvSize);
+    memcpy(video_data_.get() + ySize + uvSize, buffer->DataV(), uvSize);
+    m_nVideoW = width;
+    m_nVideoH = height;
+
 
     // 刷新界面,触发paintGL接口
-    update();
+    Q_EMIT PlayOneFrame();
+
 }
 }

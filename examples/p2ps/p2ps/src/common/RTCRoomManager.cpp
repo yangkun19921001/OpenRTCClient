@@ -25,9 +25,6 @@ RTCRoomManager::RTCRoomManager():
 {
     socket_signal_client_imp_ = std::make_unique<SocketIoSignalClientImpl>();
     peer_manager_ = std::make_unique<PeerManager>();
-
-
-
 }
 
 RTCRoomManager::~RTCRoomManager()
@@ -40,8 +37,15 @@ void RTCRoomManager::connect(const std::string url, OnRoomStateChangeCallback *c
 {
     RTC_LOG(LS_INFO) << __FUNCTION__ <<" url:"<<url;
     this->room_state_change_callback_ = callback;
-    if(socket_signal_client_imp_)
-        socket_signal_client_imp_->connect(url,this);
+    if(this->room_state_change_callback_)
+    {
+        PCS::Message msg;
+        msg.what = PCS::RTCMainEvent::CONNECT;
+        msg.data = std::make_shared<std::string>(url);
+        this->room_state_change_callback_->notifyMainUI(msg);
+    }
+
+
 }
 
 void RTCRoomManager::setLocalTrackCallback(std::function<void (std::string,int,int,rtc::scoped_refptr<webrtc::VideoTrackInterface>)> localVideoTrack)
@@ -53,20 +57,36 @@ void RTCRoomManager::join(const std::string roomId)
 {
     RTC_LOG(LS_INFO) << __FUNCTION__ <<" roomid:"<<roomId;
     this->room_id_ = roomId;
-     if(socket_signal_client_imp_)
-      this->socket_signal_client_imp_->join(roomId);
+    if(this->room_state_change_callback_)
+    {
+        PCS::Message msg;
+        msg.what = PCS::RTCMainEvent::JOIN;
+        msg.data = std::make_shared<std::string>(roomId);
+        this->room_state_change_callback_->notifyMainUI(msg);
+    }
+
+
 }
 
 void RTCRoomManager::leave(const std::string roomId)
 {
-       RTC_LOG(LS_INFO) << __FUNCTION__ <<" roomId:"<<roomId;
-  this->socket_signal_client_imp_->leave(roomId);
+    RTC_LOG(LS_INFO) << __FUNCTION__ <<" roomId:"<<roomId;
+     if(this->room_state_change_callback_)
+     {
+      PCS::Message msg;
+      msg.what = PCS::RTCMainEvent::LEAVE;
+      msg.data = std::make_shared<std::string>(roomId);
+      this->room_state_change_callback_->notifyMainUI(msg);
+     }
+
+
 }
 
 void RTCRoomManager::release()
 {
     RTC_LOG(LS_INFO) << __FUNCTION__ ;
   this->socket_signal_client_imp_->release();
+  this->peer_manager_->release();
 }
 
 void RTCRoomManager::onUIMessage(Message msg)
@@ -74,11 +94,37 @@ void RTCRoomManager::onUIMessage(Message msg)
   RTC_LOG(LS_INFO) << __FUNCTION__ << " what:"<<(int)msg.what;
   switch(msg.what)
   {
+  case PCS::RTCMainEvent::JOIN:{
+       auto roomId = std::static_pointer_cast<std::string>(msg.data);
+      if(socket_signal_client_imp_)
+          this->socket_signal_client_imp_->join(*roomId);
+      break;
+  }
+  case PCS::RTCMainEvent::CONNECT:
+  {
+      auto url = std::static_pointer_cast<std::string>(msg.data);
+      if(socket_signal_client_imp_)
+          socket_signal_client_imp_->connect(*url,this);
+      break;
+  }
+  case PCS::RTCMainEvent::LEAVE:
+  {
+      auto roomId = std::static_pointer_cast<std::string>(msg.data);
+      if(socket_signal_client_imp_)
+          socket_signal_client_imp_->leave(*roomId);
+      break;
+  }
+  case PCS::RTCMainEvent::ON_RELEASE:{
+      release();
+      break;
+  }
   case PCS::RTCMainEvent::ON_LEAVED:{
       auto roomId = std::static_pointer_cast<std::string>(msg.data);
       auto peerId = std::static_pointer_cast<std::string>(msg.data_1);
       if(this->room_state_change_callback_)
           this->room_state_change_callback_->onLeaved(*peerId);
+      if(this->peer_manager_)
+          this->peer_manager_->removePeerConnection(*peerId);
       break;
   }
   case PCS::RTCMainEvent::ON_JOINED:

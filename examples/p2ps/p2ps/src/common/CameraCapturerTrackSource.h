@@ -17,7 +17,7 @@ public:
             return nullptr;
         }
         int num_devices = info->NumberOfDevices();
-        for (int i = 0; i < num_devices; ++i) {
+        for (int i = 1; i < num_devices; ++i) {
             capturer = absl::WrapUnique(
                 CameraCapturer::Create(kWidth, kHeight, kFps, i));
             if (capturer) {
@@ -27,6 +27,14 @@ public:
         }
 
         return nullptr;
+    }
+
+
+    void Destroy(){
+        if (capturer_) {
+            capturer_->Destroy();
+            capturer_.reset();
+        }
     }
 
 protected:

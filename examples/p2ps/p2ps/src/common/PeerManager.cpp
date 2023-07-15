@@ -6,12 +6,16 @@ namespace PCS{
 
 
 
-PeerManager::PeerManager():peer_connection_factory_(nullptr),signaling_thread_(nullptr),main_thread_(nullptr)
+PeerManager::PeerManager():peer_connection_factory_(nullptr)
+    ,signaling_thread_(nullptr)
+    ,main_thread_(nullptr)
+    ,audio_track_(nullptr)
+    ,video_track_(nullptr)
 {
     main_thread_ = rtc::Thread::Create();
-    main_thread_->SetName("PeerManagerThread",nullptr);
+    main_thread_->SetName("PeerManagerThread",nullptr);    
     main_thread_->Start();
-
+    main_thread_->AllowInvokesToThread(main_thread_.get());
    //bool ret = createPeerConnectionFactory();
    //RTC_LOG(LS_INFO)<<"createPeerConnectionFactory:"<<ret;
 
@@ -94,18 +98,13 @@ bool PeerManager::createPeerConnection(const std::string &peerId, const webrtc::
           peer_ptr->peer_conn_inter_ = peerConnection;
           peer_ptr->peer_conn_obser_impl_ =std::move(peer_conn_obimpl);
           peers_[peerId] = std::move(peer_ptr);
+          std::vector<std::string> video_stream_ids = { kVideoLabel };
+          std::vector<std::string> audio_stream_ids = { kAudioLabel };
+          if(video_track_)
+           peerConnection->AddTrack(video_track_, video_stream_ids);
+           if(audio_track_)
+          peerConnection->AddTrack(audio_track_, audio_stream_ids);
 
-
-          for (const auto& track : this->local_stream_->GetVideoTracks()) {
-              RTC_LOG(LS_INFO) <<" AddVideoTrack" <<" peerId:"<<peerId;
-              peerConnection->AddTrack(track, {this->local_stream_->id()});
-          }
-          for (const auto& track : this->local_stream_->GetAudioTracks()) {
-              RTC_LOG(LS_INFO) <<" AddAudioTrack" <<" peerId:"<<peerId;
-              peerConnection->AddTrack(track, {this->local_stream_->id()});
-          }
-          // AddStream is not available with Unified Plan SdpSemantics. Please use AddTrack instead
-          //peerConnection->AddStream(this->local_stream_);
 
           return true;
       }
@@ -197,27 +196,22 @@ void PeerManager::setRemoteDescription(const std::string &peerId,webrtc::Session
 void PeerManager::addTracks(const std::string &localPeerId)
 {
   RTC_LOG(LS_INFO) <<__FUNCTION__ ;
-
-    local_stream_ =
-          peer_connection_factory_->CreateLocalMediaStream(kStreamId);
-
+  RTC_DCHECK(peer_connection_factory_);
   // 创建音频轨道并添加到 PeerConnection
-  rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track(
-      peer_connection_factory_->CreateAudioTrack(
-          kAudioLabel, peer_connection_factory_->CreateAudioSource(
-              cricket::AudioOptions())));
+  audio_track_  = peer_connection_factory_->CreateAudioTrack(
+        kAudioLabel, peer_connection_factory_->CreateAudioSource(
+            cricket::AudioOptions()));
 
   // 创建视频源和视频轨道并添加到 PeerConnection
   rtc::scoped_refptr<CameraCapturerTrackSource> video_device =
       CameraCapturerTrackSource::Create(1280,720,30);
-  rtc::scoped_refptr<webrtc::VideoTrackInterface> video_track_(
-      peer_connection_factory_->CreateVideoTrack(kVideoLabel, video_device));
-
-      if(audio_track)
-          local_stream_->AddTrack(audio_track);
+  video_track_ =
+      peer_connection_factory_->CreateVideoTrack(kVideoLabel, video_device);
+//      if(audio_track)
+//          local_stream_->AddTrack(audio_track);
 
       if (video_track_) {
-          local_stream_->AddTrack(video_track_);
+         // local_stream_->AddTrack(video_track_);
           if(local_video_track_!= nullptr)
               local_video_track_(localPeerId,1280,720,video_track_);
       }
@@ -269,6 +263,43 @@ void PeerManager::handleCandidate(std::string peerId, std::unique_ptr<webrtc::Ic
     }else {
           RTC_LOG(LS_ERROR) << __FUNCTION__ <<  " peers_ not found id:"<<peerId;
 
-      }
+    }
+}
+
+void PeerManager::release()
+{
+  RTC_LOG(LS_ERROR) << __FUNCTION__ ;
+    if(video_track_)
+    {
+
+          auto video_device_from_stream = static_cast<CameraCapturerTrackSource*>(video_track_->GetSource());
+          if (video_device_from_stream != nullptr) {
+              rtc::scoped_refptr<CameraCapturerTrackSource> video_device_refptr(video_device_from_stream);
+              video_device_refptr->Destroy();
+          }
+
+    }
+    for(auto& pair : peers_) {
+          pair.second->peer_conn_inter_->ClearStatsCache();
+          pair.second->peer_conn_inter_->Close();
+    }
+
+    if(peer_connection_factory_ != nullptr)
+    {
+          peer_connection_factory_.release();
+          peer_connection_factory_ = nullptr;
+    }
+
+    if(video_track_ != nullptr)
+    {
+          video_track_.release();
+    }
+
+    if(audio_track_ != nullptr)
+    {
+          audio_track_.release();
+    }
+
+
 }
 }

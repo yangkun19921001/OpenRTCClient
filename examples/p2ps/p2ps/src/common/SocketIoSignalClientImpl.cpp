@@ -11,6 +11,11 @@ bool SocketIoSignalClientImpl::connect(const std::string url,OnSignalEventListen
 {
     RTC_LOG(LS_INFO) <<"socketio>>"<<__FUNCTION__;
     this->events = listener;
+    if(socket->opened())
+    {
+        release();
+
+    }
     setSocketListener();
     socket->connect(url);
     return true;
@@ -19,13 +24,14 @@ bool SocketIoSignalClientImpl::connect(const std::string url,OnSignalEventListen
 void SocketIoSignalClientImpl::join(const std::string roomId)
 {    RTC_LOG(LS_INFO) <<"socketio>>"<<__FUNCTION__<<" roomId:"<<roomId;
 
-  socket->socket()->emit(ISignalClient::SignalEventToString(ISignalClient::SignalEvent::JOIN), roomId);
+    socket->socket()->emit(ISignalClient::SignalEventToString(ISignalClient::SignalEvent::JOIN), roomId);
+
 }
 
 void SocketIoSignalClientImpl::leave(const std::string roomId)
 {
     RTC_LOG(LS_INFO)<<"socketio>>" <<__FUNCTION__<<" roomId:"<<roomId;
-socket->socket()->emit(ISignalClient::SignalEventToString(ISignalClient::SignalEvent::LEAVE), roomId);
+    socket->socket()->emit(ISignalClient::SignalEventToString(ISignalClient::SignalEvent::LEAVE), roomId);
 }
 
 void SocketIoSignalClientImpl::release()
@@ -63,7 +69,7 @@ void SocketIoSignalClientImpl::setSocketListener()
     RTC_LOG(LS_INFO) <<"socketio>>"<<__FUNCTION__;
     socket->socket()->on(ISignalClient::SignalEventToString(ISignalClient::SignalEvent::JOINED), [this](sio::event& ev)
                          {
-                             RTC_LOG(LS_INFO) <<"socketio<<"  <<__FUNCTION__;
+                             RTC_LOG(LS_INFO) <<"socketio JOINED"  <<__FUNCTION__;
                              std::string room = ev.get_messages().at(0)->get_string();
                              std::string id = ev.get_messages().at(1)->get_string();
                              std::vector<std::string> otherClientIds;
@@ -79,7 +85,7 @@ void SocketIoSignalClientImpl::setSocketListener()
 
     socket->socket()->on(ISignalClient::SignalEventToString(ISignalClient::SignalEvent::LEAVED), [this](sio::event& ev)
                          {
-        RTC_LOG(LS_INFO) <<"socketio<<"<<__FUNCTION__<<ev.get_ack_message().to_array_message()<<__FUNCTION__;
+        RTC_LOG(LS_INFO) <<"socketio LEAVED "<<__FUNCTION__<<ev.get_ack_message().to_array_message()<<__FUNCTION__;
                              std::string room = ev.get_messages().at(0)->get_string();
                              std::string id = ev.get_messages().at(1)->get_string();
                              if(this->events)
@@ -88,7 +94,7 @@ void SocketIoSignalClientImpl::setSocketListener()
 
     socket->socket()->on(ISignalClient::SignalEventToString(ISignalClient::SignalEvent::MESSAGE), [this](sio::event& ev)
                         {
-                             RTC_LOG(LS_INFO) <<"socketio<<"<<__FUNCTION__;
+                             RTC_LOG(LS_INFO) <<"socketio MESSAGE"<<__FUNCTION__;
                             std::string from =  ev.get_messages().at(0)->get_string();
                             std::string to =  ev.get_messages().at(1)->get_string();
 
@@ -110,10 +116,11 @@ void SocketIoSignalClientImpl::setSocketListener()
                                 this->events->onMessage(from, to, message);
                         });
 
-    socket->set_socket_open_listener([this](std::string const& nsp){
-        RTC_LOG(LS_INFO)<<"socketio<< " <<"set_socket_open_listener";
 
-        mLocalSocketId = socket->get_sessionid();;
+    socket->set_socket_open_listener([this](std::string const& nsp){
+        RTC_LOG(LS_INFO)<<"socketio set_socket_open_listener " <<"set_socket_open_listener";
+
+        mLocalSocketId = socket->get_sessionid();
 
         if(this->events)
             this->events->onConnectSuccessful();

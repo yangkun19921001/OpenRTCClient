@@ -10,7 +10,7 @@
 #include <QOpenGLTexture>
 
 #include "../../../webrtc_headers.h"
-
+#include <mutex>
 
 
 #define ATTRIB_VERTEX 3
@@ -22,7 +22,7 @@ class VideoRendererWidget : public QOpenGLWidget, protected QOpenGLFunctions,
     Q_OBJECT
 
 public:
-    VideoRendererWidget(QWidget* parent = nullptr);
+    VideoRendererWidget(std::string peerId ="",QWidget* parent = nullptr,webrtc::VideoTrackInterface *track =nullptr);
     ~VideoRendererWidget();
 
 public Q_SLOTS:
@@ -60,11 +60,13 @@ private:
     QOpenGLShaderProgram *m_pShaderProgram; // 着色器程序容器
     int m_nVideoW; // 视频分辨率宽
     int m_nVideoH; // 视频分辨率高
-    unsigned char *m_pBufYuv420p;
-    FILE *m_pYuvFile;
+//    unsigned char *m_pBufYuv420p;
+    std::unique_ptr<uint8_t[]> video_data_;
+    std::mutex renderer_mutex_;
+    std::string peer_id_;
 
 public:
-    webrtc::VideoTrackInterface* video_track_;
+   webrtc::VideoTrackInterface*  video_track_;
 };
 
 }
