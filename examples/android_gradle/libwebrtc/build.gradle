@@ -13,7 +13,7 @@ python3 webrtc/build/android/fast_local_dev_server.py
 webrtc_build build:webrtc android arm64 debug
 */
 
-def use_lib = true;
+def use_lib = false;
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
 //    buildToolsVersion rootProject.ext.androidBuildToolsVersion
