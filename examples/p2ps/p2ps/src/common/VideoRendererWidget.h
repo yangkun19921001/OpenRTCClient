@@ -13,9 +13,29 @@
 #include <mutex>
 
 
-#define ATTRIB_VERTEX 3
-#define ATTRIB_TEXTURE 4
+#define A_VER 0
+#define T_VER 1
+
+
+
+
 namespace PCS {
+//传递顶点和材质坐标
+//顶点
+static const GLfloat VER[] = {
+    -1.0f, -1.0f,
+    1.0f, -1.0f,
+    -1.0f, 1.0f,
+    1.0f, 1.0f
+};
+
+//材质
+static const GLfloat TEX[] = {
+    0.0f, 1.0f,
+    1.0f, 1.0f,
+    0.0f, 0.0f,
+    1.0f, 0.0f
+};
 class VideoRendererWidget : public QOpenGLWidget, protected QOpenGLFunctions,
                             public rtc::VideoSinkInterface<webrtc::VideoFrame>
 {
@@ -41,26 +61,16 @@ public:
 
 
 private:
-    /**
-     * 纹理是一个2D图片，它可以用来添加物体的细节（贴图），纹理可以各种变形后
-     * 贴到不同形状的区域内。这里直接用纹理显示视频帧
-     */
-    GLuint textureUniformY; // y纹理数据位置
-    GLuint textureUniformU; // u纹理数据位置
-    GLuint textureUniformV; // v纹理数据位置
-    GLuint id_y; // y纹理对象ID
-    GLuint id_u; // u纹理对象ID
-    GLuint id_v; // v纹理对象ID
-    QOpenGLTexture *m_pTextureY;  // y纹理对象
-    QOpenGLTexture *m_pTextureU;  // u纹理对象
-    QOpenGLTexture *m_pTextureV;  // v纹理对象
-    /* 着色器：控制GPU进行绘制 */
-    QOpenGLShader *m_pVSHader;  // 顶点着色器程序对象
-    QOpenGLShader *m_pFSHader;  // 片段着色器对象
-    QOpenGLShaderProgram *m_pShaderProgram; // 着色器程序容器
+    //openg的 texture地址
+    GLuint texs[3] = {0};
+    QOpenGLShader*          mVShader;
+    QOpenGLShader*          mFShader;
+    QOpenGLShaderProgram*   mShaderProgram;
+
+    GLuint                  id_y, id_u, id_v;
+    int                     textureUniformY, textureUniformU, textureUniformV;
     int m_nVideoW; // 视频分辨率宽
     int m_nVideoH; // 视频分辨率高
-//    unsigned char *m_pBufYuv420p;
     std::unique_ptr<uint8_t[]> video_data_;
     std::mutex renderer_mutex_;
     std::string peer_id_;
