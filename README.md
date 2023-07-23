@@ -245,6 +245,34 @@ webrtc_build build:webrtc android arm64 debug
 编译生成的静态库位于 `OpenRTCClient/build/win/x64/debug/obj` 目录下。
 
 对于 iOS：
+
+如编译报错 
+
+1. `../../../../../webrtc/third_party/ffmpeg/libavutil/macros.h:28:10: fatal error: 'libavutil/avconfig.h' file not found`
+```shell
+
+cd webrtc/third_party/ffmpeg/
+
+ ./configure
+```
+2. 配置签名，不然会导致安装失败
+```
+#1. gen 之后 ，在 args.gn 上配置如下信息
+ios_enable_code_signing = true
+ios_code_signing_identity = ""
+#2. Bundle Identifier & info.list 修改保持一致
+<key>CFBundleIdentifier</key>
+<string>xxx.xxx</string>
+```
+
+3. Xcode 14 - Cannot code sign because the target does not have an Info.plist file
+
+```shell
+
+Select Build Settings --> Packaging --> Generate info.plist File = info.plist 绝对路径
+
+```
+
 ```
 % webrtc_build gen ios arm64 debug
 % webrtc_build build:webrtc ios arm64 debug

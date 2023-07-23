@@ -145,7 +145,7 @@ def get_generator(config):
     if config.is_windows:
       generator = "vs"
     if config.is_mac and not config.target_os == "android":
-      generator = "xcode"
+      generator = "xcode   --xcode-build-system=new"
     if config.target_os == "android":
       generator = "json --json-ide-script={}/build_system/gn_to_cmake.py".format(config.root_path)
   return generator
@@ -175,6 +175,7 @@ def build_solution(config):
                                         config.build_target, "-v" if config.verbos_build else "",
                                         " -j {}".format(
                                         config.limit_num_process) if config.limit_num_process else "")
+  print("ninja exec: ", cmd)  # 添加这行来打印 cmd
   run_or_die(cmd)
   if not config.is_windows:
     print("\033[1;32m build success \033[0m")
