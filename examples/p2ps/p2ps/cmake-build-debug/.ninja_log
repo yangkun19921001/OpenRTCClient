@@ -1,0 +1,16 @@
+# ninja log v5
+4	3703	7113872986697500	C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/p2ps_autogen/timestamp	9c59f3f11bb46027
+13	311	7113873507391153	C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/cmake.verify_globs	706e36e6838aaf55
+4	3703	7113872986697500	p2ps_autogen/timestamp	9c59f3f11bb46027
+4	3703	7113872986697500	p2ps_autogen/mocs_compilation.cpp	9c59f3f11bb46027
+4	3703	7113872986697500	C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/p2ps_autogen/mocs_compilation.cpp	9c59f3f11bb46027
+3729	6780	7113873023740769	CMakeFiles/p2ps.dir/C_/Users/devyk/Data/work/my-git-work/OpenRTCClient/webrtc/third_party/jsoncpp/source/src/lib_json/json_writer.cpp.obj	5df87d3843bc20cd
+3709	7219	7113873028147328	CMakeFiles/p2ps.dir/C_/Users/devyk/Data/work/my-git-work/OpenRTCClient/webrtc/third_party/jsoncpp/source/src/lib_json/json_value.cpp.obj	cde0c02bc23b569f
+3714	7379	7113873029729391	CMakeFiles/p2ps.dir/C_/Users/devyk/Data/work/my-git-work/OpenRTCClient/webrtc/third_party/jsoncpp/source/src/lib_json/json_reader.cpp.obj	5833f0fe07dae659
+312	2021	7113873525350827	build.ninja	2411744347c4a478
+13	280	0	C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/cmake.verify_globs	706e36e6838aaf55
+63	973	7113873538594087	p2ps_autogen/timestamp	9c59f3f11bb46027
+63	973	7113873538594087	p2ps_autogen/mocs_compilation.cpp	9c59f3f11bb46027
+63	973	7113873538594087	C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/p2ps_autogen/timestamp	9c59f3f11bb46027
+63	973	7113873538594087	C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/p2ps_autogen/mocs_compilation.cpp	9c59f3f11bb46027
+1028	4895	7113873577747493	CMakeFiles/p2ps.dir/src/common/SocketIoSignalClientImpl.cpp.obj	166d8d5e79961ab1

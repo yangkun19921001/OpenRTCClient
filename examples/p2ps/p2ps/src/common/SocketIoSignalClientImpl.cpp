@@ -111,7 +111,7 @@ void SocketIoSignalClientImpl::setSocketListener()
                             Json::StreamWriterBuilder builder;
                             std::string message = Json::writeString(builder, root);
 
-                            RTC_LOG(LS_INFO) <<"socketio<<"<<__FUNCTION__ " from:"<<from << " to:"<<to <<" message:"<<message;
+                            RTC_LOG(LS_INFO) <<"socketio<<"<<__FUNCTION__<< " from:"<<from << " to:"<<to <<" message:"<<message;
                             if(this->events)
                                 this->events->onMessage(from, to, message);
                         });

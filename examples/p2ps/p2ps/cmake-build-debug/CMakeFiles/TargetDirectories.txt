@@ -1,0 +1,9 @@
+C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/p2ps.dir
+C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/list_install_components.dir
+C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/install.dir
+C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/install/local.dir
+C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/install/strip.dir
+C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/p2ps_autogen_timestamp_deps.dir
+C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug/CMakeFiles/p2ps_autogen.dir

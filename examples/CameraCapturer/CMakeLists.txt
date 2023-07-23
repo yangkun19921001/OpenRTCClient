@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.5)
 
 
 
-project(p2ps VERSION 0.1 LANGUAGES CXX)
+project(CameraCapturer VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -26,38 +26,34 @@ endif()
 
 
 # Project configuration.
-set(WEBRTC_THIRD_PARTY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../webrtc/third_party)
-set(LIBWEBRTC_INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../webrtc)
-set(LIBWEBRTC_BINARY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../build_system/build/win/x64/${BUILD_TYPE}/obj)
+set(WEBRTC_THIRD_PARTY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../webrtc/third_party)
+set(LIBWEBRTC_INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../webrtc)
+set(LIBWEBRTC_BINARY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../build_system/build/win/x64/${BUILD_TYPE}/obj)
 
-set(DEPS_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/deps)
-set(SOCKET_IO_BINARY_PATH  ${DEPS_ROOT_PATH}/socketio/win/x64/${BUILD_TYPE})
-set(SOCKET_IO_INCLUDE_PATH  ${DEPS_ROOT_PATH}/socketio/include)
+
 
 
 if(NOT LIBWEBRTC_INCLUDE_PATH)
-	message(FATAL_ERROR "LIBWEBRTC_INCLUDE_PATH not provided")
+        message(FATAL_ERROR "LIBWEBRTC_INCLUDE_PATH not provided")
 endif()
 
 if(NOT LIBWEBRTC_BINARY_PATH)
-	message(FATAL_ERROR "LIBWEBRTC_BINARY_PATH not provided")
+        message(FATAL_ERROR "LIBWEBRTC_BINARY_PATH not provided")
 endif()
 
 message(STATUS "LIBWEBRTC_INCLUDE_PATH      : " ${LIBWEBRTC_INCLUDE_PATH})
 message(STATUS "LIBWEBRTC_BINARY_PATH       : " ${LIBWEBRTC_BINARY_PATH})
-message(STATUS "VCPKG_ROOT_PATH             : " ${VCPKG_ROOT_PATH})
 message(STATUS "QT_VERSION_MAJOR            : " ${QT_VERSION_MAJOR})
 
 
 
 #find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS  Widgets LinguistTools OpenGL OpenGLWidgets   REQUIRED)
 #find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS  Widgets LinguistTools OpenGL OpenGLWidgets   REQUIRED)
-set(Qt6_DIR "C:/Qt/6.6.0/msvc2019_64/lib/cmake/Qt6")
 
 set(QT_VERSION_MAJOR 6)
 find_package(Qt6 COMPONENTS Core Gui Widgets OpenGL LinguistTools OpenGLWidgets REQUIRED)
 
-set(TS_FILES p2ps_zh_CN.ts)
+
 
 set(JSONCPP_SOURCE
     "${WEBRTC_THIRD_PARTY_PATH}/jsoncpp/source/src/lib_json/json_reader.cpp"
@@ -71,55 +67,39 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        webrtc_headers.h
 
-        ${TS_FILES}
         ${JSONCPP_SOURCE}
+        webrtc_headers.h
+        VideoRendererWidget.cpp
+        VideoRendererWidget.h
+        CameraCapturer.h
+        CameraCapturer.cpp
+        CameraCapturerTrackSource.h
+        VideoCapturer.h
+        VideoCapturer.cpp
+
 )
 
 
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(p2ps
+    qt_add_executable(${PROJECT_NAME}
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        src/common/PeerManager.cpp
-        src/common/PeerManager.h
-        src/common/CameraCapturerTrackSource.h
-        src/common/ISignalClient.h
-        src/common/SocketIoSignalClientImpl.h src/common/SocketIoSignalClientImpl.cpp
-
-        ${SOCKETIO_CLIENT_SOURCE}
-        src/common/OnSignalEventListener.h
-        deps/socketio/win/README.md
-        src/common/RTCRoomManager.h src/common/RTCRoomManager.cpp
-        src/common/OnRoomStateChangeCallback.h
-        src/common/PeerConnectionObserverImp.h
-        src/common/SetSessionDescriptionObserverImpl.h
-        src/common/VideoCapturer.h
-        src/common/VideoCapturer.cpp
-        src/common/CameraCapturer.h
-        src/common/CameraCapturer.cpp
-        src/common/VideoSinkProxy.h
-        src/common/VideoSinkProxy.cpp
-        src/common/VideoRendererWidget.h
-        src/common/VideoRendererWidget.cpp
-        src/common/Message.h
-        ${JSONCPP_SOURCE}
     )
-    qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+    qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} )
 else()
     if(ANDROID)
-        add_library(p2ps SHARED
+        add_library(${PROJECT_NAME} SHARED
             ${PROJECT_SOURCES}
         )
     else()
-        add_executable(p2ps
+        add_executable(${PROJECT_NAME}
             ${PROJECT_SOURCES}
         )
     endif()
 
-    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} )
 endif()
 
 #deps see:https://zhuanlan.zhihu.com/p/604361972
@@ -136,13 +116,6 @@ add_definitions(
         #webrtc & qt 冲突
         -DQT_DEPRECATED_WARNINGS
         -DQT_NO_KEYWORDS
-
-        #jsoncpp
-        -DJSON_USE_EXCEPTION=0
-        -DJSON_USE_NULLREF=0
-
-        #socketio
-        #-DSIO_TLS
 
         -DUSE_AURA=1
         -D_HAS_EXCEPTIONS=0
@@ -185,13 +158,8 @@ add_definitions(
 
 
 
-target_link_libraries(p2ps PRIVATE
+target_link_libraries(${PROJECT_NAME} PRIVATE
         Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets
-
-       # ${SOCKET_IO_BINARY_PATH}/libcrypto64MTd.lib
-       # ${SOCKET_IO_BINARY_PATH}/libssl64MTd.lib
-        ${SOCKET_IO_BINARY_PATH}/sioclient.lib
-        ${SOCKET_IO_BINARY_PATH}/sioclient_tls.lib
 
         ${LIBWEBRTC_BINARY_PATH}/webrtc.lib
         winmm.lib
@@ -233,7 +201,7 @@ target_link_libraries(p2ps PRIVATE
         #msvcprtd.lib(nothrow.obj):-1: error: LNK2038: 检测到“RuntimeLibrary”的不匹配项: 值“MDd_DynamicDebug”不匹配值“MTd_StaticDebug”(mocs_compilation.cpp.obj 中)
 )
 
-set_target_properties(p2ps PROPERTIES
+set_target_properties(${PROJECT_NAME} PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -241,12 +209,12 @@ set_target_properties(p2ps PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-install(TARGETS p2ps
+install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(p2ps)
+    qt_finalize_executable(${PROJECT_NAME})
 endif()

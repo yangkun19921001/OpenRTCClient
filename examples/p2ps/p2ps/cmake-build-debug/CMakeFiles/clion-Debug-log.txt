@@ -1,0 +1,16 @@
+"C:\Program Files\JetBrains\CLion 2022.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.3/bin/ninja/win/ninja.exe" -G Ninja -S C:\Users\devyk\Data\work\my-git-work\OpenRTCClient\examples\p2ps\p2ps -B C:\Users\devyk\Data\work\my-git-work\OpenRTCClient\examples\p2ps\p2ps\cmake-build-debug
+-- LIBWEBRTC_INCLUDE_PATH      : C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/../../../webrtc
+-- LIBWEBRTC_BINARY_PATH       : C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/../../../build_system/build/win/x64/debug/obj
+-- VCPKG_ROOT_PATH             : 
+-- QT_VERSION_MAJOR            : 
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Performing Test HAVE_STDATOMIC
+-- Performing Test HAVE_STDATOMIC - Success
+-- Found WrapAtomic: TRUE  
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/devyk/Data/work/my-git-work/OpenRTCClient/examples/p2ps/p2ps/cmake-build-debug

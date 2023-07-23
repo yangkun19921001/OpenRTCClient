@@ -76,6 +76,11 @@ VideoRendererWidget::~VideoRendererWidget()
 
 void VideoRendererWidget::PlayOneFrame()
 {
+    if(need_update_)
+    {
+        need_update_= false;
+        repaint();
+    }
 
     // 刷新界面,触发paintGL接口
     update();
@@ -228,6 +233,8 @@ void VideoRendererWidget::OnFrame(const webrtc::VideoFrame &video_frame)
          video_data_ .reset();
 
         if(!peer_id_.empty()) RTC_LOG(LS_INFO) << __FUNCTION__ << " change w:"<<width<<" height:"<<height << " peerId:" <<peer_id_;
+
+        need_update_ = true;
 
     }
 
